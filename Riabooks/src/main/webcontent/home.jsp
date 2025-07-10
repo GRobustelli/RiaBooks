@@ -5,24 +5,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Riabooks</title>
+	<link rel="stylesheet" type="text/css" href="stili/Stile_navigation.css">
 </head>
 <body>
+		<%@include file = "header.jsp" %>
 	
-	<nav> 
+	<nav id = princ> 
 	<ul> 
-	<li> Login <a href = login.jsp></a></li>
-	<li> Carrello <a href = carrello.jsp></a></li>
+	<li>  Login</li>
+	<li>  Registrati </li>
+	<li>  Carrello</li>
 	</ul>
 	</nav>
+	<nav id = filtro> 
+		<ul>
+			<li> Avventura </li>
+			<li> Azione   </li>
+			<li> Fantasy </li>
+		</ul>
+	</nav>
+	
 	
 	<div> </div>
 	
-	<div id = filtro>Selezione un filtro
-		<ul>
-			<li> Avventura 
-			<li> Azione
-			<li> Fantasy
-		</ul>
-		</div>
+	
+		
+		
+	<%@include file = "footer.jsp" %>
 </body>
 </html>

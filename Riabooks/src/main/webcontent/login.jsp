@@ -8,5 +8,10 @@
 </head>
 <body>
 	
+	<p> PLACEHOLDER</p>
+	
+	
+	
+	<%@include file = footer.jsp %>>
 </body>
 </html>
