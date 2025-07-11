@@ -108,7 +108,7 @@ public class UserDaoDriverMan implements IUserDAO {
 			while (rs.next()) {
 				UserBean bean = new UserBean();
 
-				bean.setEmail(rs.getNString("email"));
+				bean.setEmail(rs.getString("email"));
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setPass(rs.getString("pass_hash"));
@@ -126,5 +126,4 @@ public class UserDaoDriverMan implements IUserDAO {
 		}
 		return products;
 	}
-
 }

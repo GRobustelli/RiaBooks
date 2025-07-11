@@ -8,7 +8,7 @@ public class LibroBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String id;
-	private String nome;
+	private String titolo;
 	private String autore;
 	private double prezzo;
 	private String descrizione;
@@ -16,10 +16,29 @@ public class LibroBean implements Serializable{
 	/**
 	 * @return the id
 	 */
+	
+	
+	
 	public String getId() {
 		return id;
 	}
 	
+	public LibroBean(String id, String titolo, String autore, double prezzo, String descrizione, String categoria) {
+		super();
+		this.id = id;
+		this.titolo = titolo;
+		this.autore = autore;
+		this.prezzo = prezzo;
+		this.descrizione = descrizione;
+		this.categoria = categoria;
+	}
+	
+	
+
+	public LibroBean() {
+		super();
+	}
+
 	/**
 	 * @param id the id to set
 	 */
@@ -31,16 +50,16 @@ public class LibroBean implements Serializable{
 	 * @return the nome
 	 */
 	
-	public String getNome() {
-		return nome;
+	public String getTitolo() {
+		return titolo;
 	}
 	
 	/**
 	 * @param nome the nome to set
 	 */
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
 	}
 	
 	/**
