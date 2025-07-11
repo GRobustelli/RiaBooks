@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrazione</title>
+    <link rel="stylesheet" href="stili/Register.css">
+    <link rel="stylesheet" type="text/css" href="stili/footer.css" />
 </head>
 <body>
+
     <h2>Registrazione</h2>
     <form action="/register" method="post">
         <label for="nome">Nome:</label>
@@ -25,5 +28,8 @@
 
         <button type="submit">Registrati</button>
     </form>
+
+    <jsp:include page="footer.jsp" />
+
 </body>
 </html>

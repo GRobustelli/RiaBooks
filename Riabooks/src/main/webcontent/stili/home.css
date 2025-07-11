@@ -1,0 +1,78 @@
+body {
+    font-family: Consolas, sans-serif;
+    background: url("../images/sfondo.jpg") repeat;
+    background-size: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+#princ {
+    background-color: rgba(51, 51, 51, 0.8);
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#princ ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+#princ li {
+    display: inline;
+}
+
+#princ a button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+#princ a button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+#filtro ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(51, 51, 51, 0.4);
+    display: flex;
+    gap: 10px;
+}
+
+#filtro li {
+    padding: 10px 20px;
+    background-color: #999;
+    color: white;
+    border-radius: 5px;
+}
+
+#filtro li:hover {
+    background-color: #666;
+}

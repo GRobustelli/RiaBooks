@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="stili/Login.css">
+    <link rel="stylesheet" type="text/css" href="stili/footer.css" />
 </head>
 <body>
     <h2>Login</h2>
@@ -16,5 +18,6 @@
 
         <button type="submit">Accedi</button>
     </form>
+     <jsp:include page="footer.jsp" />
 </body>
 </html>

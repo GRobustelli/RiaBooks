@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="stili/footer.css" />
 </head>
 <body>
-
+ 	<jsp:include page="footer.jsp" />
 </body>
 </html>

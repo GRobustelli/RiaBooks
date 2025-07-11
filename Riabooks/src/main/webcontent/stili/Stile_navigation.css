@@ -1,13 +1,13 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
-nav {
+nav { 
 	
-	margin: 10px 10px 0px 10px;
+	margin: 0px 0px 0px 0px;
 }
 
 nav ul {
 	
 	margin: 0 px;
 	list-style-type: none;
-	padding: 5px 0px 5px 0px
+	padding: 5px 0px 5px 0px 
 }
