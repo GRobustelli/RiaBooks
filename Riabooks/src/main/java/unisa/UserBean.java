@@ -1,4 +1,4 @@
-package unisa.db;
+package unisa;
 
 import java.io.Serializable;
 
@@ -23,6 +23,14 @@ public class UserBean implements Serializable{
 		this.pass = pass;
 		this.admin = admin;
 	}
+
+	
+	public UserBean() {
+		super();
+		admin = false;
+		// TODO Auto-generated constructor stub
+	}
+
 
 	/**
 	 * @return the email
