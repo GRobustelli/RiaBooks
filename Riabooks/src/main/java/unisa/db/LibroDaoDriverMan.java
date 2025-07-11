@@ -22,7 +22,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	}
 	
 	
-	public void doSave(LibroBean libro) throws SQLException {
+	public synchronized void doSave(LibroBean libro) throws SQLException {
 		// TODO Auto-generated method stub
 
 		Connection connection = null;
@@ -55,7 +55,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	}
 
 	@Override
-	public LibroBean RetrieveByKey(String id) throws SQLException {
+	public synchronized LibroBean RetrieveByKey(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -91,7 +91,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	}
 
 	@Override
-	public boolean doDelete(String codice) throws SQLException {
+	public synchronized boolean doDelete(String codice) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 			
@@ -119,7 +119,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 		}
 
 	@Override
-	public Collection<LibroBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<LibroBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -160,6 +160,67 @@ public class LibroDaoDriverMan implements ILibroDAO{
 			}
 		}
 		return libri;
+	}
+
+
+	@Override
+	public synchronized boolean doUpdate(String codice, double prezzo) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+			
+		int result = 0;
+		
+		String selectSQL = "UPDATE Libro SET prezzo = "+ prezzo + "FROM " + LibroDaoDriverMan.TABLE_NAME + " WHERE id = ?";
+			
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, codice);
+			
+			result = preparedStatement.executeUpdate();
+			
+		} finally {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} 
+		finally {
+			dmcp.releaseConnection(connection);
+		}
+		
+	}
+		return (result != 0);
+		}
+
+
+	@Override
+	public synchronized boolean doUpdate(String codice, String modifica, String update) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+			
+		int result = 0;
+		
+		String selectSQL = "UPDATE Libro SET " + modifica + "= "+ update + "FROM " + LibroDaoDriverMan.TABLE_NAME + " WHERE id = ?";
+			
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, codice);
+			
+			result = preparedStatement.executeUpdate();
+			
+		} finally {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} 
+		finally {
+			dmcp.releaseConnection(connection);
+		}
+		
+	}
+		return (result != 0);
+		
 	}
 	}
 

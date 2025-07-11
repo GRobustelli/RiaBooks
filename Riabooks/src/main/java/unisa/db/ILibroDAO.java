@@ -14,6 +14,9 @@ public interface ILibroDAO {
 	
 	public boolean doDelete (String codice) throws SQLException;
 	
+	public boolean doUpdate(String codice, double prezzo) throws SQLException;
+	public boolean doUpdate(String codice, String modifica, String update) throws SQLException;
+	
 	public Collection<LibroBean> doRetrieveAll(String order) throws SQLException;
 
 
