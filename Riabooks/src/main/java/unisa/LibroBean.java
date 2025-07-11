@@ -36,7 +36,7 @@ public class LibroBean implements Serializable{
 	
 
 	public LibroBean() {
-		super();
+		 super();
 	}
 
 	/**
