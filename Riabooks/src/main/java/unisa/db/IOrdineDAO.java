@@ -6,7 +6,7 @@ import java.util.Collection;
 import unisa.OrdineBean;
 import unisa.RecensioneBean;
 
-public interface IOrdine {
+public interface IOrdineDAO {
 	
 	public void doSave (OrdineBean ord) throws SQLException;
 	

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import unisa.OrdineBean;
 
-public class OrdineDaoDriverMan implements IOrdine{
+public class OrdineDaoDriverMan implements IOrdineDAO{
 
 
 	private static final String TABLE_NAME = "Ordine";
@@ -166,11 +166,12 @@ public class OrdineDaoDriverMan implements IOrdine{
 
 		Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDaoDriverMan.TABLE_NAME + "WHERE email = " + email;
-
+		String selectSQL = "SELECT * FROM " + OrdineDaoDriverMan.TABLE_NAME + " WHERE email = ?";
+			
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
