@@ -22,7 +22,7 @@ public class RecensioneDaoDriverMan implements IRecensioneDAO{
 		
 	}
 	@Override
-	public void doSave(RecensioneBean rec) throws SQLException {
+	public synchronized void doSave(RecensioneBean rec) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -51,7 +51,7 @@ public class RecensioneDaoDriverMan implements IRecensioneDAO{
 	}
 
 	@Override
-	public RecensioneBean RetrieveByKey(int id) throws SQLException {
+	public synchronized RecensioneBean RetrieveByKey(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -86,7 +86,7 @@ public class RecensioneDaoDriverMan implements IRecensioneDAO{
 	}
 
 	@Override
-	public boolean doDelete(int codice) throws SQLException {
+	public synchronized boolean doDelete(int codice) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -114,7 +114,7 @@ public class RecensioneDaoDriverMan implements IRecensioneDAO{
 	}
 
 	@Override
-	public Collection<RecensioneBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<RecensioneBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
