@@ -29,15 +29,9 @@ public class provautil {
 		System.out.println("Stiamo prime del try");
 		
 		try {
-			UserBean bean = new UserBean();
-			bean.setAdmin(false);
-			bean.setEmail("miaemail@hotmail.com");
-			bean.setNome("Giovanni");
-			bean.setCognome("Robustelli");
-			bean.setPass("nonadmin");
 			
-			um.doSave(bean);
-			UserBean rs = (UserBean) um.doRetrieveByKey("admin@hotmail.com");
+	
+			UserBean rs = (UserBean) um.doRetrieveByKey("miaemail@hotmail.com");
 			
 			System.out.println(rs.getNome() + " "+ rs.getEmail());
 			dm.releaseConnection(null);
@@ -46,6 +40,7 @@ public class provautil {
 			e.printStackTrace();
 		}
 		System.out.println("\n\n********************************************\nproviamo");
+		
 		ILibroDAO libro = new LibroDaoDriverMan(dm);
 		System.out.println("DriverManager creation...."+dm.toString());	
 		IRecensioneDAO rec = new RecensioneDaoDriverMan(dm);
@@ -82,14 +77,14 @@ public class provautil {
 		   
 			RecensioneBean nuova = new RecensioneBean();
 			
-			nuova.setEmail("admin@hotmail.com");
+			nuova.setEmail("miaemail@hotmail.com");
 			nuova.setLibro_id("1A");
 			nuova.setTesto("Deh bellissimo, mi sento uguale al protagonista");
 			nuova.setValutazione(10);
 			
 			rec.doSave(nuova);
 			
-			RecensioneBean nuova2 = (RecensioneBean)rec.RetrieveByKey(1);
+			RecensioneBean nuova2 = (RecensioneBean)rec.RetrieveByKey(2);
 			
 			System.out.println(nuova2.getEmail() + " \n" + nuova2.getId() + " \n"+ nuova2.getLibro_id() + " \n" + nuova2.getTesto());
 			
