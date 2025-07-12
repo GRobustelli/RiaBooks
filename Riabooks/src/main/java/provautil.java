@@ -31,10 +31,15 @@ public class provautil {
 		try {
 			
 	
-			UserBean rs = (UserBean) um.doRetrieveByKey("miaemail@hotmail.com");
+			UserBean rs = (UserBean) um.doRetrieveByKey("miaail@hotmail.com");
 			
+			if (rs == null) {
+				System.out.println("Esce null dai");
+			}
+			else {
 			System.out.println(rs.getNome() + " "+ rs.getEmail());
-			dm.releaseConnection(null);
+			dm.releaseConnection(null);}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
