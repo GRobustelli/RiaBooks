@@ -91,7 +91,7 @@ public class loginServlet extends HttpServlet {
 				request.getSession().setAttribute("isAdmin", bean.isAdmin());
 				request.getSession().setAttribute("user", bean);
 				if (bean.isAdmin()) {
-					response.sendRedirect("");
+					response.sendRedirect(""); //AGGIUNGERE JSP ADMIN
 				}
 				else
 				{

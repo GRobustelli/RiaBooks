@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import unisa.Cart;
 import unisa.db.DriverManagerConnectionPool;
 import unisa.db.ILibroDAO;
 import unisa.db.LibroDaoDriverMan;
@@ -45,6 +46,14 @@ public class LibriControl extends HttpServlet {
 			e.printStackTrace();
 		
 		}		
+		
+		Cart cart = (Cart)request.getSession().getAttribute("cart");
+		
+		if (cart == null)
+		{
+			cart = new Cart();
+			request.getSession().setAttribute("cart", cart);
+		}
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request, response);

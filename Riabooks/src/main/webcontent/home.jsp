@@ -13,7 +13,7 @@
 
 <html>
 
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,unisa.LibroBean"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,unisa.LibroBean,unisa.UserBean"%>
 <head>
     <meta charset="UTF-8">
     <title>Riabooks</title>
@@ -31,8 +31,18 @@
 
         <nav id="princ">
             <ul>
-                <li><a href="Register.jsp"><button type="button">Registrati</button></a></li>
+               
+              	<%
+              		UserBean user = (UserBean) session.getAttribute("user");
+              		if (user == null){
+              	%> 
+              	
+              	<li><a href="Register.jsp"><button type="button">Registrati</button></a></li>
                 <li><a href="Login.jsp"><button type="button">Login</button></a></li>
+                <% } else {%>
+                
+                <li> <%=user.getNome() + " " + user.getCognome() %>	
+                <%} %>
                 <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
             </ul>
         </nav>
