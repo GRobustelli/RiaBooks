@@ -71,16 +71,18 @@
     			<%=bean.getTitolo() %><br>
     			<%=bean.getAutore() %><br>
     			<%=bean.getDescrizione() %><br>
-    			<%=bean.getPrezzo() %> <br>
-    			<button>aggiungi al carrello</button>
-    			
+    			<%=bean.getPrezzo()  %> <br>
+    			<button >aggiungi al carrello</button>
     			
     		</div>
 			    	
     	
     	<% } }%>
     </div>
+    
 
     <%@include file="footer.jsp" %>
+    
+  
 </body>
 </html>
