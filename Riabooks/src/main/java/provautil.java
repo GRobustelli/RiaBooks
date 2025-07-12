@@ -1,8 +1,5 @@
 
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import unisa.LibroBean;
@@ -32,6 +29,14 @@ public class provautil {
 		System.out.println("Stiamo prime del try");
 		
 		try {
+			UserBean bean = new UserBean();
+			bean.setAdmin(false);
+			bean.setEmail("miaemail@hotmail.com");
+			bean.setNome("Giovanni");
+			bean.setCognome("Robustelli");
+			bean.setPass("nonadmin");
+			
+			um.doSave(bean);
 			UserBean rs = (UserBean) um.doRetrieveByKey("admin@hotmail.com");
 			
 			System.out.println(rs.getNome() + " "+ rs.getEmail());

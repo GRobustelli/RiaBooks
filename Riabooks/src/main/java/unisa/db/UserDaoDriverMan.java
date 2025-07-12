@@ -26,9 +26,12 @@ public class UserDaoDriverMan implements IUserDAO {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		PreparedStatement carstatement = null;
+		
 		String insertSQL = "INSERT INTO " + UserDaoDriverMan.TABLE_NAME
 				+ " (email,nome,cognome,pass_hash,is_admin) VALUES (?, ?, ?, ?, ?)";
+		
+		String insertcartSQLString = "INSERT INTO Carrello (email) VALUES (?)"; 
 
 		try {
 			connection = dmcp.getConnection();
@@ -40,11 +43,19 @@ public class UserDaoDriverMan implements IUserDAO {
 			preparedStatement.setBoolean(5, utente.isAdmin());
 
 			preparedStatement.executeUpdate();
-
+			carstatement = connection.prepareStatement(insertcartSQLString);
+		
+			carstatement.setString(1, utente.getEmail());
+			carstatement.executeUpdate();
 		} finally {
 			try {
+				
 				if (preparedStatement != null)
 					preparedStatement.close();
+				
+				if (carstatement != null)
+					carstatement.close();
+				
 			} finally {
 				dmcp.releaseConnection(connection);
 			}
