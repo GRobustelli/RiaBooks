@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+	Collection<?> setLibri = (Collection<?>) request.getAttribute("libri");
+	if(setLibri == null) {
+		response.sendRedirect( request.getContextPath()+ "/LibriControl");	
+		return;
+	}
+	
+%>
+
 <html>
+
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,unisa.LibroBean"%>
 <head>
     <meta charset="UTF-8">
     <title>Riabooks</title>
@@ -34,7 +46,30 @@
         </ul>
     </nav>
 
-    <div></div>
+    <div>
+    	<%  
+    		if(setLibri != null && setLibri.size() != 0)
+    		{
+    			Iterator<?> it = setLibri.iterator();
+    			
+    			while(it.hasNext()){
+    				LibroBean bean = (LibroBean) it.next();
+    	%>
+    		<div>
+    		<br>
+    			<img alt="Libro" src="images/default_libro.png" style = "margin:10px;margin-top: 0px;"> 
+    			<%=bean.getTitolo() %><br>
+    			<%=bean.getAutore() %><br>
+    			<%=bean.getDescrizione() %><br>
+    			<%=bean.getPrezzo() %> <br>
+    			<button>aggiungi al carrello</button>
+    			
+    			
+    		</div>
+			    	
+    	
+    	<% } }%>
+    </div>
 
     <%@include file="footer.jsp" %>
 </body>
