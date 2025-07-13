@@ -17,3 +17,9 @@ function aggiornaTotale(){
 	document.getElementById("impTot").value = totale;
 	
 }
+
+
+function addCartAjax(){
+	
+	
+}

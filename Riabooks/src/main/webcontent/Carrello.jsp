@@ -86,25 +86,25 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
-function aggiornaTotale(){
-	const prezzi = document.querySelectorAll('.prezzo');
-		const numero = document.querySelectorAll('.pad');
-		var totale = 0;
-		var i = 0;
+	function aggiornaTotale(){
+		const prezzi = document.querySelectorAll('.prezzo');
+			const numero = document.querySelectorAll('.pad');
+			var totale = 0;
+			var i = 0;
+			
+			while(prezzi[i] != undefined){
+				totale = totale + (parseFloat(prezzi[i].textContent.trim())* numero[i].value)
+				i++
+	}
+		console.log(totale);
 		
-		while(prezzi[i] != undefined){
-			totale = totale + (parseFloat(prezzi[i].textContent.trim())* numero[i].value)
-			i++
-}
-	console.log(totale);
-	
-	document.getElementById("impTot").value = totale.toFixed(2);
-	
-}
+		document.getElementById("impTot").value = totale.toFixed(2);
+		
+	}
 
-document.querySelectorAll('.pad').forEach(input => {
-  input.addEventListener('input', aggiornaTotale);
-});
+	document.querySelectorAll('.pad').forEach(input => {
+	  input.addEventListener('input', aggiornaTotale);
+	});
 </script>
 </body>
 </html>

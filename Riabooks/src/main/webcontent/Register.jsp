@@ -29,7 +29,7 @@
 		
 		<input type = "hidden" name = "action" value = "do_save">
         
-        <button type="submit">Registrati</button>
+        <input type="submit" value = "Registrati">
     </form>
     
         

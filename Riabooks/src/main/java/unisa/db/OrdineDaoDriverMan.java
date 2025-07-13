@@ -1,6 +1,7 @@
 package unisa.db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +28,7 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + OrdineDaoDriverMan.TABLE_NAME
-				+ " (id,importo,metodo,email) VALUES (?, ?, ?, ?)";
+				+ " (id,importo,metodo,email,data_emissione) VALUES (?, ?, ?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
@@ -36,6 +37,7 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 			preparedStatement.setDouble(2, ord.getImporto());
 			preparedStatement.setString(3, ord.getMetodo());
 			preparedStatement.setString(4, ord.getEmail());
+			preparedStatement.setDate(5, ord.getData());
 			
 			preparedStatement.executeUpdate();
 
@@ -72,6 +74,7 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				bean.setImporto(rs.getDouble("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
+				bean.setData(rs.getDate("data_emissione"));
 				
 			}
 
@@ -143,7 +146,7 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				bean.setImporto(rs.getDouble("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
-				
+				bean.setData(rs.getDate("data_emissione"));
 				ordini.add(bean);
 			}
 
@@ -182,7 +185,85 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				bean.setImporto(rs.getDouble("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
+				bean.setData(rs.getDate("data_emissione"));
+				ordini.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				dmcp.releaseConnection(connection);
+			}
+		}
+		return ordini;
+	}
+
+	@Override
+	public Collection<OrdineBean> doRetrieveAllByEmail() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineDaoDriverMan.TABLE_NAME + "ORDER BY = ?";
+		try {
+			
+			connection = dmcp.getConnection();
+			
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, "email");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrdineBean bean = new OrdineBean();
 				
+				bean.setId(rs.getInt("id"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setEmail(rs.getString("email"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setData(rs.getDate("data_emissione"));
+				ordini.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				dmcp.releaseConnection(connection);
+			}
+		}
+		return ordini;
+	}
+
+	@Override
+	public Collection<OrdineBean> doRetrieveDate(Date start, Date finish) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
+
+		String selectSQL = "SELECT * FROM " + OrdineDaoDriverMan.TABLE_NAME + " WHERE data_emissione >= ? AND data_emissione <= ?";
+			
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setDate(1, start);
+			preparedStatement.setDate(2, finish);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrdineBean bean = new OrdineBean();
+				
+				bean.setId(rs.getInt("id"));
+				bean.setImporto(rs.getDouble("importo"));
+				bean.setEmail(rs.getString("email"));
+				bean.setMetodo(rs.getString("metodo"));
+				bean.setData(rs.getDate("data_emissione"));
 				ordini.add(bean);
 			}
 

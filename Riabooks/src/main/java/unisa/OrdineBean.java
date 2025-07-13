@@ -1,6 +1,7 @@
 package unisa;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class OrdineBean implements Serializable{
 
@@ -13,13 +14,28 @@ public class OrdineBean implements Serializable{
 	private double importo;
 	private String metodo;
 	private String email;
-	
-	public OrdineBean(int id, double importo, String metodo, String email) {
+	private Date data;
+	public OrdineBean(int id, double importo, String metodo, String email, Date data) {
 		super();
 		this.id = id;
 		this.importo = importo;
 		this.metodo = metodo;
 		this.email = email;
+		this.data = data;
+	}
+
+	/**
+	 * @return the data
+	 */
+	public Date getData() {
+		return data;
+	}
+
+	/**
+	 * @param data the data to set
+	 */
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public OrdineBean() {
