@@ -16,7 +16,10 @@
      <label for="email">Email:</label>
         <input type="email" id="email" name="email" class="form-input" required>
 
-        <label for="password">Password:</label>
+
+        <label for="password">Password:</label> 
+
+        
         <input type="password" id="password" name="password" required><br><br>
 
                <input type="submit" value = "Accedi">
@@ -32,7 +35,9 @@ if (errors != null){
 	}
 }
 %>
+
+
     
-     <jsp:include page="footer.jsp" />
+   	 <jsp:include page="footer.jsp" /> 
 </body>
 </html>
