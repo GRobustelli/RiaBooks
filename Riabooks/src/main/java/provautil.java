@@ -77,7 +77,7 @@ public class provautil {
 			}
 			
 			
-			l2 = (LibroBean)libro.RetrieveByKey("1A");
+			l2 = (LibroBean)libro.doRetrieveByKey("1A");
 			System.out.println(l2.getId() + " "+ l2.getAutore() + " \n" + l2.getDescrizione());
 		   
 			RecensioneBean nuova = new RecensioneBean();

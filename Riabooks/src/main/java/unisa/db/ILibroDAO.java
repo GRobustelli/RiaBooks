@@ -10,7 +10,7 @@ public interface ILibroDAO {
 	
 	public void doSave (LibroBean libro) throws SQLException;
 	
-	public LibroBean RetrieveByKey(String id) throws SQLException;
+	public LibroBean doRetrieveByKey(String id) throws SQLException;
 	
 	public boolean doDelete (String codice) throws SQLException;
 	

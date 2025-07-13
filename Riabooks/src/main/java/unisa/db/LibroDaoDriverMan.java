@@ -55,7 +55,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	}
 
 	@Override
-	public synchronized LibroBean RetrieveByKey(String id) throws SQLException {
+	public synchronized LibroBean doRetrieveByKey(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 

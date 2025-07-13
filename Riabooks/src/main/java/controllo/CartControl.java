@@ -39,6 +39,7 @@ public class CartControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("\n\nSto nella servlet CartControl");
+		
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		IContieneDAO cont = new ContieneDaoDriverMan(dm);
 		ILibroDAO libro = new LibroDaoDriverMan(dm);
@@ -51,14 +52,16 @@ public class CartControl extends HttpServlet {
 		{
 			try {
 				if (action.equals("insert")) {
+					
 					Cart carrello = (Cart) request.getSession().getAttribute("cart");
 					String libro_id = request.getParameter("libro_id");
-					LibroBean nuovo = (LibroBean) libro.RetrieveByKey(libro_id);
+					LibroBean nuovo = (LibroBean) libro.doRetrieveByKey(libro_id);
 					carrello.addLibro(nuovo);
 					
 					System.out.println("Sono dopo l'inserimento");
 					
 					if (utente != null) {
+						
 						ContieneBean persistenza = new ContieneBean(utente.getEmail(),libro_id);
 						cont.doSave(persistenza);
 					}

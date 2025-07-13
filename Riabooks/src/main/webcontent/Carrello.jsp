@@ -45,11 +45,11 @@
     		</div>
     		
     		
-    	<%}} %>
+    	<%} %>
 		<input type = "text" id= impTot name = impTot  readonly="readonly">
 		</form>
 			
-			<%} %>
+			<%} }%>
     	
     	
  	<jsp:include page="footer.jsp" />
