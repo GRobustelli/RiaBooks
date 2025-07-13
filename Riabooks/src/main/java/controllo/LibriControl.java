@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import unisa.Cart;
+import unisa.LibroBean;
 import unisa.db.DriverManagerConnectionPool;
 import unisa.db.ILibroDAO;
 import unisa.db.LibroDaoDriverMan;
@@ -52,6 +53,19 @@ public class LibriControl extends HttpServlet {
 		if (cart == null)
 		{
 			cart = new Cart();
+			
+			//RIMUOVERE DOPOOOOOOOO
+			try {
+				LibroBean prova = (LibroBean) libro.RetrieveByKey("1A");
+				LibroBean prova2 = (LibroBean) libro.RetrieveByKey("LIB000000001");
+				cart.addLibro(prova);
+				cart.addLibro(prova2);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 			request.getSession().setAttribute("cart", cart);
 		}
 		
