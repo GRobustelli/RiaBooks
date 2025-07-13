@@ -55,12 +55,12 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 
 		Collection<ContieneBean> cont = new LinkedList<ContieneBean>();
 
-		String selectSQL = "SELECT * FROM " + ContieneDaoDriverMan.TABLE_NAME + "WHERE email = ?";
+		String selectSQL = "SELECT * FROM " + ContieneDaoDriverMan.TABLE_NAME + " WHERE email = ?";
 
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-				
+		
 			preparedStatement.setString(1, email);
 
 			ResultSet rs = preparedStatement.executeQuery();

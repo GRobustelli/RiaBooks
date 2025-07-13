@@ -50,15 +50,14 @@ public class UserControl extends HttpServlet {
 		
 		if (action != null) {
 			try {
-				
-			
 			if (action.equals("do_save")) {
 				bean = utente.doRetrieveByKey(new_utente.getEmail());
 				if (bean.getEmail() == null) {
 					utente.doSave(new_utente);
 					response.sendRedirect(request.getContextPath() + "/Login.jsp");
 				}
-				else {
+				else 
+				{
 					List<String> errors = new ArrayList<>();
 					errors.add("Email già presente nel database");
 					RequestDispatcher dispatcherToRegisterPage = request.getRequestDispatcher("Register.jsp");

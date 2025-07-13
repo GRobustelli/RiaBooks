@@ -24,8 +24,18 @@ public class Cart {
 		}
 	}
 	
+	public void deleteAll() {
+		carrello.removeAll(carrello);
+		if (carrello.isEmpty()) {
+			System.out.println("E' vuoto");
+		}
+	}
+	
 	public List<LibroBean> getLibri(){
 		return carrello;
 	}
-
-}
+	
+	public boolean isEmpty() {
+		return carrello.isEmpty();
+	}
+	}

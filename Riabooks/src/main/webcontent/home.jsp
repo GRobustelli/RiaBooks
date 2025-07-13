@@ -72,7 +72,7 @@
     			<%=bean.getAutore() %><br>
     			<%=bean.getDescrizione() %><br>
     			<%=bean.getPrezzo()  %> <br>
-    			<button onclick = addCartAjax()>aggiungi al carrello</button>
+    			<button value=<%=bean.getId() %>  onclick = addCartAjax(this.value)>aggiungi al carrello</button>
     			
     		</div>
 			    	
@@ -80,7 +80,7 @@
     	<% } }%>
     </div>
     
-	<script type="text/javascript" src="/scripts/funzioni.js"></script>
+	<script type="text/javascript" src="scripts/funzioni.js" defer></script>
     <%@include file="footer.jsp" %>
     
   
