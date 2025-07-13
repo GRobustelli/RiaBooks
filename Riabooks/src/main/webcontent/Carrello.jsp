@@ -1,110 +1,96 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<%@ page import="java.util.*,unisa.LibroBean,unisa.Cart"%>
-<link rel="stylesheet" type="text/css" href="stili/footer.css" />
+    <meta charset="UTF-8">
+    <title>Carrello</title>
+    <link rel="stylesheet" type="text/css" href="stili/footer.css" />
+    <link rel="stylesheet" type="text/css" href="stili/Carrello.css" />
 </head>
 <body>
-	
-	<% 	Cart cart = (Cart) request.getSession().getAttribute("cart"); 
-	if (cart == null)
-	{%>
-		<p> Non esiste un carrello????
-	<% 	}
-	
-	else {
-		List<LibroBean> libri = cart.getLibri();
-		if (libri.isEmpty()){
-	%>
-		<p> Non ci sono elementi nel carrello
-		
-	<% 	 }else { %>
-	
-	<form action="Ordine.jsp" name = "Carrello" method = GET> 
-	<% 
-	
-		Iterator<?> it = libri.iterator();
-		
-		while(it.hasNext()){
-			LibroBean bean = (LibroBean) it.next(); %>
-    		
-    		<div>
-    		<br>
-    			<img alt="Libro" src="images/default_libro.png" style = "margin:10px;margin-top: 0px;"> 
-    			<%=bean.getTitolo() %><br>
-    			<%=bean.getAutore() %><br>
-    			<%=bean.getDescrizione() %><br>
-    			<span class = prezzo><%=bean.getPrezzo()%> </span><br>
-    			<input type="button" name=<%=bean.getId() %> value="Rimuovi" >
-    			<input type= "number" class = pad  id = <%=bean.getId() %> min="1" max = 99 onclick = >
-    				
-    		</div>
-    		
-    		
-    	<%}} %>
-		<input type = "text" id= impTot name = impTot  readonly="readonly">
-		</form>
-			
-			<%} %>
-    	
-    	
- 	<jsp:include page="footer.jsp" />
- 	
- 	<script>
- 	//Scriplet per far mostrare il valore iniziale del type number
-  	window.addEventListener('DOMContentLoaded', () => {
-  	  const inputs = document.querySelectorAll('.pad');
-  	  inputs.forEach(input => {
-  	    input.value = input.min;
-  	  });
-  	})
-  	
-</script>
 
-<script type="text/javascript">
-window.addEventListener('DOMContentLoaded', () => {
 
-	console.log(" Siamo almeno dentro")
-	const prezzi = document.querySelectorAll('.prezzo');
-	const numero = document.querySelectorAll('.pad');
-	var totale = 0;
-	var i = 0;
-	console.log(parseFloat(prezzi[0].textContent.trim()) );
-	console.log(numero[0].value);
-	while(prezzi[i] != undefined){
-		console.log(" Siamo almeno dentro for ");
-		totale = totale + parseFloat(prezzi[i].textContent.trim());
-		console.log("Prezzo = ", totale);
-		i++
-	}
-	document.getElementById("impTot").value = totale.toFixed(2);
-})
-</script>
+<%
+    Cart cart = (Cart) request.getSession().getAttribute("cart");
+    if (cart == null || cart.getLibri() == null || cart.getLibri().isEmpty()) {
+%>
+    <p>Il carrello è vuoto.</p>
+<%
+    } else {
+        List<LibroBean> libri = cart.getLibri();
+%>
+
+<form action="Ordine.jsp" method="get">
+    <div id="carrello-container">
+    <% for (LibroBean libro : libri) { %>
+        <div class="carrello-item">
+            <img src="images/default_libro.png" alt="Libro" />
+            <div class="dettagli-libro">
+                <p><strong><%= libro.getTitolo() %></strong></p>
+                <p>Autore: <%= libro.getAutore() %></p>
+                <p><%= libro.getDescrizione() %></p>
+                <p class="prezzo"><%= libro.getPrezzo() %></p>
+                <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
+                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')">Rimuovi</button>
+            </div>
+        </div>
+    <% } %>
+    </div>
+
+   
+   <div id="totale-container">
+    <div class="riga-bottoni">
+        <a href="home.jsp" class="back-button">Torna alla home</a>
+
+        <div class="gruppo-dx">
+            <div class="totale-box">
+                <label for="impTot">Totale:</label>
+                <input type="text" id="impTot" name="impTot" readonly value="0.00" />
+            </div>
+            <button type="submit">Procedi all’Ordine</button>
+        </div>
+    </div>
+</div>
+
+
+
+</form>
+
+<% } %>
+
+<jsp:include page="footer.jsp" />
 
 <script>
-	function aggiornaTotale(){
-		const prezzi = document.querySelectorAll('.prezzo');
-			const numero = document.querySelectorAll('.pad');
-			var totale = 0;
-			var i = 0;
-			
-			while(prezzi[i] != undefined){
-				totale = totale + (parseFloat(prezzi[i].textContent.trim())* numero[i].value)
-				i++
-	}
-		console.log(totale);
-		
-		document.getElementById("impTot").value = totale.toFixed(2);
-		
-	}
+window.addEventListener('DOMContentLoaded', () => {
+    aggiornaTotale();
 
-	document.querySelectorAll('.pad').forEach(input => {
-	  input.addEventListener('input', aggiornaTotale);
-	});
+    document.querySelectorAll('.quantita').forEach(input => {
+        input.addEventListener('input', aggiornaTotale);
+    });
+});
+
+function aggiornaTotale() {
+    const prezzi = document.querySelectorAll('.prezzo');
+    const quantita = document.querySelectorAll('.quantita');
+    let totale = 0;
+
+    for (let i = 0; i < prezzi.length; i++) {
+        const prezzo = parseFloat(prezzi[i].textContent.trim()) || 0;
+        const qta = parseInt(quantita[i].value) || 1;
+        totale += prezzo * qta;
+    }
+
+    document.getElementById("impTot").value = totale.toFixed(2);
+}
+
+function rimuoviElemento(id) {
+    if (confirm("Sei sicuro di voler rimuovere questo elemento?")) {
+        // Esempio: chiamata fetch o reindirizzamento con parametro
+        window.location.href = 'RimuoviDalCarrello?id=' + id;
+    }
+}
 </script>
+
 </body>
 </html>

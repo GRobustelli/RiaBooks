@@ -1,82 +1,101 @@
+/* === IMPOSTAZIONI GENERALI === */
 body {
-    margin: 0;
-    padding: 0;
     font-family: Consolas, sans-serif;
-    background-color: #f2f2f2;
+    margin: 20px;
+    background-color: #f5f5f5;
 }
 
+/* === CARRELLO === */
+#carrello-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carrello-item {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.carrello-item img {
+    width: 120px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.dettagli-libro {
+    flex-grow: 1;
+}
+
+.dettagli-libro p {
+    margin: 5px 0;
+}
+
+input.quantita {
+    width: 60px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+/* === PULSANTI === */
+button,
 .back-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
+    padding: 8px 16px;
     background-color: #007bff;
     color: white;
-    padding: 8px 16px;
     font-size: 14px;
-    border-radius: 5px;
+    border: none;
+    border-radius: 4px;
     text-decoration: none;
-    z-index: 9999;
+    cursor: pointer;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s ease;
 }
 
+button:hover,
 .back-button:hover {
     background-color: #0056b3;
 }
 
-.cart-container {
-    max-width: 900px;
-    margin: 100px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.cart-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.cart-table th, .cart-table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.remove-button {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.remove-button:hover {
-    background: #c82333;
-}
-
-.cart-summary {
-    text-align: right;
+/* === SEZIONE TOTALE === */
+#totale-container {
     margin-top: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
 }
 
-.checkout-button {
-    background-color: #28a745;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* RIGA con Home, Totale, Ordine */
+.riga-bottoni {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.checkout-button:hover {
-    background-color: #218838;
+/* Gruppo Totale + Procedi */
+.gruppo-dx {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Totale */
+.totale-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#impTot {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+    width: 100px;
+    text-align: right;
 }
