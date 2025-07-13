@@ -1,44 +1,57 @@
+/* 🌐 Stili generali della pagina */
 body {
     font-family: Consolas, sans-serif;
-    background-color: #f0f2f5;
+    background-size: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 0;
+    position: relative;
 }
 
+/* 🧾 Contenitore del form */
 form {
     background-color: #ffffff;
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
+/* 🏷️ Titolo */
 h2 {
     text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin: 40px 0 20px 0;
     color: #333333;
 }
 
+/* 🏷️ Etichette dei campi */
 label {
     display: block;
     margin-bottom: 8px;
     color: #555555;
 }
 
-input[type="text"],
-input[type="password"] {
+/* ✍️ Campi di input */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #cccccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 16px;
+    line-height: normal;
 }
 
-button {
+
+input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -47,8 +60,29 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    text-decoration: none;
 }
 
-button:hover {
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* ✅ Pulsante di ritorno */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
     background-color: #0056b3;
 }

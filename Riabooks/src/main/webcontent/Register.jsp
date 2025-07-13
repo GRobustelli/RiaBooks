@@ -9,9 +9,10 @@
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
 </head>
 <body>
-
+	<a href="home.jsp" class="back-button">Torna alla home</a>
     <h2>Registrazione</h2>
-    <form action="RegisterServlet" method="post">
+    <main class="form-wrapper"> <!-- Nota: uso form-wrapper -->
+    	<form action="RegisterServlet" method="post">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required><br><br>
 
@@ -31,7 +32,7 @@
         
         <input type="submit" value = "Registrati">
     </form>
-    
+    </main>
         
 <% 
  List<String> errors = (List<String>) request.getAttribute("errors");
