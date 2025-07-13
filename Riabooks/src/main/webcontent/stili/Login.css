@@ -51,8 +51,7 @@ input[type="text"] {
 }
 
 
-/* 🎯 Pulsante principale del form */
-form button {
+input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -61,25 +60,27 @@ form button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    text-decoration: none;
 }
 
-form button:hover {
+input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* 🔙 Pulsante di ritorno */
+/* ✅ Pulsante di ritorno */
 .back-button {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 5px 10px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    width: auto;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
 }
 
 .back-button:hover {

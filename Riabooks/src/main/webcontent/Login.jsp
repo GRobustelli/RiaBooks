@@ -13,13 +13,13 @@
    	
    	 <h2>Login</h2>
     <form action="loginServlet" method="post">
-        <label for="userid">Nome Utente:</label>
-        <input type="text" id="userid" name="userid" required><br><br>
+     <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-input" required>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
 
-        <button type="submit">Accedi</button>
+               <input type="submit" value = "Accedi">
     </form>
     
     
