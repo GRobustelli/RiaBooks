@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
 </head>
 <body>
+	<a href="home.jsp" class="back-button">Torna alla home</a>
+   	
    	 <h2>Login</h2>
     <form action="loginServlet" method="post">
         <label for="userid">Nome Utente:</label>
