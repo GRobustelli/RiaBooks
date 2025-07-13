@@ -19,7 +19,19 @@ function aggiornaTotale(){
 }
 
 
-function addCartAjax(){
+function addCartAjax(valore){
 	
-	
+	var ajaxvar = new XMLHttpRequest();
+	console.log(valore);
+	const url = "CartControl?libro_id=" + valore + "&action=insert";
+	ajaxvar.open("GET", url, true)
+	console.log("ho aperto la connessione");
+
+	console.log("Sto inviando la request")	
+	ajaxvar.send();
+	ajaxvar.onreadystatechange = function () {
+		  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
+		    console.log("Risposta: ce l'abbiamo fatta?");
+		}
+	}
 }
