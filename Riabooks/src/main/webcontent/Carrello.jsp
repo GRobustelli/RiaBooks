@@ -1,5 +1,5 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
+<%@ page import="java.util.*, unisa.LibroBean, unisa.Cart, unisa.ContieneBean" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,8 @@
 
 <%
     Cart cart = (Cart) request.getSession().getAttribute("cart");
-
+	Collection<ContieneBean> contiene = (Collection<ContieneBean>) request.getAttribute("libri");
+	
     if (cart == null || cart.getLibri() == null || cart.isEmpty()) {
 %>
 
@@ -38,8 +39,17 @@
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>
                 <p><%= libro.getDescrizione() %></p>
-                <p class="prezzo"><%= libro.getPrezzo() %></p>
+                
+                <% Iterator<ContieneBean> it = contiene.iterator();
+                	while (it.hasNext()){
+                		ContieneBean beancont = it.next();
+                		
+                		if (beancont.getLibro_id().equals(libro.getId()) ){     %>
+                	
+                	     <p class="prezzo"><%= beancont.getPrezzo() %></p>
+                <% }}%>
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
+                
                 <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')">Rimuovi</button>
             </div>
         </div>
@@ -63,11 +73,11 @@
     </div>
 </div>
 
-
+<%} %>
 
 </form>
 
-<% } %>
+
 
 <jsp:include page="footer.jsp" />
 

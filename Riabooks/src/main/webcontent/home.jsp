@@ -52,7 +52,7 @@
                  <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
                 <%} %>
                 
-               <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
+               <li><a href="CartControl?action=prezzi"><button type="button">Carrello</button></a></li>
                
                
             </ul>

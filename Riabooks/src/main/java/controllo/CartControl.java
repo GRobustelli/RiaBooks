@@ -1,5 +1,6 @@
 package controllo;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +17,9 @@ import unisa.db.ILibroDAO;
 import unisa.db.LibroDaoDriverMan;
 
 import java.io.IOException;
+import java.nio.file.FileSystemNotFoundException;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -50,9 +53,23 @@ public class CartControl extends HttpServlet {
 
 		String action = request.getParameter("action");
 		String azione = (String) request.getAttribute("azione");
+		
+		
 		if (action != null)
 		{
 			try {
+				if (action.equals("prezzi") && utente != null) {
+					
+					Collection<ContieneBean> contiene = cont.doRetrieveByKey(utente.getEmail());
+					request.setAttribute("libri", contiene);
+					
+					System.out.println("Prima del dispatcher");
+					
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
+					System.out.println("dopo il dispatcher");
+					dispatcher.forward(request, response);					
+				}
+				
 				if (action.equals("insert") && azione == null) {
 					
 					Cart carrello = (Cart) request.getSession().getAttribute("cart");
@@ -87,15 +104,21 @@ public class CartControl extends HttpServlet {
 					}
 					
 					}
-				}
-				else if (azione.equals("elimina") && utente != null) {
+				}else if (azione != null) {
+				if (azione.equals("elimina") && utente != null) {
 					
 					cont.doDeleteAll(utente.getEmail());
 					
 					response.sendRedirect("home.jsp");
 					
 				}
-			}catch(SQLException e) {
+			}else if (utente == null) {
+				System.out.println("\n\n\nHELLO\n\n\n");
+				
+				response.sendRedirect("Carrello.jsp");
+			}
+				
+				}catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
