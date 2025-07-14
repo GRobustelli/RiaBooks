@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 import unisa.Cart;
 import unisa.ContieneBean;
 import unisa.LibroBean;
+import unisa.RiferisceBean;
 import unisa.UserBean;
 import unisa.db.ContieneDaoDriverMan;
 import unisa.db.DriverManagerConnectionPool;
@@ -58,9 +60,39 @@ public class LibriControl extends HttpServlet {
 		}		
 		
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
-		
+		String action = request.getParameter("action");
+		ArrayList<LibroBean> libriord = new ArrayList<>();
 		System.out.println("\n\nSto nella servlet LibriControl prima degli if");
 		
+		if(action != null)
+		{
+			if (action.equals("ordini")) {
+				ArrayList<Collection<RiferisceBean>> bigList = (ArrayList<Collection<RiferisceBean>>) request.getAttribute("bigList");
+				Iterator<Collection<RiferisceBean>> it = bigList.iterator();
+				while (it.hasNext()) {
+					Collection<RiferisceBean> it2 = it.next();
+					
+					Iterator<RiferisceBean> it3 = it2.iterator();
+					while(it3.hasNext()) {
+						RiferisceBean rif = it3.next();
+						try {
+							libriord.add(libro.doRetrieveByKey(rif.getLibro_id()));
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
+						
+					}
+				}
+				
+				request.setAttribute("libri", libriord);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RiepilogoOrdini.jsp");
+				dispatcher.forward(request, response);
+				
+			}
+			
+		}
+		else {
 		if (cart == null)
 		{
 			cart = new Cart();
@@ -142,6 +174,7 @@ public class LibriControl extends HttpServlet {
 	
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request, response);
+		}
 	}
 
 	/**

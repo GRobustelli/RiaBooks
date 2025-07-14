@@ -10,12 +10,15 @@ import unisa.Cart;
 import unisa.LibroBean;
 import unisa.OrdineBean;
 import unisa.RiferisceBean;
+import unisa.UserBean;
 import unisa.db.DriverManagerConnectionPool;
 import unisa.db.IRiferisceDAO;
 import unisa.db.RiferisceDaoDriverMan;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,6 +49,7 @@ public class RiferisceControl extends HttpServlet {
 		String action = request.getParameter("action");
 		OrdineBean ordBean = (OrdineBean) request.getAttribute("ordBean");
 		
+		
 		if (action != null) {
 			try {
 				if (action.equals("insert") && !cart.isEmpty() && ordBean != null) {
@@ -75,7 +79,33 @@ public class RiferisceControl extends HttpServlet {
 					dispatcher.forward(request, response);
 					
 				}
-				
+				if (action.equals("ordini")) {
+					
+			
+					UserBean user = (UserBean) request.getSession().getAttribute("user");
+					if (user != null && user.isAdmin()) {
+						//fai qualcosa di bello
+					}
+					else if (user != null) {
+						Collection<OrdineBean> ordColl = (Collection<OrdineBean>)request.getAttribute("collOrd");
+						Iterator<OrdineBean> it = ordColl.iterator();
+						ArrayList<Collection<RiferisceBean>> bigList = new ArrayList<>();
+						
+						while (it.hasNext())
+						{
+							OrdineBean ord = it.next();
+							
+							Collection<RiferisceBean> riferimenti = rif.doRetrieveByKey(ord.getId());
+							
+							bigList.add(riferimenti);
+							
+						}
+						
+						request.setAttribute("bigList", bigList);
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/LibriControl");
+						dispatcher.forward(request, response);
+					}
+				}	
 			}catch (SQLException e) {
 				e.printStackTrace();
 		}

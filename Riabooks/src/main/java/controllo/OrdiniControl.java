@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Collection;
 
 import com.mysql.cj.protocol.a.LocalDateTimeValueEncoder;
 
@@ -82,6 +83,23 @@ public class OrdiniControl extends HttpServlet {
 						
 					}
 					
+					
+				}
+				
+				if (action.equals("ordini")) {
+					
+					if (user != null && user.isAdmin()) {
+						//fai qualcosa di bello
+					}
+					else if (user != null) {
+						Collection<OrdineBean> collOrd = ord.doRetrieveAllUser(user.getEmail());
+						
+						request.setAttribute("collOrd", collOrd);
+						
+						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RiferisceControl");
+						dispatcher.forward(request, response);
+						
+					}
 					
 				}
 			}catch (SQLException e) {
