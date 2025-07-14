@@ -56,6 +56,9 @@ public class CartControl extends HttpServlet {
 					Cart carrello = (Cart) request.getSession().getAttribute("cart");
 					String libro_id = request.getParameter("libro_id");
 					LibroBean nuovo = (LibroBean) libro.doRetrieveByKey(libro_id);
+					
+					
+					
 					carrello.addLibro(nuovo);
 					
 					System.out.println("Sono dopo l'inserimento");
