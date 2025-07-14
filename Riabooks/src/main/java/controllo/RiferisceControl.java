@@ -93,10 +93,12 @@ public class RiferisceControl extends HttpServlet {
 						
 						while (it.hasNext())
 						{
+							System.out.println("\n\nSto in riferisce prima di do retrievebykey");
 							OrdineBean ord = it.next();
 							
 							Collection<RiferisceBean> riferimenti = rif.doRetrieveByKey(ord.getId());
 							
+							System.out.println("\n\nSto in riferisce dopo di do retrievebykey");
 							bigList.add(riferimenti);
 							
 						}

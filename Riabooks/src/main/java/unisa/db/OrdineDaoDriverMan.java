@@ -178,9 +178,9 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, email);
-
+			System.out.println("\n\nSto prima di execute in doretrievealluser\n\n");
 			ResultSet rs = preparedStatement.executeQuery();
-
+			System.out.println("\n\nSto dopo di execute in doretrievealluser\n\n");
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
 				
@@ -300,8 +300,13 @@ try {
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, email);
 			
+			System.out.println("stiamo prima di execute in ordinedao");
+			
 			ResultSet rs = preparedStatement.executeQuery();
+			
 			rs.next();
+			
+			
 			
 			bean.setId(rs.getInt("id"));
 			bean.setImporto(rs.getFloat("importo"));

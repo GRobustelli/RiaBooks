@@ -18,7 +18,7 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 	public RiferisceDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation....RiferisceDaoDriverMan");
 
 	}
 	
@@ -30,7 +30,7 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + RiferisceDaoDriverMan.TABLE_NAME
-				+ " (ordine_id, libro_id,quantita) VALUES (?, ?, ?)";
+				+ " (ordine_id, libro_id, quantita) VALUES (?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
@@ -62,7 +62,7 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 		
 		Collection<RiferisceBean> rif = new  LinkedList<RiferisceBean>();
 
-		String selectSQL = "SELECT * FROM " + RiferisceDaoDriverMan.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "SELECT * FROM " + RiferisceDaoDriverMan.TABLE_NAME + " WHERE ordine_id = ?";
 
 		try {
 			connection = dmcp.getConnection();

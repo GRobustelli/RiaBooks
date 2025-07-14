@@ -92,6 +92,7 @@ public class OrdiniControl extends HttpServlet {
 						//fai qualcosa di bello
 					}
 					else if (user != null) {
+						System.out.println("stiamo prima di doRetrieveall in ordinecontrol");
 						Collection<OrdineBean> collOrd = ord.doRetrieveAllUser(user.getEmail());
 						
 						request.setAttribute("collOrd", collOrd);

@@ -21,8 +21,8 @@
 		OrdineBean ord = itOrd.next();
 	
 		%>
-		
-	<div>	
+	<!--  questo div inizia il blocco dell'ordine <p>Id ordine se la <p>non va bene per te puoi cambiarla-->		
+	<div> 
 	<p>Id Ordine: <%= ord.getId()%> 	
 	<%
 		Iterator<Collection<RiferisceBean>> it2 = bigList.iterator();
@@ -36,10 +36,12 @@
 				RiferisceBean riferimento = it3.next();
 				if (ord.getId() == riferimento.getOrdine_id()){
 					for (LibroBean libro : libri){
-						if (libro.getId() == riferimento.getLibro_id())
+						if (libro.getId().equals(riferimento.getLibro_id()))
 						{
 						%>
-							<span><%=libro.getTitolo() %></span> <span> <%=riferimento.getQuantita() %></span>
+						<!-- Qui ci sono il titolo e la  quantità di ogni ordine (devono far parte del gruppo dello stesso ordine) -->
+							<span>Titolo=  <%=libro.getTitolo() %></span>
+							<span> <%=riferimento.getQuantita() %></span> <br>
 						<%
 						break;
 						}
@@ -47,18 +49,13 @@
 				}
 				
 			}
-		}
-		
-		
-		
-		
+		}		
 	%>
+	<!-- Qui abbiamo l'importo totale che chiude l'ordine e la chiusura del suo blocco -->
 		<span> Importo totale: <%=ord.getImporto() %> </span>
 	  </div>
 	<%
 	}
-	
-	
 	%>	
 
 
