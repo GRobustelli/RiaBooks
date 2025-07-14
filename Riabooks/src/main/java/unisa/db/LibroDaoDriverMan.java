@@ -75,7 +75,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setId(rs.getString("id"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setAutore(rs.getString("autore"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
 				bean.setImmagine(rs.getString("immagine"));
@@ -146,7 +146,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setId(rs.getString("id"));
 				bean.setTitolo(rs.getString("titolo"));
 				bean.setAutore(rs.getString("autore"));
-				bean.setPrezzo(rs.getDouble("prezzo"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
 				bean.setImmagine(rs.getString("immagine"));

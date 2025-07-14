@@ -82,7 +82,7 @@ public class CartControl extends HttpServlet {
 					
 					if (utente != null) {
 						
-						ContieneBean persistenza = new ContieneBean(utente.getEmail(),libro_id);
+						ContieneBean persistenza = new ContieneBean(utente.getEmail(),libro_id,nuovo.getPrezzo());
 						cont.doSave(persistenza);
 					}
 					

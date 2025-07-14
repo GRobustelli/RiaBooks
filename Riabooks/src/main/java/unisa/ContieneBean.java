@@ -11,10 +11,12 @@ public class ContieneBean implements Serializable{
 	
 	private String email;
 	private String libro_id;
-	public ContieneBean(String email, String libro_id) {
+	private Float prezzo;
+	public ContieneBean(String email, String libro_id, Float prezzo) {
 		super();
 		this.email = email;
 		this.libro_id = libro_id;
+		this.prezzo = prezzo;
 	}
 	public ContieneBean() {
 		super();
@@ -42,6 +44,12 @@ public class ContieneBean implements Serializable{
 	 */
 	public void setLibro_id(String libro_id) {
 		this.libro_id = libro_id;
+	}
+	public Float getPrezzo() {
+		return prezzo;
+	}
+	public void setPrezzo(Float prezzo) {
+		this.prezzo = prezzo;
 	}
 	
 	

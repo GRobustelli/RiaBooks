@@ -41,15 +41,20 @@
                 <li><a href="Login.jsp"><button type="button">Login</button></a></li>
                 <% } else {%>
                 
-                <li> <%=user.getNome() + " " + user.getCognome() %>	
+                <li> <div class="user-area">
+                <span class="user-name"><%= user.getNome() + " " + user.getCognome() %></span> 
+                </div>
                 
-              <form action="OrdiniControl" >   <input type="hidden" name="action" value="ordini"><input type="submit" value = "Riepilogo Ordini"> </form>
-                <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
+              <form action="OrdiniControl">
+                  <input type="hidden" name="action" value="ordini">
+              <input type="submit" value = "Riepilogo Ordini"> </form>
+              
+                 <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
                 <%} %>
                 
+               <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
                
                
-                <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
             </ul>
         </nav>
     </header>

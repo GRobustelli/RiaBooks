@@ -140,7 +140,7 @@ public class LibriControl extends HttpServlet {
 						control = true;
 						}}
 					if (!control) {
-						ContieneBean save = new ContieneBean(user.getEmail(),bean.getId());
+						ContieneBean save = new ContieneBean(user.getEmail(),bean.getId(),bean.getPrezzo());
 						cont.doSave(save);
 					}
 					

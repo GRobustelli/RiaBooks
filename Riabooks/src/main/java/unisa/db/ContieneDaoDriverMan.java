@@ -28,13 +28,14 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ContieneDaoDriverMan.TABLE_NAME
-				+ " (email,libro_id) VALUES (?, ?)";
+				+ " (email,libro_id, prezzo) VALUES (?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, cont.getEmail());
 			preparedStatement.setString(2, cont.getLibro_id());
+			preparedStatement.setFloat(3, cont.getPrezzo());
 			preparedStatement.executeUpdate();
 
 		} finally {
@@ -70,7 +71,7 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 				
 				bean.setEmail(rs.getString("email"));
 				bean.setLibro_id(rs.getString("libro_id"));
-				
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				cont.add(bean);
 			}
 
