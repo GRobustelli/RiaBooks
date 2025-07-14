@@ -42,19 +42,14 @@
                 <% } else {%>
                 
                 <li> <%=user.getNome() + " " + user.getCognome() %>	
-                
-              <form action="">  <input type="submit" value = "Riepilogo Ordini"> </form>
-                <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
                 <%} %>
-                
-               
-               
                 <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
             </ul>
         </nav>
     </header>
 
-    
+
+
     <div>
     	<%  
     		if(setLibri != null && setLibri.size() != 0)
@@ -66,7 +61,7 @@
     	%>
     		<div>
     		<br>
-    			<img alt="Libro" src=<%=bean.getImmagine() %> style = "margin:10px;margin-top: 0px;"> 
+    			<img alt="Libro" src="images/default_libro.png" style = "margin:10px;margin-top: 0px;"> 
     			<%=bean.getTitolo() %><br>
     			<%=bean.getAutore() %><br>
     			<%=bean.getDescrizione() %><br>
@@ -80,8 +75,7 @@
     </div>
     
 	<script type="text/javascript" src="scripts/funzioni.js" defer></script>
-    <%@include file="footer.jsp" %>
-    
+    <%@include file="../footer.jsp" %> 
   
 </body>
 </html>

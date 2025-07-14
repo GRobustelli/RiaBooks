@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
 <!DOCTYPE html>
 <html>
@@ -9,14 +9,21 @@
     <link rel="stylesheet" type="text/css" href="stili/Carrello.css" />
 </head>
 <body>
-
+	
+	
 
 <%
     Cart cart = (Cart) request.getSession().getAttribute("cart");
 
     if (cart == null || cart.getLibri() == null || cart.isEmpty()) {
 %>
-    <p>Il carrello è vuoto.</p>
+
+	<div>
+	<br>
+    <a href="home.jsp" class="back-button-empty">Il carrello è vuoto, torna alla home.</a>
+    
+	</div>
+
 <%
     } else {
         List<LibroBean> libri = cart.getLibri();
@@ -48,9 +55,11 @@
             <div class="totale-box">
                 <label for="impTot">Totale:</label>
                 <input type="text" id="impTot" name="impTot" readonly value="0.00" />
+          	  </div>
+             <input type="submit" value = "Procedi all'ordine">
+             
+             
             </div>
-            <button type="submit">Procedi all’Ordine</button>
-        </div>
     </div>
 </div>
 
@@ -86,10 +95,7 @@ function aggiornaTotale() {
 }
 
 function rimuoviElemento(id) {
-    if (confirm("Sei sicuro di voler rimuovere questo elemento?")) {
-        // Esempio: chiamata fetch o reindirizzamento con parametro
-        window.location.href = 'RimuoviDalCarrello?id=' + id;
-    }
+    window.location.href = 'RimuoviDalCarrello?id=' + encodeURIComponent(id);
 }
 </script>
 
