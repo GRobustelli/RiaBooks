@@ -52,6 +52,7 @@
 		}		
 	%>
 	<!-- Qui abbiamo l'importo totale che chiude l'ordine e la chiusura del suo blocco -->
+		<span> Data: <%= ord.getData() %></span>
 		<span> Importo totale: <%=ord.getImporto() %> </span>
 	  </div>
 	<%
