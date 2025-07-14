@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 
-
 #logo {
     font-size: 28px;
     font-weight: bold;
@@ -21,6 +20,23 @@ body {
     z-index: 1000;
 }
 
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
 #princ {
     background-color: rgba(51, 51, 51, 0.8);
     padding: 10px;
@@ -33,31 +49,77 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 10px;
+    gap: 15px; /* aumenta il gap tra gli elementi */
+    align-items: center;
 }
 
 #princ li {
-    display: inline;
+    display: flex;
+    align-items: center;
 }
 
-#princ a button {
+/* Area utente */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-right: 15px; /* aggiunge uno spazio tra area utente e gli altri bottoni */
+}
+
+.user-name {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.user-area form {
+    margin: 0;
+}
+
+/* Bottoni */
+#princ a button,
+.user-area button,
+.user-area input[type="submit"] {
     padding: 10px 20px;
     background-color: #007bff;
     border: 1px solid #007bff;
     color: white;
-    border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
+    margin: 0; /* elimina margini inutili sui bottoni */
 }
 
-#princ a button:hover {
+#princ a button:hover,
+.user-area button:hover,
+.user-area input[type="submit"]:hover {
     background-color: #0056b3;
     border-color: #0056b3;
 }
 
 
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.user-area form {
+    margin: 0;
+}
 
 #filtro ul {
     list-style: none;
@@ -80,9 +142,9 @@ body {
 }
 
 div.fixed {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  border: 3px solid #73AD21;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #73AD21;
 }
