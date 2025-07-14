@@ -71,12 +71,19 @@
     	%>
     		<div>
     		<br>
-    			<img alt="Libro" src=<%=bean.getImmagine() %> style = "margin:10px;margin-top: 0px;"> 
-    			<%=bean.getTitolo() %><br>
-    			<%=bean.getAutore() %><br>
-    			<%=bean.getDescrizione() %><br>
-    			<%=bean.getPrezzo()  %> <br>
-    			<button value=<%=bean.getId() %>  onclick = addCartAjax(this.value)>aggiungi al carrello</button>
+    			<div class="book-item">
+    <img alt="Libro" src="<%=bean.getImmagine() %>">
+    <div class="book-details">
+    	<div class="text-overlay">
+        <div><%=bean.getTitolo() %></div>
+        <div><%=bean.getAutore() %></div>
+        <div><%=bean.getDescrizione() %></div>
+        <div><%=bean.getPrezzo() %></div>
+        <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">
+    	Aggiungi al carrello</button>
+    </div>
+</div>
+</div>    			
     			
     		</div>
 			    	
