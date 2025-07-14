@@ -17,6 +17,8 @@ import unisa.db.LibroDaoDriverMan;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Servlet implementation class CartControl
@@ -56,12 +58,27 @@ public class CartControl extends HttpServlet {
 					Cart carrello = (Cart) request.getSession().getAttribute("cart");
 					String libro_id = request.getParameter("libro_id");
 					LibroBean nuovo = (LibroBean) libro.doRetrieveByKey(libro_id);
+					boolean controllo = false;
+					
+					List<LibroBean> lista = carrello.getLibri();
 					
 					
+					Iterator<LibroBean> it = lista.iterator();
 					
+					while (it.hasNext()) {
+						LibroBean contBean = it.next();
+						
+						if (nuovo.getId().equals(contBean.getId()))
+						{controllo = true;}
+					}
+					
+					if(!controllo)
+					{
 					carrello.addLibro(nuovo);
 					
+					
 					System.out.println("Sono dopo l'inserimento");
+					
 					
 					if (utente != null) {
 						
@@ -69,7 +86,7 @@ public class CartControl extends HttpServlet {
 						cont.doSave(persistenza);
 					}
 					
-					
+					}
 				}
 				else if (azione.equals("elimina") && utente != null) {
 					
