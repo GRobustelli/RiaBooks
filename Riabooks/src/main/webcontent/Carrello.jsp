@@ -13,7 +13,8 @@
 
 <%
     Cart cart = (Cart) request.getSession().getAttribute("cart");
-    if (cart == null || cart.getLibri() == null || cart.getLibri().isEmpty()) {
+
+    if (cart == null || cart.getLibri() == null || cart.isEmpty()) {
 %>
     <p>Il carrello è vuoto.</p>
 <%
@@ -21,11 +22,11 @@
         List<LibroBean> libri = cart.getLibri();
 %>
 
-<form action="Ordine.jsp" method="get">
+<form action="Pagamento.jsp" method="get">
     <div id="carrello-container">
     <% for (LibroBean libro : libri) { %>
         <div class="carrello-item">
-            <img src="images/default_libro.png" alt="Libro" />
+            <img src=<%=libro.getImmagine() %> alt="Libro" />
             <div class="dettagli-libro">
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>

@@ -47,11 +47,11 @@ public class CartControl extends HttpServlet {
 		UserBean utente = (UserBean) request.getSession().getAttribute("user");
 
 		String action = request.getParameter("action");
-		
+		String azione = (String) request.getAttribute("azione");
 		if (action != null)
 		{
 			try {
-				if (action.equals("insert")) {
+				if (action.equals("insert") && azione == null) {
 					
 					Cart carrello = (Cart) request.getSession().getAttribute("cart");
 					String libro_id = request.getParameter("libro_id");
@@ -66,6 +66,13 @@ public class CartControl extends HttpServlet {
 						cont.doSave(persistenza);
 					}
 					
+					
+				}
+				else if (azione.equals("elimina") && utente != null) {
+					
+					cont.doDeleteAll(utente.getEmail());
+					
+					response.sendRedirect("home.jsp");
 					
 				}
 			}catch(SQLException e) {

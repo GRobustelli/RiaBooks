@@ -21,6 +21,8 @@ public interface IOrdineDAO {
 	
 	public Collection<OrdineBean> doRetrieveAllByEmail() throws SQLException; 
 	
+	public OrdineBean doRetrieveLast(String email) throws SQLException;
+	
 	public Collection<OrdineBean> doRetrieveAllUser (String email) throws SQLException;
 
 }

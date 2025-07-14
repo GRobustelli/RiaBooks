@@ -1,8 +1,7 @@
 package unisa;
 
-import java.awt.Image;
 import java.io.Serializable;
-import java.sql.Blob;
+
 
 public class LibroBean implements Serializable{
 	
@@ -13,6 +12,7 @@ public class LibroBean implements Serializable{
 	private double prezzo;
 	private String descrizione;
 	private String categoria;
+	private String immagine;
 	/**
 	 * @return the id
 	 */
@@ -23,7 +23,7 @@ public class LibroBean implements Serializable{
 		return id;
 	}
 	
-	public LibroBean(String id, String titolo, String autore, double prezzo, String descrizione, String categoria) {
+	public LibroBean(String id, String titolo, String autore, double prezzo, String descrizione, String categoria, String immagine) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
@@ -31,9 +31,24 @@ public class LibroBean implements Serializable{
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
+		this.immagine = immagine;
 	}
 	
 	
+
+	/**
+	 * @return the immagine
+	 */
+	public String getImmagine() {
+		return immagine;
+	}
+
+	/**
+	 * @param immagine the immagine to set
+	 */
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
 
 	public LibroBean() {
 		 super();

@@ -1,15 +1,17 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Pagamento</title>
+    <%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
     <link rel="stylesheet" href="stili/Pagamento.css">
     <link rel="stylesheet" href="stili/footer.css" />
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>
-    <form action="ConfermaPagamento.jsp" method="post" class="form-pagamento">
+    <form action="OrdiniControl" method="post" class="form-pagamento">
         <h2>Dati di pagamento</h2>
 
         <label for="intestatario">Nome e Cognome Intestatario</label>
@@ -33,6 +35,24 @@
         <input type="month" id="dataScadenza" name="dataScadenza" required />
 
         <input type="submit" value="Effettua pagamento">
+        <input type = "text" name ="impTot" style= "display:none;" value = <%=request.getParameter("impTot")%>>
+        
+        <%	
+        	Cart cart  = (Cart) request.getSession().getAttribute("cart");
+        	List<LibroBean> lista = cart.getLibri();
+        	
+        	for (LibroBean bean : lista){ 
+        		String  ins = "quantita_" + bean.getId();
+        	%>
+ 				
+        	<input type = "hidden" name = "q_<%=bean.getId() %>" value = <%=request.getParameter(ins)%>>
+        	
+        	<%		
+        	}
+        	%>
+        	
+        	<input type = "hidden" name = "action" value = "insert">
+    
     </form>
 
     <jsp:include page="footer.jsp" />

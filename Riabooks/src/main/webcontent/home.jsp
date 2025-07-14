@@ -67,7 +67,7 @@
     	%>
     		<div>
     		<br>
-    			<img alt="Libro" src="images/default_libro.png" style = "margin:10px;margin-top: 0px;"> 
+    			<img alt="Libro" src=<%=bean.getImmagine() %> style = "margin:10px;margin-top: 0px;"> 
     			<%=bean.getTitolo() %><br>
     			<%=bean.getAutore() %><br>
     			<%=bean.getDescrizione() %><br>

@@ -29,7 +29,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + LibroDaoDriverMan.TABLE_NAME
-				+ " (id, titolo, autore, prezzo, descrizione, categoria) VALUES (?, ?, ?, ?, ?, ?)";
+				+ " (id, titolo, autore, prezzo, descrizione, categoria, immagine) VALUES (?, ?, ?, ?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
@@ -40,6 +40,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 			preparedStatement.setDouble(4, libro.getPrezzo());
 			preparedStatement.setString(5,libro.getDescrizione());
 			preparedStatement.setString(6, libro.getCategoria());
+			preparedStatement.setString(7, libro.getImmagine());
 			
 			preparedStatement.executeUpdate();
 
@@ -77,6 +78,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setPrezzo(rs.getDouble("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
+				bean.setImmagine(rs.getString("immagine"));
 			}
 
 		} finally {
@@ -147,7 +149,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setPrezzo(rs.getDouble("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
-				
+				bean.setImmagine(rs.getString("immagine"));
 				libri.add(bean);
 			}
 

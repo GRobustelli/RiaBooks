@@ -11,17 +11,33 @@ public class OrdineBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-	private double importo;
+	private float importo;
 	private String metodo;
 	private String email;
 	private Date data;
-	public OrdineBean(int id, double importo, String metodo, String email, Date data) {
+	private String indirizzo;
+	public OrdineBean(int id, float importo, String metodo, String email, Date data ,String indirizzo) {
 		super();
 		this.id = id;
 		this.importo = importo;
 		this.metodo = metodo;
 		this.email = email;
 		this.data = data;
+		this.indirizzo = indirizzo;
+	}
+
+	/**
+	 * @return the indirizzo
+	 */
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	/**
+	 * @param indirizzo the indirizzo to set
+	 */
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
 
 	/**
@@ -60,14 +76,14 @@ public class OrdineBean implements Serializable{
 	/**
 	 * @return the importo
 	 */
-	public double getImporto() {
+	public float getImporto() {
 		return importo;
 	}
 
 	/**
 	 * @param importo the importo to set
 	 */
-	public void setImporto(double importo) {
+	public void setImporto(float importo) {
 		this.importo = importo;
 	}
 

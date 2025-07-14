@@ -46,13 +46,14 @@ public class loginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String email = request.getParameter("userid");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		List<String> errors = new ArrayList<>();
     	RequestDispatcher dispatcherToLoginPage = request.getRequestDispatcher("Login.jsp");
     	if(email == null || email.trim().isEmpty()) {
 			errors.add("Il campo username non può essere vuoto!");
+
 		}
         if(password == null || password.trim().isEmpty()) {
         	errors.add("Il campo password non può essere vuoto!");

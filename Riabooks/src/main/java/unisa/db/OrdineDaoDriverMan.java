@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 import unisa.OrdineBean;
+import unisa.UserBean;
 
 public class OrdineDaoDriverMan implements IOrdineDAO{
 
@@ -28,14 +29,14 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + OrdineDaoDriverMan.TABLE_NAME
-				+ " (id,importo,metodo,email,data_emissione) VALUES (?, ?, ?, ?, ?)";
+				+ " (importo,metodo,indirizzo,email,data_emissione) VALUES (?, ?, ?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, ord.getId());
-			preparedStatement.setDouble(2, ord.getImporto());
-			preparedStatement.setString(3, ord.getMetodo());
+			preparedStatement.setFloat(1, ord.getImporto());
+			preparedStatement.setString(2, ord.getMetodo());
+			preparedStatement.setString(3, ord.getIndirizzo());
 			preparedStatement.setString(4, ord.getEmail());
 			preparedStatement.setDate(5, ord.getData());
 			
@@ -71,8 +72,9 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 
 			while (rs.next()) {
 				bean.setId(rs.getInt("id"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getFloat("importo"));
 				bean.setEmail(rs.getString("email"));
+				bean.setIndirizzo(rs.getString("indirizzo"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setData(rs.getDate("data_emissione"));
 				
@@ -143,10 +145,11 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				OrdineBean bean = new OrdineBean();
 				
 				bean.setId(rs.getInt("id"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getFloat("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setData(rs.getDate("data_emissione"));
+				bean.setIndirizzo(rs.getString("indirizzo"));
 				ordini.add(bean);
 			}
 
@@ -182,10 +185,11 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				OrdineBean bean = new OrdineBean();
 				
 				bean.setId(rs.getInt("id"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getFloat("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setData(rs.getDate("data_emissione"));
+				bean.setIndirizzo(rs.getString("indirizzo"));
 				ordini.add(bean);
 			}
 
@@ -221,10 +225,11 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				OrdineBean bean = new OrdineBean();
 				
 				bean.setId(rs.getInt("id"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getFloat("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setData(rs.getDate("data_emissione"));
+				bean.setIndirizzo(rs.getString("indirizzo"));
 				ordini.add(bean);
 			}
 
@@ -260,10 +265,11 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 				OrdineBean bean = new OrdineBean();
 				
 				bean.setId(rs.getInt("id"));
-				bean.setImporto(rs.getDouble("importo"));
+				bean.setImporto(rs.getFloat("importo"));
 				bean.setEmail(rs.getString("email"));
 				bean.setMetodo(rs.getString("metodo"));
 				bean.setData(rs.getDate("data_emissione"));
+				bean.setIndirizzo(rs.getString("indirizzo"));
 				ordini.add(bean);
 			}
 
@@ -276,6 +282,46 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 			}
 		}
 		return ordini;
+	}
+
+	@Override
+	public OrdineBean doRetrieveLast(String email) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		OrdineBean bean = new OrdineBean();
+
+		String selectSQL = "SELECT * FROM " + OrdineDaoDriverMan.TABLE_NAME +  " WHERE email = ? ORDER BY id DESC LIMIT 1";
+		
+try {
+			
+			connection = dmcp.getConnection();
+			
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			rs.next();
+			
+			bean.setId(rs.getInt("id"));
+			bean.setImporto(rs.getFloat("importo"));
+			bean.setEmail(rs.getString("email"));
+			bean.setMetodo(rs.getString("metodo"));
+			bean.setData(rs.getDate("data_emissione"));
+			bean.setIndirizzo(rs.getString("indirizzo"));
+			
+	} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				dmcp.releaseConnection(connection);
+			}
+		}
+		return bean;
+		
+		
+		
 	}
 
 }
