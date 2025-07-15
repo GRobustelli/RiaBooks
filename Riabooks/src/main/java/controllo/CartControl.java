@@ -89,7 +89,14 @@ public class CartControl extends HttpServlet {
 						cont.doDeleteOne(libro_id, utente.getEmail());
 						
 					}
-					
+					if (carrello.isEmpty()) {
+						response.setContentType("text/plain");
+						response.getWriter().write("true");
+					}
+					else {
+						response.setContentType("text/plain");
+						response.getWriter().write("false");
+					}
 				}
 				
 				if (action.equals("insert") && azione == null) {

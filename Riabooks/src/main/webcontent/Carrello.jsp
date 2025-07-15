@@ -33,9 +33,9 @@
 <form action="Pagamento.jsp" method="get">
     <div id="carrello-container">
     <% for (LibroBean libro : libri) { %>
-        <div class="carrello-item">
+        <div class="carrello-item" id = <%=libro.getId() %>>
             <img src=<%=libro.getImmagine() %> alt="Libro" />
-            <div class="dettagli-libro" id = <%=libro.getId() %>>
+            <div class="dettagli-libro" >
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>
                 <p><%= libro.getDescrizione() %></p>
@@ -47,14 +47,14 @@
                 		
                 		if (beancont.getLibro_id().equals(libro.getId()) ){     %>
                 	
-                	     <p class="prezzo"><%= beancont.getPrezzo() %></p>
+                	     <p class="prezzo" id = "p_<%= libro.getId()%>"><%= beancont.getPrezzo() %></p>
                 <% }}} else{%>
                 
-                		<p class="prezzo"><%= libro.getPrezzo() %></p>
+                		<p class="prezzo" id = "p_<%= libro.getId()%>"><%= libro.getPrezzo() %></p>
                 <%} %>
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
-                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>'"> Rimuovi</button>
+                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"> Rimuovi</button>
             </div>
         </div>
     <% } %>
@@ -82,36 +82,10 @@
 
 </form>
 
-
+<script src = "scripts/funzionicarrello.js" defer></script>
 
 <jsp:include page="footer.jsp" />
 
-<script src="scripts/funzioni.js" defer>
-
-window.addEventListener('DOMContentLoaded', () => {
-    aggiornaTotale();
-
-    document.querySelectorAll('.quantita').forEach(input => {
-        input.addEventListener('input', aggiornaTotale);
-    });
-});
-
-function aggiornaTotale() {
-    const prezzi = document.querySelectorAll('.prezzo');
-    const quantita = document.querySelectorAll('.quantita');
-    let totale = 0;
-
-    for (let i = 0; i < prezzi.length; i++) {
-        const prezzo = parseFloat(prezzi[i].textContent.trim()) || 0;
-        const qta = parseInt(quantita[i].value) || 1;
-        totale += prezzo * qta;
-    }
-
-    document.getElementById("impTot").value = totale.toFixed(2);
-}
-
-
-</script>
 
 </body>
 </html>
