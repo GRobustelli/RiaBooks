@@ -58,6 +58,18 @@ public class CartControl extends HttpServlet {
 		if (action != null)
 		{
 			try {
+				if (action.equals("svuota")){
+					carrello.deleteAll();
+					if (utente != null) {
+						cont.doDeleteAll(utente.getEmail());
+						
+					}
+					response.setContentType("text/plain");
+					response.getWriter().write("true");
+					return;
+					
+				}
+				
 				if (action.equals("prezzi") && utente != null) {
 					
 					Collection<ContieneBean> contiene = cont.doRetrieveByKey(utente.getEmail());

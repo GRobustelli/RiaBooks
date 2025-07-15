@@ -48,7 +48,33 @@ function createXMLHttpRequest() {
 }
 
 
+function svuotaCarrello(){
+	document.getElementById("carrello-container").style.display = "none";
+	var ajaxvar = createXMLHttpRequest();
+	
+	const url = "CartControl?action=svuota";
+	
+	ajaxvar.open("GET", url, true)
+		console.log("ho aperto la connessione");
 
+		console.log("Sto inviando la request")	
+		ajaxvar.send();
+		
+		ajaxvar.onreadystatechange = function () {
+			  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
+			    console.log("Risposta: ce l'abbiamo fatta?");
+				const risposta = ajaxvar.responseText;
+				if (risposta.trim() === "true"){
+					
+					document.getElementById("totale-container").style.display = "none";
+					document.getElementById("carrello_svuotato").hidden = false;
+				}else{
+					console.log("piangi");
+				}
+					
+				}
+				}
+}
 
 function rimuoviElemento(id) {
 	
