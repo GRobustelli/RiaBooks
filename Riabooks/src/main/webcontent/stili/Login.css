@@ -68,7 +68,6 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* ✅ Pulsante di ritorno */
 .back-button {
     position: fixed;
     top: 20px;

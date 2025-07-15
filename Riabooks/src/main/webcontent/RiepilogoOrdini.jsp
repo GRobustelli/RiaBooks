@@ -5,10 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Riepilogo ordini</title>
+<link rel="stylesheet" type="text/css" href="stili/footer.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/RiepilogoOrdini.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/home.css" /> 
 
 <%@ page import="java.util.*, unisa.LibroBean, unisa.RiferisceBean,unisa.UserBean,unisa.OrdineBean" %>
 </head>
 <body>
+	<a href="home.jsp" class="back-button">Torna alla home</a>
 	
 	<% UserBean user = (UserBean) request.getAttribute("user");
 	Collection<OrdineBean> collOrd = (Collection<OrdineBean>) request.getAttribute("collOrd");
@@ -21,10 +25,19 @@
 		OrdineBean ord = itOrd.next();
 	
 		%>
-	<!--  questo div inizia il blocco dell'ordine <p>Id ordine se la <p>non va bene per te puoi cambiarla-->		
-	<div> 
-	<p>Id Ordine: <%= ord.getId()%> 	
-	<%
+		<br>
+		<br>
+		<br>
+		
+		
+	<div class="book-details"> 
+		<div class="text-overlay">
+		        <div><strong>Id Ordine:</strong> <%= ord.getId() %>
+
+		    </div>
+
+		
+		    <%
 		Iterator<Collection<RiferisceBean>> it2 = bigList.iterator();
 		
 		while (it2.hasNext()){
@@ -39,9 +52,9 @@
 						if (libro.getId().equals(riferimento.getLibro_id()))
 						{
 						%>
-						<!-- Qui ci sono il titolo e la  quantità di ogni ordine (devono far parte del gruppo dello stesso ordine) -->
-							<span>Titolo=  <%=libro.getTitolo() %></span>
-							<span> <%=riferimento.getQuantita() %></span> <br>
+						
+							<span> Titolo:  <%=libro.getTitolo() %></span>
+							<span>, Quantità: <%=riferimento.getQuantita() %></span> <br>
 						<%
 						break;
 						}
@@ -51,14 +64,17 @@
 			}
 		}		
 	%>
-	<!-- Qui abbiamo l'importo totale che chiude l'ordine e la chiusura del suo blocco -->
+	
 		<span> Data: <%= ord.getData() %></span>
 		<span> Importo totale: <%=ord.getImporto() %> </span>
 	  </div>
+	  </div> 
+	  <br>
+	  
 	<%
 	}
 	%>	
-
+	<jsp:include page="footer.jsp" />
 
 </body>
 </html>
