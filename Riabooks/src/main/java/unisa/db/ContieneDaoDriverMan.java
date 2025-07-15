@@ -115,20 +115,20 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 	}
 
 	@Override
-	public synchronized boolean doDeleteOne(String libro_id) throws SQLException {
+	public synchronized boolean doDeleteOne(String libro_id, String email) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 			
 		int result = 0;
 		
-		String selectSQL = "DELETE FROM " + ContieneDaoDriverMan.TABLE_NAME + " WHERE libro_id = ?";
+		String selectSQL = "DELETE FROM " + ContieneDaoDriverMan.TABLE_NAME + " WHERE libro_id = ? AND email = ?";
 			
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, libro_id);
-			
+			preparedStatement.setString(2, email);
 			result = preparedStatement.executeUpdate();
 			
 		} 

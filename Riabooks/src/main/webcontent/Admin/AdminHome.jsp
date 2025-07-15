@@ -6,7 +6,7 @@
 	UserBean user = (UserBean) request.getSession().getAttribute("user");
 	Collection<?> setLibri = (Collection<?>) request.getAttribute("libri");
 	if(setLibri == null) {
-		response.sendRedirect( request.getContextPath()+ "/LibriControl");	
+		response.sendRedirect( request.getContextPath() + "/LibriControl");	
 		return;
 	}
 	
@@ -53,6 +53,8 @@
                 <%} %>
                 
                 <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
+                
+                <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
             </ul>
         </nav>
     </header>

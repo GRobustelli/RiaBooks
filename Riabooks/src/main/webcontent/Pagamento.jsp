@@ -1,4 +1,4 @@
-<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.LocalDate,unisa.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,6 +8,16 @@
     <%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
     <link rel="stylesheet" href="stili/Pagamento.css">
     <link rel="stylesheet" href="stili/footer.css" />
+    <% 
+    	UserBean user = (UserBean) request.getSession().getAttribute("user");
+    	if (user == null){
+    		response.sendRedirect("Login.jsp");
+   			return; 
+    	}
+    %>
+    
+    
+    
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>
@@ -39,6 +49,8 @@
         
         <%	
         	Cart cart  = (Cart) request.getSession().getAttribute("cart");
+        		
+       		if (!cart.isEmpty()){ 
         	List<LibroBean> lista = cart.getLibri();
         	
         	for (LibroBean bean : lista){ 
@@ -48,11 +60,13 @@
         	<input type = "hidden" name = "q_<%=bean.getId() %>" value = <%=request.getParameter(ins)%>>
         	
         	<%		
+        	}}else{
+        		response.sendRedirect("/home.jsp");
         	}
         	%>
         	
         	<input type = "hidden" name = "action" value = "insert">
-    
+    	
     </form>
 
     <jsp:include page="footer.jsp" />

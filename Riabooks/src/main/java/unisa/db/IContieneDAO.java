@@ -13,7 +13,7 @@ public interface IContieneDAO {
 	
 	public boolean doDeleteAll (String email) throws SQLException;
 	
-	public boolean doDeleteOne (String libro_id) throws SQLException;
+	public boolean doDeleteOne (String libro_id, String email) throws SQLException;
 	
 	
 }

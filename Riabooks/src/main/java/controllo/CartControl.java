@@ -53,7 +53,7 @@ public class CartControl extends HttpServlet {
 
 		String action = request.getParameter("action");
 		String azione = (String) request.getAttribute("azione");
-		
+		Cart carrello = (Cart) request.getSession().getAttribute("cart");
 		
 		if (action != null)
 		{
@@ -70,9 +70,31 @@ public class CartControl extends HttpServlet {
 					dispatcher.forward(request, response);					
 				}
 				
+				if (action.equals("elimina") && !carrello.isEmpty()) {
+					String libro_id = request.getParameter("libro_id");
+					List<LibroBean> lista = carrello.getLibri();
+					
+					Iterator<LibroBean> it = lista.iterator();
+					
+					while (it.hasNext()) {
+						LibroBean delete = it.next();
+						if (delete.getId().equals(libro_id)) {
+							lista.remove(delete);
+							break;
+						}
+					}
+					
+					if (utente != null) {
+						
+						cont.doDeleteOne(libro_id, utente.getEmail());
+						
+					}
+					
+				}
+				
 				if (action.equals("insert") && azione == null) {
 					
-					Cart carrello = (Cart) request.getSession().getAttribute("cart");
+					
 					String libro_id = request.getParameter("libro_id");
 					LibroBean nuovo = (LibroBean) libro.doRetrieveByKey(libro_id);
 					boolean controllo = false;

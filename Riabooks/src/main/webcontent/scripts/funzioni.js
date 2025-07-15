@@ -2,21 +2,22 @@
  * 
  */
 
-function aggiornaTotale(){
-	const prezzi = document.querySelectorAll('.prezzo');
-		const numero = document.querySelectorAll('.pad');
-		var totale = 0;
-		var i = 0;
-		
-		while(prezzi[i] != undefined){
-			totale = totale + (parseFloat(prezzi[i].textContent.trim())+ numero[i].value)
-			i++
+function aggiornaTotale() {
+    const prezzi = document.querySelectorAll('.prezzo');
+    const quantita = document.querySelectorAll('.quantita');
+    let totale = 0;
+
+    for (let i = 0; i < prezzi.length; i++) {
+        const prezzo = parseFloat(prezzi[i].textContent.trim()) || 0;
+        const qta = parseInt(quantita[i].value) || 1;
+        totale += prezzo * qta;
+    }
+
+    document.getElementById("impTot").value = totale.toFixed(2);
 }
-	console.log(totale);
-	
-	document.getElementById("impTot").value = totale;
-	
-}
+
+
+
 
 
 function addCartAjax(valore){
@@ -37,7 +38,7 @@ function addCartAjax(valore){
 }
 
 
-function rimuoviElemento(id) {
-   Document.getElementById(id).style.display = hidden;
-	
-}
+
+
+
+

@@ -33,9 +33,9 @@
 <form action="Pagamento.jsp" method="get">
     <div id="carrello-container">
     <% for (LibroBean libro : libri) { %>
-        <div class="carrello-item">
+        <div class="carrello-item" id = <%=libro.getId() %>>
             <img src=<%=libro.getImmagine() %> alt="Libro" />
-            <div class="dettagli-libro" id = <%=libro.getId() %>>
+            <div class="dettagli-libro">
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>
                 <p><%= libro.getDescrizione() %></p>
@@ -47,14 +47,14 @@
                 		
                 		if (beancont.getLibro_id().equals(libro.getId()) ){     %>
                 	
-                	     <p class="prezzo"><%= beancont.getPrezzo() %></p>
+                	     <p class="prezzo" id = p_<%=libro.getId() %>><%= beancont.getPrezzo() %></p>
                 <% }}} else{%>
                 
-                		<p class="prezzo"><%= libro.getPrezzo() %></p>
+                		<p class="prezzo" id = p_<%=libro.getId() %>> <%= libro.getPrezzo() %></p>
                 <%} %>
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
-                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>'"> Rimuovi</button>
+                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"> Rimuovi</button>
             </div>
         </div>
     <% } %>
@@ -85,7 +85,7 @@
 
 <jsp:include page="footer.jsp" />
 
-<script src="scripts/funzioni.js" defer>
+<script defer>
 
 window.addEventListener('DOMContentLoaded', () => {
     aggiornaTotale();
@@ -96,20 +96,39 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function aggiornaTotale() {
+
     const prezzi = document.querySelectorAll('.prezzo');
     const quantita = document.querySelectorAll('.quantita');
     let totale = 0;
 
     for (let i = 0; i < prezzi.length; i++) {
-        const prezzo = parseFloat(prezzi[i].textContent.trim()) || 0;
-        const qta = parseInt(quantita[i].value) || 1;
+        const prezzo = parseFloat(prezzi[i].textContent.trim());
+        const qta = parseInt(quantita[i].value);
         totale += prezzo * qta;
     }
 
     document.getElementById("impTot").value = totale.toFixed(2);
 }
 
+function rimuoviElemento(id) {
 
+	document.getElementById(id).style.display = 'none';
+	document.getElementById("p_" + id).textContent= '0';
+	aggiornaTotale();
+	
+	var ajaxvar = new XMLHttpRequest();
+	const url = "CartControl?libro_id=" + id + "&action=elimina";
+	ajaxvar.open("GET", url, true)
+	console.log("ho aperto la connessione");
+
+	console.log("Sto inviando la request")	
+	ajaxvar.send();
+	ajaxvar.onreadystatechange = function () {
+		  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
+		    console.log("Risposta: ce l'abbiamo fatta?");
+		}
+	}
+}
 </script>
 
 </body>
