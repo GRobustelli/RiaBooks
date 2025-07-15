@@ -68,19 +68,73 @@ public class LibriControl extends HttpServlet {
 		{
 			if (action.equals("do_upload") && user.isAdmin()) {
 				LibroBean bean = new LibroBean();
-				
+				RequestDispatcher dispatcherToInserisciPage = request.getRequestDispatcher("InserisciLibro.jsp");
 				List<String> errors = new ArrayList<>();
 				
 				bean.setAutore(request.getParameter("autore"));
 				bean.setCategoria(request.getParameter("categoria"));
 				bean.setDescrizione(request.getParameter("descrizione"));
 				bean.setId(request.getParameter("id"));
-				bean.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
+				
+				String prezzo = request.getParameter("prezzo");
+				
+				if (prezzo == null || prezzo.trim().isEmpty()) {
+					errors.add("Il campo prezzo non può essere vuoto");
+				}
+				else {
+					bean.setPrezzo(Float.parseFloat(prezzo));}
+				
 				bean.setTitolo(request.getParameter("titolo"));
 				
+				if (bean.getAutore() == null || bean.getAutore().trim().isEmpty()) {
+					errors.add("Il campo autore non può essere vuoto");
+				}
+				if (bean.getCategoria() == null || bean.getCategoria().trim().isEmpty()) {
+					errors.add("Il campo categoria non può essere vuoto");
+				}
+				if (bean.getDescrizione()== null || bean.getDescrizione().trim().isEmpty()) {
+					errors.add("Il campo descrizione non può essere vuoto");
+				}
+				if (bean.getId() == null || bean.getId().trim().isEmpty()) {
+					errors.add("Il campo ID non può essere vuoto");}
 				
+				if (bean.getTitolo() == null || bean.getId().trim().isEmpty()) {
+					errors.add("Il campo titolo non può essere vuoto");
+				}
 				
-			}
+				try {
+					LibroBean duplicate = (LibroBean) libro.doRetrieveByKey(bean.getId());
+					if (duplicate == null) {
+						errors.add("Libro già esistente nel database");
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				 if (!errors.isEmpty()) {
+			        	request.setAttribute("errors", errors);
+			        	dispatcherToInserisciPage.forward(request, response);
+			        	return; 
+			        }
+				 
+				 try {
+					 
+					libro.doSave(bean);
+					//INSERIRE DISPATCHER VERSO IL SALVAMENTO DELL'IMMAGINE
+					RequestDispatcher dispatcher = request.getRequestDispatcher("ImmUpdateCont");
+					dispatcher.forward(request, response);
+					
+				 } catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+				
+				 
+				 
+				}
+				
 			if (action.equals("ordini")) {
 				ArrayList<Collection<RiferisceBean>> bigList = (ArrayList<Collection<RiferisceBean>>) request.getAttribute("bigList");
 				Iterator<Collection<RiferisceBean>> it = bigList.iterator();
