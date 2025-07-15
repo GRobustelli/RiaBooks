@@ -66,6 +66,21 @@ public class LibriControl extends HttpServlet {
 		
 		if(action != null)
 		{
+			if (action.equals("do_upload") && user.isAdmin()) {
+				LibroBean bean = new LibroBean();
+				
+				List<String> errors = new ArrayList<>();
+				
+				bean.setAutore(request.getParameter("autore"));
+				bean.setCategoria(request.getParameter("categoria"));
+				bean.setDescrizione(request.getParameter("descrizione"));
+				bean.setId(request.getParameter("id"));
+				bean.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
+				bean.setTitolo(request.getParameter("titolo"));
+				
+				
+				
+			}
 			if (action.equals("ordini")) {
 				ArrayList<Collection<RiferisceBean>> bigList = (ArrayList<Collection<RiferisceBean>>) request.getAttribute("bigList");
 				Iterator<Collection<RiferisceBean>> it = bigList.iterator();
