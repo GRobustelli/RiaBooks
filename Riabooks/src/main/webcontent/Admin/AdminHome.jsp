@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="stili/Stile_navigation.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
     <link rel="stylesheet" type="text/css" href="stili/home.css" />
+    
 </head>
 <body>
 
@@ -55,9 +56,10 @@
                        <%= user.getNome() + " " + user.getCognome() %>
                        </span> 
                        </div>
+                       
 
                        <%} %>
-                       <li><a href="InserisciLibro.jsp"><button type="button">Inserisci Libro</button></a></li>
+                       <li><a href="Admin/InserisciLibro.jsp"><button type="button">Inserisci Libro</button></a></li>
                        <li><a href="CancellaLibro.jsp"><button type="button">Cancella Libro</button></a></li>
                        <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
                        <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
