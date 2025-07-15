@@ -32,7 +32,9 @@
     <title>Riabooks Admin</title>
     <link rel="stylesheet" type="text/css" href="stili/Stile_navigation.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
+    <link rel="stylesheet" type="text/css" href="stili/RimuovidalCatalogo.css" />
     <link rel="stylesheet" type="text/css" href="stili/home.css" />
+    
     
 </head>
 <body>
@@ -89,6 +91,9 @@
                <div><%=bean.getPrezzo() %></div>
                <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">
                Aggiungi al carrello</button>
+               <button class="remove-to-catalogue">Rimuovi dal catalogo</button>
+               
+               
            </div>
        </div>
        </div>
