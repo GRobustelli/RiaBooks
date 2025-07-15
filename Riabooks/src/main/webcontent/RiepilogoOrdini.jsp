@@ -13,7 +13,9 @@
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>
-	
+		<br>
+		<br>
+		<br>
 	<% UserBean user = (UserBean) request.getAttribute("user");
 	Collection<OrdineBean> collOrd = (Collection<OrdineBean>) request.getAttribute("collOrd");
 	ArrayList<Collection<RiferisceBean>> bigList = (ArrayList<Collection<RiferisceBean>>) request.getAttribute("bigList");
@@ -25,9 +27,7 @@
 		OrdineBean ord = itOrd.next();
 	
 		%>
-		<br>
-		<br>
-		<br>
+		
 		
 		
 	<div class="book-details"> 
