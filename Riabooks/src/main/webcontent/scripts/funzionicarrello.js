@@ -69,8 +69,12 @@ function rimuoviElemento(id) {
 		  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
 		    console.log("Risposta: ce l'abbiamo fatta?");
 			const risposta = ajaxvar.responseText;
+				
+			if (risposta.trim() === "true"){
+				document.getElementById("totale-container").style.display = "none";
+				document.getElementById("carrello_svuotato").hidden = false;
+			}
 			
-			console.log("Risposta ricevuta:", risposta);
 			
 			}
 			

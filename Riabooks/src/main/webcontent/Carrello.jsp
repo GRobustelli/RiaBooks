@@ -82,6 +82,11 @@
 
 </form>
 
+	<div id = "carrello_svuotato" hidden= "hidden">
+	<br>
+    <a href="home.jsp" class="back-button-empty">Il carrello è vuoto, torna alla home.</a>
+    
+	</div>
 <script src = "scripts/funzionicarrello.js" defer></script>
 
 <jsp:include page="footer.jsp" />
