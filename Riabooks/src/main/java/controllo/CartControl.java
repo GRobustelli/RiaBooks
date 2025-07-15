@@ -92,10 +92,12 @@ public class CartControl extends HttpServlet {
 					if (carrello.isEmpty()) {
 						response.setContentType("text/plain");
 						response.getWriter().write("true");
+						return;
 					}
 					else {
 						response.setContentType("text/plain");
 						response.getWriter().write("false");
+						return;
 					}
 				}
 				
