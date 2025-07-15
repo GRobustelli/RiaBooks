@@ -33,9 +33,9 @@
 <form action="Pagamento.jsp" method="get">
     <div id="carrello-container">
     <% for (LibroBean libro : libri) { %>
-        <div class="carrello-item" id = <%=libro.getId() %>>
+        <div class="carrello-item">
             <img src=<%=libro.getImmagine() %> alt="Libro" />
-            <div class="dettagli-libro">
+            <div class="dettagli-libro" id = <%=libro.getId() %>>
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>
                 <p><%= libro.getDescrizione() %></p>
@@ -47,35 +47,36 @@
                 		
                 		if (beancont.getLibro_id().equals(libro.getId()) ){     %>
                 	
-                	     <p class="prezzo" id = p_<%=libro.getId() %>><%= beancont.getPrezzo() %></p>
+                	     <p class="prezzo"><%= beancont.getPrezzo() %></p>
                 <% }}} else{%>
                 
-                		<p class="prezzo" id = p_<%=libro.getId() %>> <%= libro.getPrezzo() %></p>
+                		<p class="prezzo"><%= libro.getPrezzo() %></p>
                 <%} %>
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
-                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"> Rimuovi</button>
+                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>'"> Rimuovi</button>
             </div>
         </div>
     <% } %>
     </div>
 
    
-   <div id="totale-container">
-    <div class="riga-bottoni">
-        <a href="home.jsp" class="back-button">Torna alla home</a>
-
-        <div class="gruppo-dx">
-            <div class="totale-box">
-                <label for="impTot">Totale:</label>
-                <input type="text" id="impTot" name="impTot" readonly value="0.00" />
-          	  </div>
-             <input type="submit" value = "Procedi all'ordine">
-             
-             
+    <div id="totale-container">
+        <div class="riga-bottoni">
+            <div class="gruppo-sx">
+                <a href="home.jsp" class="back-button">Torna alla home</a>
+                <button type="button" class="svuota-button" onclick="svuotaCarrello()">Svuota il carrello</button>
             </div>
+
+            <div class="gruppo-dx">
+                <div class="totale-box">
+                    <label for="impTot">Totale:</label>
+                    <input type="text" id="impTot" name="impTot" readonly value="0.00" />
+                </div>
+                <input type="submit" value="Procedi all'ordine">
+            </div>
+        </div>
     </div>
-</div>
 
 <%} %>
 
@@ -85,7 +86,7 @@
 
 <jsp:include page="footer.jsp" />
 
-<script defer>
+<script src="scripts/funzioni.js" defer>
 
 window.addEventListener('DOMContentLoaded', () => {
     aggiornaTotale();
@@ -96,39 +97,20 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function aggiornaTotale() {
-
     const prezzi = document.querySelectorAll('.prezzo');
     const quantita = document.querySelectorAll('.quantita');
     let totale = 0;
 
     for (let i = 0; i < prezzi.length; i++) {
-        const prezzo = parseFloat(prezzi[i].textContent.trim());
-        const qta = parseInt(quantita[i].value);
+        const prezzo = parseFloat(prezzi[i].textContent.trim()) || 0;
+        const qta = parseInt(quantita[i].value) || 1;
         totale += prezzo * qta;
     }
 
     document.getElementById("impTot").value = totale.toFixed(2);
 }
 
-function rimuoviElemento(id) {
 
-	document.getElementById(id).style.display = 'none';
-	document.getElementById("p_" + id).textContent= '0';
-	aggiornaTotale();
-	
-	var ajaxvar = new XMLHttpRequest();
-	const url = "CartControl?libro_id=" + id + "&action=elimina";
-	ajaxvar.open("GET", url, true)
-	console.log("ho aperto la connessione");
-
-	console.log("Sto inviando la request")	
-	ajaxvar.send();
-	ajaxvar.onreadystatechange = function () {
-		  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
-		    console.log("Risposta: ce l'abbiamo fatta?");
-		}
-	}
-}
 </script>
 
 </body>

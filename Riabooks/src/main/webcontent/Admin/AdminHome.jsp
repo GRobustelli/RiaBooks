@@ -60,7 +60,6 @@
 
                        <%} %>
                        <li><a href="Admin/InserisciLibro.jsp"><button type="button">Inserisci Libro</button></a></li>
-                       <li><a href="CancellaLibro.jsp"><button type="button">Cancella Libro</button></a></li>
                        <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
                        <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
                    </ul>

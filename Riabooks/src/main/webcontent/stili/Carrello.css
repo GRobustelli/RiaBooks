@@ -4,7 +4,6 @@ body {
     background-color: #f5f5f5;
 }
 
-
 #carrello-container {
     display: flex;
     flex-direction: column;
@@ -40,9 +39,8 @@ input.quantita {
     margin-top: 10px;
 }
 
-
 .back-button-empty {
-  padding: 8px 16px;
+    padding: 8px 16px;
     background-color: #007bff;
     color: white;
     font-size: 14px;
@@ -59,9 +57,8 @@ input.quantita {
     background-color: #0056b3;
 }
 
-
 .back-button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: #007bff;
     color: white;
     font-size: 14px;
@@ -78,6 +75,23 @@ input.quantita {
     background-color: #0056b3;
 }
 
+.svuota-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+    display: inline-block;
+}
+
+.svuota-button:hover {
+    background-color: #0056b3;
+}
 
 #totale-container {
     margin-top: 20px;
@@ -94,6 +108,11 @@ input.quantita {
     gap: 10px;
 }
 
+.gruppo-sx {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 .gruppo-dx {
     display: flex;
@@ -116,7 +135,6 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
-
 
 .totale-box {
     display: flex;
