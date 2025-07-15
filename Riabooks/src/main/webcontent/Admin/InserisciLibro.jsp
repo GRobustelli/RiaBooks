@@ -12,7 +12,7 @@
 
 <a href="AdminHome.jsp" class="back-button">Torna alla home</a>
 
-<form enctype="multipart/form-data" action="inserisciLibroServlet" method="post" class="form-inserimento">
+<form enctype="multipart/form-data" action="LibriControl" method="post" class="form-inserimento">
     <h2>Inserisci Libro</h2>
 
     <label for="id">ID:</label>
@@ -28,7 +28,7 @@
     <input type="number" id="prezzo" name="prezzo" step="0.01" required>
 
     <label for="descrizione">Descrizione:</label>
-    <textarea id="descrizione" name="descrizione" rows="4"></textarea>
+    <textarea id="descrizione" name="descrizione" rows="4" required="required"></textarea>
 
     <label for="categoria">Categoria:</label>
     <input type="text" id="categoria" name="categoria" required>
@@ -38,6 +38,7 @@
 
     <input type="submit" value="Inserisci Libro">
     
+    <input type = "hidden" name = "action" value = "do_upload">
 </form>
 
 <%  
