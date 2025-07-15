@@ -47,46 +47,59 @@
                
               	<%
               		if (user != null){
-              	%>
-                
-                <li> <%=user.getNome() + " " + user.getCognome() %>	
-                <%} %>
-                
-                <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
-                
-                <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
-            </ul>
-        </nav>
-    </header>
+              			%>
+
+                        <li> <div class="user-area">
+
+                       <span class="user-name"> Admin:
+                       <%= user.getNome() + " " + user.getCognome() %>
+                       </span> 
+                       </div>
+
+                       <%} %>
+                       <li><a href="InserisciLibro.jsp"><button type="button">Inserisci Libro</button></a></li>
+                       <li><a href="CancellaLibro.jsp"><button type="button">Cancella Libro</button></a></li>
+                       <li><a href="Carrello.jsp"><button type="button">Carrello</button></a></li>
+                       <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
+                   </ul>
+               </nav>
+           </header>
 
 
 
-    <div>
-    	<%  
-    		if(setLibri != null && setLibri.size() != 0)
-    		{
-    			Iterator<?> it = setLibri.iterator();
-    			
-    			while(it.hasNext()){
-    				LibroBean bean = (LibroBean) it.next();
-    	%>
-    		<div>
-    		<br>
-    			<img alt="Libro" src="images/default_libro.png" style = "margin:10px;margin-top: 0px;"> 
-    			<%=bean.getTitolo() %><br>
-    			<%=bean.getAutore() %><br>
-    			<%=bean.getDescrizione() %><br>
-    			<%=bean.getPrezzo()  %> <br>
-    			<button value=<%=bean.getId() %>  onclick = addCartAjax(this.value)>aggiungi al carrello</button>
-    			
-    		</div>
-			    	
-    	
-    	<% } }%>
-    </div>
-    
-	<script type="text/javascript" src="scripts/funzioni.js" defer></script>
-    <%@include file="/footer.jsp" %> 
-  
-</body>
-</html>
+           <div>
+               <%
+                   if(setLibri != null && setLibri.size() != 0)
+                   {
+                       Iterator<?> it = setLibri.iterator();
+
+                       while(it.hasNext()){
+                           LibroBean bean = (LibroBean) it.next();
+               %>
+                   <div>
+                   <br>
+                       <div class="book-item">
+           <img alt="Libro" src="<%=bean.getImmagine() %>">
+           <div class="book-details">
+               <div class="text-overlay">
+               <div><%=bean.getTitolo() %></div>
+               <div><%=bean.getAutore() %></div>
+               <div><%=bean.getDescrizione() %></div>
+               <div><%=bean.getPrezzo() %></div>
+               <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">
+               Aggiungi al carrello</button>
+           </div>
+       </div>
+       </div>
+
+                   </div>
+
+
+               <% } }%>
+           </div>
+
+           <script type="text/javascript" src="scripts/funzioni.js" defer></script>
+           <%@include file="/footer.jsp" %> 
+
+       </body>
+       </html>
