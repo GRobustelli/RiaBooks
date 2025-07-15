@@ -170,10 +170,15 @@ public class LibriControl extends HttpServlet {
 			}
 			
 		}
-		
+		if(user != null && user.isAdmin()) {
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/AdminHome.jsp");
+			dispatcher.forward(request, response);
+		}else {
 	
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request, response);
+		}
 		}
 	}
 

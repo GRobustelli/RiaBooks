@@ -29,7 +29,7 @@
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,unisa.LibroBean,unisa.UserBean"%>
 <head>
     <meta charset="UTF-8">
-    <title>Riab ooks</title>
+    <title>Riabooks Admin</title>
     <link rel="stylesheet" type="text/css" href="stili/Stile_navigation.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
     <link rel="stylesheet" type="text/css" href="stili/home.css" />

@@ -35,3 +35,9 @@ function addCartAjax(valore){
 		}
 	}
 }
+
+
+function rimuoviElemento(id) {
+   Document.getElementById(id).style.display = hidden;
+	
+}

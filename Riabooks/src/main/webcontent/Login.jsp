@@ -22,7 +22,7 @@
         
         <input type="password" id="password" name="password" required><br><br>
 
-               <input type="submit" value = "Accedi">
+          <input type="submit" value = "Accedi">
     </form>
     
     

@@ -89,13 +89,15 @@ public class loginServlet extends HttpServlet {
 				return;
 			}
 			else {
-				request.getSession().setAttribute("isAdmin", bean.isAdmin());
+				
 				request.getSession().setAttribute("user", bean);
 				if (bean.isAdmin()) {
-					response.sendRedirect(""); //AGGIUNGERE JSP ADMIN
+					System.out.println("Sei nella zona giusta");					
+					response.sendRedirect(request.getContextPath() + "/Admin/AdminHome.jsp");
 				}
 				else
 				{
+					System.out.println("Sei nella zona sbagliata");
 					response.sendRedirect(request.getContextPath() + "/home.jsp");
 				}
 			}

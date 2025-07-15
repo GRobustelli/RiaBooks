@@ -35,22 +35,26 @@
     <% for (LibroBean libro : libri) { %>
         <div class="carrello-item">
             <img src=<%=libro.getImmagine() %> alt="Libro" />
-            <div class="dettagli-libro">
+            <div class="dettagli-libro" id = <%=libro.getId() %>>
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>
                 <p><%= libro.getDescrizione() %></p>
                 
-                <% Iterator<ContieneBean> it = contiene.iterator();
+                <% if (contiene != null){
+                	Iterator<ContieneBean> it = contiene.iterator();
                 	while (it.hasNext()){
                 		ContieneBean beancont = it.next();
                 		
                 		if (beancont.getLibro_id().equals(libro.getId()) ){     %>
                 	
                 	     <p class="prezzo"><%= beancont.getPrezzo() %></p>
-                <% }}%>
+                <% }}} else{%>
+                
+                		<p class="prezzo"><%= libro.getPrezzo() %></p>
+                <%} %>
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
-                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')">Rimuovi</button>
+                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>'"> Rimuovi</button>
             </div>
         </div>
     <% } %>
@@ -81,7 +85,8 @@
 
 <jsp:include page="footer.jsp" />
 
-<script>
+<script src="scripts/funzioni.js" defer>
+
 window.addEventListener('DOMContentLoaded', () => {
     aggiornaTotale();
 
@@ -104,9 +109,7 @@ function aggiornaTotale() {
     document.getElementById("impTot").value = totale.toFixed(2);
 }
 
-function rimuoviElemento(id) {
-    window.location.href = 'RimuoviDalCarrello?id=' + encodeURIComponent(id);
-}
+
 </script>
 
 </body>

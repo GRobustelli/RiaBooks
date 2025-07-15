@@ -5,7 +5,7 @@
 <%
 	Collection<?> setLibri = (Collection<?>) request.getAttribute("libri");
 	if(setLibri == null) {
-		response.sendRedirect( request.getContextPath()+ "/LibriControl");	
+		response.sendRedirect("LibriControl");	
 		return;
 	}
 	
