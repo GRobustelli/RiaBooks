@@ -8,7 +8,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="stili/Login.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
-    <link rel="stylesheet" href="stili/header.css"> 
+    <link rel="stylesheet" type="text/css" href="stili/header.css"> 
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>

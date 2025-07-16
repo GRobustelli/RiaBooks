@@ -14,10 +14,10 @@
 </head>
 <body>
 
-    <a href="home.jsp" class="back-button">Torna alla home</a>
+    <a href="AdminHome.jsp" class="back-button">Torna alla home</a>
     <h2>Inserisci Libro</h2>
     <main class="form-inserimento"> 
-    <form action="../LibriControl" method="post">
+    <form enctype="multipart/form-data" action="../LibriControl" method="post">
     <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 

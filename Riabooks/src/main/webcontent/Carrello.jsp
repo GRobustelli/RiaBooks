@@ -8,6 +8,7 @@
     <title>Carrello</title>
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
     <link rel="stylesheet" type="text/css" href="stili/Carrello.css" />
+   
 </head>
 <body>
 	
