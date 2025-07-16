@@ -1,6 +1,7 @@
 package unisa;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Cart {
@@ -32,7 +33,15 @@ public class Cart {
 	}
 	
 	public List<LibroBean> getLibri(){
-		return carrello;
+		List<LibroBean> libri = new ArrayList<LibroBean>();
+		Iterator<LibroBean> it = carrello.iterator();
+		while (it.hasNext()) {
+			LibroBean libro = it.next();
+			if (libro.isMostra()) {
+				libri.add(libro);
+			}
+		}
+		return libri;
 	}
 	
 	public boolean isEmpty() {

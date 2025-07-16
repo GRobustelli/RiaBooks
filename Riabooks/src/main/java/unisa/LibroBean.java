@@ -12,12 +12,12 @@ public class LibroBean implements Serializable{
 	private float prezzo;
 	private String descrizione;
 	private String categoria;
+	private boolean mostra;
+
 
 	/**
 	 * @return the id
 	 */
-	
-	
 	
 	public String getId() {
 		return id;
@@ -125,6 +125,20 @@ public class LibroBean implements Serializable{
 	
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	
+	/**
+	 * @return the mostra
+	 */
+	public boolean isMostra() {
+		return mostra;
+	}
+
+	/**
+	 * @param mostra the mostra to set
+	 */
+	public void setMostra(boolean mostra) {
+		this.mostra = mostra;
 	}
 	
 	

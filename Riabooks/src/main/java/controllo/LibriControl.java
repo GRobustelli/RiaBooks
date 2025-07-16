@@ -71,8 +71,37 @@ public class LibriControl extends HttpServlet {
 		ArrayList<LibroBean> libriord = new ArrayList<>();
 		System.out.println("\n\nSto nella servlet LibriControl prima degli if");
 		
+		
 		if(action != null)
 		{
+			
+			System.out.println("\n\n All'interno di action = delcatalogo\n\n");
+			if(action.equals("delCatalogo") && user.isAdmin()) {
+				
+				
+				
+				String libro_id = request.getParameter("libro_id");
+				
+				try {
+					if (libro_id != null) {
+					if (libro.doUpdatemostra(libro_id,false)) {
+						cont.doDeleteAllD(libro_id);
+					
+						
+					}}else {
+						System.out.println("Piangi e disperati");
+					}
+					
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				response.setContentType("text/plain");
+				response.getWriter().write("true");
+				return;
+			}
+			
 			if (action.equals("do_upload") && user.isAdmin()) {
 				
 				System.out.println("entrati nel caricamento dei libri");
