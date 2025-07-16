@@ -50,8 +50,10 @@
 		 	
 		 	<div>Vecchio prezzo: <%=libro.getPrezzo() %> </div>
 		 	<div><label for="prezzo">Nuovo prezzo:</label> <input type="number" id="prezzo" name="prezzo" step="0.01"></div>
+		 	
 		 	<input type= "hidden" name = libro_id value = <%=libro.getId() %>>
 		 	<input type= "hidden" name = action value = "do_mod">
+			
 			<input type = "submit" value = "Conferma modifiche">
 			</form>			 		
 		 </div>

@@ -64,6 +64,8 @@ function svuotaCarrello(){
 			  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
 			    console.log("Risposta: ce l'abbiamo fatta?");
 				const risposta = ajaxvar.responseText;
+				
+				
 				if (risposta.trim() === "true"){
 					
 					document.getElementById("totale-container").style.display = "none";
@@ -87,14 +89,17 @@ function rimuoviElemento(id) {
 	const url = "CartControl?libro_id=" + id + "&action=elimina";
 	ajaxvar.open("GET", url, true)
 	console.log("ho aperto la connessione");
-
+	console.log("Prima del check sulla risposta")
 	console.log("Sto inviando la request")	
 	ajaxvar.send();
 	
 	ajaxvar.onreadystatechange = function () {
 		  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
-		    console.log("Risposta: ce l'abbiamo fatta?");
+		    
+			
 			const risposta = ajaxvar.responseText;
+			
+			console.log("\n" + risposta);
 				
 			if (risposta.trim() === "true"){
 				console.log("Io qui ci arrivo");

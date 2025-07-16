@@ -17,12 +17,16 @@ public class Cart {
 	}
 	
 	public void deleteLibro(LibroBean libro) {
-		for (LibroBean find : carrello) {
-			if (find.getId() == libro.getId())
-			{
-				carrello.remove(find);
-			}
-		}
+		
+		 Iterator<LibroBean> it = carrello.iterator();
+		    while (it.hasNext()) {
+		        LibroBean find = it.next();
+		        if (find.getId().equals(libro.getId())) {
+		            it.remove(); 
+		            break; 
+		        }
+		    }
+
 	}
 	
 	public void deleteAll() {

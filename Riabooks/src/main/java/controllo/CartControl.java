@@ -84,24 +84,33 @@ public class CartControl extends HttpServlet {
 				}
 				
 				if (action.equals("elimina") && !carrello.isEmpty()) {
+					
 					String libro_id = request.getParameter("libro_id");
 					List<LibroBean> lista = carrello.getLibri();
-					
+					LibroBean fuori = null;
 					Iterator<LibroBean> it = lista.iterator();
+					
 					
 					while (it.hasNext()) {
 						LibroBean delete = it.next();
-						if (delete.getId().equals(libro_id)) {
-							lista.remove(delete);
-							break;
-						}
+						
+						if (delete.getId().equals(libro_id)) 
+						{
+							fuori = libro.doRetrieveByKey(delete.getId());
+						}	
 					}
+					
+					carrello.deleteLibro(fuori);
 					
 					if (utente != null) {
 						
 						cont.doDeleteOne(libro_id, utente.getEmail()); 
 						
 					}
+					
+					System.out.println("Prime del controllo per vedere se è vuoto: " + carrello.isEmpty());
+					
+					
 					if (carrello.isEmpty()) {
 						System.out.println("Qui funziona");
 						response.setContentType("text/plain");

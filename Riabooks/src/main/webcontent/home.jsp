@@ -89,6 +89,7 @@
     </div>
     
 	<script type="text/javascript" src="scripts/funzioni.js" defer></script>
+	
     <%@include file="footer.jsp" %>
     
   
