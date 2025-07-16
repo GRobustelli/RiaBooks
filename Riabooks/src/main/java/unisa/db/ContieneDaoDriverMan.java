@@ -18,7 +18,7 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 	public ContieneDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation....Contiene");
 	}
 
 	@Override

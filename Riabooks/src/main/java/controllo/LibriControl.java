@@ -1,4 +1,4 @@
-package controllo;
+ package controllo;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -289,12 +289,13 @@ public class LibriControl extends HttpServlet {
 		if (user.isAdmin()) {	
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/AdminHome.jsp");
 			dispatcher.forward(request, response);
+			return;
 		}
 		}
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request, response);
-		
+		return;
 		}
 	}
 

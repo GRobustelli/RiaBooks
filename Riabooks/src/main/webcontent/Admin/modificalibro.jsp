@@ -4,12 +4,11 @@
 <!DOCTYPE html>
 
 	<%
-		LibroBean libro = (LibroBean) request.getAttribute("modlibro");
+		LibroBean libro = (LibroBean) request.getAttribute("modlib");
 		if (libro == null){
-			String id = request.getParameter("libro_id");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("modificalibro?action=invio&libro_id=" + id);
-			dispatcher.forward(request, response);
+			String id = request.getParameter("libro_id");	
 		}
+		else{
 	
 	%>
 
@@ -25,54 +24,40 @@
 <body>
 		
 		 <div>
-		 	<button>Modifica immagine</button><br>
-		 	<img alt="Libro" src="Immretrievecont?id=<%=libro.getId()%>" onerror = "/images/default_libro.png"> 
-		 	<div><%=libro.getTitolo() %><button>modifica</button> </div> 
-		 	<div><%=libro.getAutore() %> <button>modifica</button> </div>
-		 	<div><%=libro.getCategoria() %> <button>modifica</button> </div>
-		 	<div><%=libro.getDescrizione() %> <button>modifica</button> </div>
-		 	<div><%=libro.getPrezzo() %> <button>modifica</button> </div>
+		 	<!-- Su questa ci sto ancora pensando
+		 	<form action="${pageContext.request.contextPath}/ImmUpdateCont" method = "post" enctype = "multipart/form-data">
 		 	
-		 		
+		 	<img alt="Libro" src="Immretrievecont?id=<//%//=libro.getId()%>" onerror = "/images/default_libro.png">
+		 	
+		 	 <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255" required>
+		 	<input type = "submit" value ="cambia immagine">
+		 	</form>
+		 	 -->
+		 	<form action="${pageContext.request.contextPath}/modificalibro" method="get"> 
+		 	
+		 	<div>Vecchio titolo: <%=libro.getTitolo() %></div> 
+		 	<div><label for="titolo">Nuovo titolo: </label> <input type="text" id="titolo" name="titolo"></div>
+		 	
+		 	<div>Vecchio autore: <%=libro.getAutore() %> </div> 
+		 	<div> <label for="autore">Nuovo autore: </label> <input type="text" id="autore" name="autore"></div>
+		 	
+		 	<div>Vecchia categoria: <%=libro.getCategoria() %> </div>
+		 	<div><label for="categoria">Nuova categoria:</label> <input type="text" id="categoria" name="categoria"></div>
+		 	
+		 	<div>Vecchia descrizione: <%=libro.getDescrizione() %> </div>
+		 	<div> <label for="descrizione">Nuova descrizione: </label><textarea id="descrizione" name="descrizione" rows="4"></textarea></div>
+		 	
+		 	
+		 	<div>Vecchio prezzo: <%=libro.getPrezzo() %> </div>
+		 	<div><label for="prezzo">Nuovo prezzo:</label> <input type="number" id="prezzo" name="prezzo" step="0.01"></div>
+		 	<input type= "hidden" name = libro_id value = <%=libro.getId() %>>
+		 	<input type= "hidden" name = action value = "do_mod">
+			<input type = "submit" value = "Conferma modifiche">
+			</form>			 		
 		 </div>
-	<div>	
-	<form action="${pageContext.request.contextPath}/modificalibro" method="get">
-<div>
-    <label for="titolo">nuovo titolo:</label>
-    <input type="text" id="titolo" name="titolo"  hidden="hidden">
-</div>
-<div>
-    <label for="autore">nuovo autore:</label>
-    <input type="text" id="autore" name="autore" hidden="hidden">
-</div>
-<div>
-    <label for="prezzo">nuovo prezzo:</label>
-    <input type="number" id="prezzo" name="prezzo" step="0.01">
-</div>
-<div>
-    <label for="descrizione">nuova descrizione:</label>
-    <textarea id="descrizione" name="descrizione" rows="4"></textarea>
-	</div>
-<div>
-    <label for="categoria">nuova categoria:</label>
-    <input type="text" id="categoria" name="categoria">
-</div>
-
-	<input type = "hidden" name = "action" value = "do_mod">
-
-  	<input type="submit" value="Procedi alla modifica" hidden="hidden">
-</form>
-   
-<form enctype="multipart/form-data" action="${pageContext.request.contextPath}/modificalibro" method=post>
-	<div>	
-		<label for="immagine">nuova immagine:</label>
-    	<input type="file" accept="image/*" name = "talkImage" value="" maxlength="255" required>	
-		<input type="submit" value="Cambia immagine" hidden="hidden">			
-	</div>
-		<input type = "hidden" name = "action" value = "do_modimm">
-    </form>
-    
-	</div>
-
+		
+	
+<%} %>
+	
 </body>
 </html>

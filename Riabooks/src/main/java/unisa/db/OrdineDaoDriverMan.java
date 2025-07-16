@@ -19,7 +19,7 @@ public class OrdineDaoDriverMan implements IOrdineDAO{
 	public OrdineDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation....Ordine");
 	}
 	
 	@Override

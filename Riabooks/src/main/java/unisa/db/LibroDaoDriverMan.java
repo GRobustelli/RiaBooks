@@ -210,7 +210,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 			
 		int result = 0;
 		
-		String selectSQL = "UPDATE Libro SET " + modifica + "= "+ update + "FROM " + LibroDaoDriverMan.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "UPDATE Libro SET " + modifica + "= "+ update + " FROM " + LibroDaoDriverMan.TABLE_NAME + " WHERE id = ?";
 			
 		try {
 			connection = dmcp.getConnection();

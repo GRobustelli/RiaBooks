@@ -18,7 +18,7 @@ public class RecensioneDaoDriverMan implements IRecensioneDAO{
 	public RecensioneDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation....Recensione");
 		
 	}
 	@Override

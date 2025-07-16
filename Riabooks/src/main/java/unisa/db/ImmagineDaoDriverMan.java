@@ -15,7 +15,7 @@ public class ImmagineDaoDriverMan implements IImmagineDAO{
 	public ImmagineDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation....Immagine");
 		
 	}
 	

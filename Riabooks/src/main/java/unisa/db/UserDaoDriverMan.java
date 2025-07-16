@@ -17,7 +17,7 @@ public class UserDaoDriverMan implements IUserDAO {
 	public UserDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation....user");
 	}
 	
 	
