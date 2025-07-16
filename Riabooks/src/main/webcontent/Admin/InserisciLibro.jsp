@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Inserisci Libro</title>
-    <link rel="stylesheet" href="../stili/InserisciLibro.css">
-    <link rel="stylesheet" href="../stili/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/InserisciLibro.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/footer.css">
 </head>
 <body>
 

@@ -114,10 +114,11 @@ public class LibriControl extends HttpServlet {
 				
 				try {
 					LibroBean duplicate = (LibroBean) libro.doRetrieveByKey(bean.getId());
-					if (duplicate == null) {
+					if (duplicate != null) {
+						if(duplicate.getId().equals(bean.getId())) {
 						System.out.println("Vediamo se è veramente non nullo: " + duplicate.getId());
 						
-						errors.add("Libro già esistente nel database");
+						errors.add("Libro già esistente nel database");}
 					}
 					
 				} catch (SQLException e) {
