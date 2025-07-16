@@ -7,13 +7,14 @@
     <%@include file="header.jsp" %>
     <title>Login</title>
     <link rel="stylesheet" href="stili/Login.css">
-    <link rel="stylesheet" type="text/css" href="stili/footer.css" />
     <link rel="stylesheet" type="text/css" href="stili/header.css"> 
+    <link rel="stylesheet" type="text/css" href="stili/footer.css" />
+    
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>
-   	
    	 <h2>Login</h2>
+   	 <main class="form-wrapper">
     <form action="loginServlet" method="post">
      <label for="email">Email:</label>
         <input type="email" id="email" name="email" class="form-input" required>
@@ -26,7 +27,7 @@
 
           <input type="submit" value = "Accedi">
     </form>
-    
+    </main>
     
 <% 
  List<String> errors = (List<String>) request.getAttribute("errors");
