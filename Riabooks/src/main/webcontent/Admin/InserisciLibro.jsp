@@ -16,9 +16,9 @@
 
     <a href="home.jsp" class="back-button">Torna alla home</a>
     <h2>Inserisci Libro</h2>
-    <main class="form-inserimento"> <!-- Nota: uso form-wrapper -->
-    	<form action="../LibriControl" method="post">
-          <label for="id">ID:</label>
+    <main class="form-inserimento"> 
+    <form action="../LibriControl" method="post">
+    <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 
     <label for="titolo">Titolo:</label>
@@ -45,7 +45,7 @@
     </form>
     </main>
    
-</form>
+
 
 <%  
     List<String> errors = (List<String>) request.getAttribute("errors");
