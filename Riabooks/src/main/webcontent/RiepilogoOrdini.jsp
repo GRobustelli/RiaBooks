@@ -53,8 +53,9 @@
 						{
 						%>
 						
-							<span> Titolo:  <%=libro.getTitolo() %></span>
-							<span>, Quantità: <%=riferimento.getQuantita() %></span> <br>
+							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
+							<span> Quantità: <%=riferimento.getQuantita() %></span> <br>
+							<span>Prezzo: <%=riferimento.getPrezzo() %></span> <br>
 						<%
 						break;
 						}

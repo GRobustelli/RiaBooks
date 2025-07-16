@@ -49,8 +49,8 @@ create table riferisce (
 	ordine_id int not null,
     libro_id varchar(13) not null,
     quantita int not null,
+	prezzo decimal(10,2) not null,
     foreign key (libro_id) references Libro(id) on update cascade on delete cascade,
     foreign key (ordine_id) references Ordine(id) on update cascade on delete cascade
 );
-
 

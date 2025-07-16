@@ -13,12 +13,14 @@ public class RiferisceBean implements Serializable {
 	private int ordine_id;
 	private String libro_id;
 	private int quantita;
+	private float prezzo;
 	
-	public RiferisceBean(int ordine_id, String libro_id, int quantita) {
+	public RiferisceBean(int ordine_id, String libro_id, int quantita, float prezzo) {
 		super();
 		this.ordine_id = ordine_id;
 		this.libro_id = libro_id;
 		this.quantita = quantita;
+		this.prezzo = prezzo;
 	}
 	public RiferisceBean() {
 		super();
@@ -54,6 +56,20 @@ public class RiferisceBean implements Serializable {
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
+	/**
+	 * @return the prezzo
+	 */
+	public float getPrezzo() {
+		return prezzo;
+	}
+	/**
+	 * @param prezzo the prezzo to set
+	 */
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
+	}
+	
+	
 	
 	
 }

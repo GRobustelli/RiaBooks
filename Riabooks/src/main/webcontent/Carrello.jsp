@@ -14,7 +14,6 @@
 
 <%
     Cart cart = (Cart) request.getSession().getAttribute("cart");
-	Collection<ContieneBean> contiene = (Collection<ContieneBean>) request.getAttribute("libri");
 	
     if (cart == null || cart.getLibri() == null || cart.isEmpty()) {
 %>
@@ -34,32 +33,21 @@
     <div id="carrello-container">
     <% for (LibroBean libro : libri) { %>
         <div class="carrello-item" id = <%=libro.getId() %>>
-            <img src=<%=libro.getImmagine() %> alt="Libro" />
+            <img src="Immretrievecont?id=<%=libro.getId()%>" onerror = "/images/default_libro.png" alt="Libro" />
             <div class="dettagli-libro" >
                 <p><strong><%= libro.getTitolo() %></strong></p>
                 <p>Autore: <%= libro.getAutore() %></p>
                 <p><%= libro.getDescrizione() %></p>
-                
-                <% if (contiene != null){
-                	Iterator<ContieneBean> it = contiene.iterator();
-                	while (it.hasNext()){
-                		ContieneBean beancont = it.next();
-                		
-                		if (beancont.getLibro_id().equals(libro.getId()) ){     %>
-                	
-                	     <p class="prezzo" id = "p_<%= libro.getId()%>"><%= beancont.getPrezzo() %></p>
-                <% }}} else{%>
-                
-                		<p class="prezzo" id = "p_<%= libro.getId()%>"><%= libro.getPrezzo() %></p>
-                <%} %>
+                <p class="prezzo" id = "p_<%= libro.getId()%>"><%= libro.getPrezzo() %></p>
+               
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
                 <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"> Rimuovi</button>
             </div>
         </div>
-    <% } %>
-    </div>
 
+    </div>
+ <%} %>
    
     <div id="totale-container">
         <div class="riga-bottoni">

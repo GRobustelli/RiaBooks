@@ -78,9 +78,10 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
-				bean.setImmagine(rs.getString("immagine"));
+		
 			}
-
+				
+			System.out.println("dopo il doretrieveNyKey: " + bean.getId());
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -89,6 +90,10 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				dmcp.releaseConnection(connection);
 			}
 		}
+		if (bean.getId() == null) {
+			return null;
+		}
+		
 		return bean;
 	}
 
@@ -149,7 +154,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
-				bean.setImmagine(rs.getString("immagine"));
+				
 				libri.add(bean);
 			}
 

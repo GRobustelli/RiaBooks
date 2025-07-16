@@ -115,8 +115,10 @@ public class LibriControl extends HttpServlet {
 				try {
 					LibroBean duplicate = (LibroBean) libro.doRetrieveByKey(bean.getId());
 					if (duplicate != null) {
+						
+						System.out.println("Vediamo se è veramente non nullo: " + duplicate);
 						if(duplicate.getId().equals(bean.getId())) {
-						System.out.println("Vediamo se è veramente non nullo: " + duplicate.getId());
+						
 						
 						errors.add("Libro già esistente nel database");}
 					}
@@ -175,6 +177,7 @@ public class LibriControl extends HttpServlet {
 			
 		}
 		else {
+			
 		if (cart == null)
 		{
 			cart = new Cart();
@@ -252,17 +255,17 @@ public class LibriControl extends HttpServlet {
 			}
 			
 		}
-		if(user != null ) {
+		if(user != null ) { System.out.println("\nSto prima del controllo di admin\n" + user.isAdmin());
 			
 		if (user.isAdmin()) {	
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/AdminHome.jsp");
 			dispatcher.forward(request, response);
 		}
-		}else {
-	
+		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request, response);
-		}
+		
 		}
 	}
 

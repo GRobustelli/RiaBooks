@@ -67,6 +67,7 @@ public class RiferisceControl extends HttpServlet {
 						
 						rifBean.setLibro_id(libro.getId());
 						rifBean.setQuantita(Integer.parseInt(quantita));
+						rifBean.setPrezzo(libro.getPrezzo());
 						
 						rif.doSave(rifBean);
 						

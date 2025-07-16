@@ -12,7 +12,7 @@ public class LibroBean implements Serializable{
 	private float prezzo;
 	private String descrizione;
 	private String categoria;
-	private String immagine;
+
 	/**
 	 * @return the id
 	 */
@@ -23,7 +23,7 @@ public class LibroBean implements Serializable{
 		return id;
 	}
 	
-	public LibroBean(String id, String titolo, String autore, float prezzo, String descrizione, String categoria, String immagine) {
+	public LibroBean(String id, String titolo, String autore, float prezzo, String descrizione, String categoria) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
@@ -31,28 +31,14 @@ public class LibroBean implements Serializable{
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
-		this.immagine = immagine;
+	
 	}
 	
-	
-
-	/**
-	 * @return the immagine
-	 */
-	public String getImmagine() {
-		return immagine;
-	}
-
-	/**
-	 * @param immagine the immagine to set
-	 */
-	public void setImmagine(String immagine) {
-		this.immagine = immagine;
-	}
-
 	public LibroBean() {
-		 super();
+		super();
 	}
+	
+	
 
 	/**
 	 * @param id the id to set

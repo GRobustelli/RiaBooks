@@ -30,7 +30,7 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + RiferisceDaoDriverMan.TABLE_NAME
-				+ " (ordine_id, libro_id, quantita) VALUES (?, ?, ?)";
+				+ " (ordine_id, libro_id, quantita, prezzo) VALUES (?, ?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
@@ -38,6 +38,7 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 			preparedStatement.setInt(1, rif.getOrdine_id());
 			preparedStatement.setString(2, rif.getLibro_id());
 			preparedStatement.setInt(3, rif.getQuantita());
+			preparedStatement.setFloat(4, rif.getPrezzo());
 
 			
 			preparedStatement.executeUpdate();
@@ -76,6 +77,7 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 				bean.setOrdine_id(rs.getInt("ordine_id"));
 				bean.setLibro_id(rs.getString("libro_id"));
 				bean.setQuantita(rs.getInt("quantita"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				rif.add(bean);
 			}
 
