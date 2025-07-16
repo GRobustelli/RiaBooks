@@ -67,6 +67,7 @@
  
 
 
+       
            <div>
                <%
                    if(setLibri != null && setLibri.size() != 0)
