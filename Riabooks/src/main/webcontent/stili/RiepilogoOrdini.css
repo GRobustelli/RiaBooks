@@ -7,6 +7,7 @@ body {
 }
 
 .back-button-empty {
+	font-family: Consolas, sans-serif;
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -107,6 +108,7 @@ input[type="submit"],
 .user-area button,
 .user-area input[type="submit"],
 .add-to-cart {
+	font-family: Consolas, sans-serif;
     padding: 10px 20px;
     background-color: #007bff;
     border: 1px solid #007bff;
@@ -128,6 +130,7 @@ input[type="submit"]:hover,
 }
 
 .add-to-cart {
+	font-family: Consolas, sans-serif;
     padding: 6px 12px;
     font-size: 14px;
     align-self: flex-start;
@@ -161,6 +164,7 @@ input[type="submit"]:hover,
 
 /* Ordine Box */
 .ordine-box {
+	font-family: Consolas, sans-serif;
     display: flex;
     background: white;
     border: 2px solid #007bff;
@@ -232,6 +236,7 @@ input[type="submit"]:hover,
 
 /* Fixed box */
 div.fixed {
+	font-family: Consolas, sans-serif;
     position: fixed;
     bottom: 0;
     right: 0;

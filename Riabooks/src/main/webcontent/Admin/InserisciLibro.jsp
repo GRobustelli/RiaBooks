@@ -15,11 +15,10 @@
 <body>
 
     <a href="AdminHome.jsp" class="back-button">Torna alla home</a>
-    
-    <h2>Inserisci Libro</h2>
-    <main class="form-inserimento"> <!-- Nota: uso form-wrapper -->
-    	<form enctype="multipart/form-data" action="../LibriControl" method="post">
-          <label for="id">ID:</label>
+	<h2>Inserisci Libro</h2>
+    <main class="form-inserimento"> 
+    <form enctype="multipart/form-data" action="../LibriControl" method="post">
+    <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 
     <label for="titolo">Titolo:</label>
@@ -47,7 +46,6 @@
     
     </main>
    
-
 
 <%  
     List<String> errors = (List<String>) request.getAttribute("errors");

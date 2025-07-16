@@ -21,6 +21,7 @@ body {
 }
 
 input[type="submit"] {
+	font-family: Consolas, sans-serif;
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -83,6 +84,7 @@ input[type="submit"]:hover {
 #princ a button,
 .user-area button,
 .user-area input[type="submit"] {
+	font-family: Consolas, sans-serif;
     padding: 10px 20px;
     background-color: #007bff;
     border: 1px solid #007bff;
@@ -103,6 +105,7 @@ input[type="submit"]:hover {
 
 
 .user-area {
+	font-family: Consolas, sans-serif;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -142,6 +145,7 @@ input[type="submit"]:hover {
 }
 
 .add-to-cart {
+	font-family: Consolas, sans-serif;
     background-color: #007bff;
     color: white;
     padding: 6px 12px;      /* Più piccolo rispetto ai valori standard */

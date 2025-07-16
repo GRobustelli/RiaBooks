@@ -64,10 +64,10 @@
                        <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
                    </ul>
                </nav>
- 
 
 
-       
+
+
            <div>
                <%
                    if(setLibri != null && setLibri.size() != 0)
