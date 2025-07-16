@@ -2,6 +2,7 @@ package controllo;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +28,9 @@ import unisa.db.LibroDaoDriverMan;
  * Servlet implementation class LibriControl
  */
 @WebServlet("/LibriControl")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class LibriControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -61,14 +65,20 @@ public class LibriControl extends HttpServlet {
 		
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
 		String action = request.getParameter("action");
+		
+		System.out.println("Siamo dopo aver preso action che ha valore: " + action);
+		
 		ArrayList<LibroBean> libriord = new ArrayList<>();
 		System.out.println("\n\nSto nella servlet LibriControl prima degli if");
 		
 		if(action != null)
 		{
 			if (action.equals("do_upload") && user.isAdmin()) {
+				
+				System.out.println("entrati nel caricamento dei libri");
+				
 				LibroBean bean = new LibroBean();
-				RequestDispatcher dispatcherToInserisciPage = request.getRequestDispatcher("InserisciLibro.jsp");
+				RequestDispatcher dispatcherToInserisciPage = request.getRequestDispatcher("Admin/InserisciLibro.jsp");
 				List<String> errors = new ArrayList<>();
 				
 				bean.setAutore(request.getParameter("autore"));
@@ -105,6 +115,8 @@ public class LibriControl extends HttpServlet {
 				try {
 					LibroBean duplicate = (LibroBean) libro.doRetrieveByKey(bean.getId());
 					if (duplicate == null) {
+						System.out.println("Vediamo se è veramente non nullo: " + duplicate.getId());
+						
 						errors.add("Libro già esistente nel database");
 					}
 					
@@ -166,10 +178,10 @@ public class LibriControl extends HttpServlet {
 		{
 			cart = new Cart();
 			request.getSession().setAttribute("cart", cart);
-		}
-		else if (user != null && cart.isEmpty()) 
+		}else if (user != null && cart.isEmpty()) 
+		
 		{
-			System.out.println("\n\nSiamo entrati daglie");
+			
 				try {
 				
 					Collection<ContieneBean> libri =  cont.doRetrieveByKey(user.getEmail());
@@ -189,7 +201,7 @@ public class LibriControl extends HttpServlet {
 			try {
 				if(user != null) 
 				{
-					System.out.println("non va bene forza napoli");
+				
 				Collection<ContieneBean> libri =  cont.doRetrieveByKey(user.getEmail());
 				List<LibroBean> lista = cart.getLibri();
 				
@@ -239,10 +251,12 @@ public class LibriControl extends HttpServlet {
 			}
 			
 		}
-		if(user != null && user.isAdmin()) {
+		if(user != null ) {
 			
+		if (user.isAdmin()) {	
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/AdminHome.jsp");
 			dispatcher.forward(request, response);
+		}
 		}else {
 	
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
@@ -256,6 +270,9 @@ public class LibriControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String action = request.getParameter("id");
+		
+		System.out.println("Siamo nel post id ha valore: " + action);
 		doGet(request, response);
 	}
 

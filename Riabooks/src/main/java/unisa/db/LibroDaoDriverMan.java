@@ -17,7 +17,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	public LibroDaoDriverMan(DriverManagerConnectionPool dmcp) {
 		
 		this.dmcp = dmcp;
-		System.out.println("DriverManager Product Model creation....");
+		System.out.println("DriverManager Product Model creation LibroDaoDriverMan");
 		
 	}
 	
@@ -29,7 +29,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + LibroDaoDriverMan.TABLE_NAME
-				+ " (id, titolo, autore, prezzo, descrizione, categoria, immagine) VALUES (?, ?, ?, ?, ?, ?)";
+				+ " (id, titolo, autore, prezzo, descrizione, categoria) VALUES (?, ?, ?, ?, ?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
@@ -40,7 +40,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 			preparedStatement.setDouble(4, libro.getPrezzo());
 			preparedStatement.setString(5,libro.getDescrizione());
 			preparedStatement.setString(6, libro.getCategoria());
-			preparedStatement.setString(7, libro.getImmagine());
+
 			
 			preparedStatement.executeUpdate();
 

@@ -60,7 +60,7 @@ public class ImmagineDaoDriverMan implements IImmagineDAO{
 		Connection con = null;
 		PreparedStatement stmt = null;
 		
-		String sql = "UPDATE libro SET photo = ? WHERE id = ?";
+		String sql = "UPDATE libro SET immagine = ? WHERE id = ?";
 		
 		try {
 			con = dmcp.getConnection();

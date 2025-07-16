@@ -1,5 +1,6 @@
 package controllo;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -47,13 +48,19 @@ public class ImmUpdateCont extends HttpServlet {
 		// TODO Auto-generated method stub
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		
+		System.out.println("\n\nStiamo nella post di immupdatecont\n\n");
+		
 		IImmagineDAO dao = new ImmagineDaoDriverMan(dm);
+		
+		
 		
 		String libro_id = request.getParameter("id");
 		for (Part part : request.getParts()) {
+		
 			String fileName = part.getSubmittedFileName();
 			if (fileName != null && !fileName.equals("")) {
 				try {
+				
 					dao.updateImm(libro_id, part.getInputStream());
 					
 				}catch (SQLException sqlException) {
@@ -62,7 +69,9 @@ public class ImmUpdateCont extends HttpServlet {
 		
 	}
 
-}
+}	
+		response.sendRedirect("Admin/InserisciLibro.jsp");
+		return;
 		}
 	
 
