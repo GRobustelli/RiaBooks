@@ -17,7 +17,7 @@ create table Libro (
     prezzo decimal(10,2) not null,
     descrizione varchar (500),
     categoria varchar(50) not null,
-    immagine varchar(124) default "images/default_libro.png",
+    immagine mediumblob DEFAULT NULL,
     mostra boolean default true
 );
 
@@ -29,6 +29,7 @@ create table Carrello (
 create table Contiene (
 	email varchar(320) not null,
     libro_id varchar(13) not null,
+    prezzo decimal(10,2) not null,
     foreign key (email) references Utente(email) on delete cascade on update cascade,
 	foreign key (libro_id) references Libro(id) on update cascade on delete cascade 
     );
