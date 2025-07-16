@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@include file="header.jsp" %>
 <title>Riepilogo ordini</title>
 <link rel="stylesheet" type="text/css" href="stili/footer.css" /> 
 <link rel="stylesheet" type="text/css" href="stili/RiepilogoOrdini.css" /> 
 <link rel="stylesheet" type="text/css" href="stili/home.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/header.css" /> 
 
 <%@ page import="java.util.*, unisa.LibroBean, unisa.RiferisceBean,unisa.UserBean,unisa.OrdineBean" %>
 </head>

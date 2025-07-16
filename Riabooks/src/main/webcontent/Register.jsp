@@ -3,8 +3,11 @@
 <%@ page  import="java.util.*"%>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
+    <%@include file="header.jsp" %>
     <title>Registrazione</title>
+   
+    <link rel="stylesheet" type="text/css" href="stili/header.css">
     <link rel="stylesheet" href="stili/Register.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
 </head>

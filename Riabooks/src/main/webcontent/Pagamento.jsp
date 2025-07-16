@@ -4,9 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <%@include file="header.jsp" %>
+    
     <title>Pagamento</title>
     <%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
     <link rel="stylesheet" href="stili/Pagamento.css">
+    
     <link rel="stylesheet" href="stili/footer.css" />
     <% 
     	UserBean user = (UserBean) request.getSession().getAttribute("user");

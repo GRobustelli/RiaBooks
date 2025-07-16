@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <%@include file="header.jsp" %>
     <title>Carrello</title>
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
     <link rel="stylesheet" type="text/css" href="stili/Carrello.css" />
@@ -19,7 +20,6 @@
 %>
 
 	<div>
-	<br>
     <a href="home.jsp" class="back-button-empty">Il carrello è vuoto, torna alla home.</a>
     
 	</div>

@@ -4,9 +4,11 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <%@include file="header.jsp" %>
     <title>Login</title>
     <link rel="stylesheet" href="stili/Login.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
+    <link rel="stylesheet" href="stili/header.css"> 
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>

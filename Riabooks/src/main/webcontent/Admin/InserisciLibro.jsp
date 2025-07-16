@@ -4,18 +4,21 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <%@include file="../header.jsp" %>
     <title>Inserisci Libro</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/InserisciLibro.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/InserisciLibro.css"> 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/Register.css">
+    
 </head>
 <body>
 
-<a href="AdminHome.jsp" class="back-button">Torna alla home</a>
-
-<form enctype="multipart/form-data" action="../LibriControl" method="post" class="form-inserimento">
+    <a href="home.jsp" class="back-button">Torna alla home</a>
     <h2>Inserisci Libro</h2>
-
-    <label for="id">ID:</label>
+    <main class="form-inserimento"> <!-- Nota: uso form-wrapper -->
+    	<form action="../LibriControl" method="post">
+          <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 
     <label for="titolo">Titolo:</label>
@@ -35,11 +38,12 @@
 
     <label for="immagine">Immagine:</label>
     <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255">
-    
-	 <input type = "hidden" name = "action" value = "do_upload">
-    
-    <input type="submit" value="Inserisci Libro">
-    
+		
+		<input type = "hidden" name = "action" value = "do_upload">
+        
+        <input type="submit" value="Inserisci Libro">
+    </form>
+    </main>
    
 </form>
 

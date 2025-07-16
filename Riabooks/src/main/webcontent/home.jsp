@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%
@@ -16,18 +15,16 @@
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,unisa.LibroBean,unisa.UserBean"%>
 <head>
     <meta charset="UTF-8">
+    <%@include file="header.jsp" %>
     <title>Riabooks</title>
     <link rel="stylesheet" type="text/css" href="stili/Stile_navigation.css">
     <link rel="stylesheet" type="text/css" href="stili/footer.css" />
     <link rel="stylesheet" type="text/css" href="stili/home.css" />
+    <link rel="stylesheet" type="text/css" href="stili/header.css">
 </head>
 <body>
 
-  <div id="logo">Riabooks</div>
-   <header id="main-header">
-        <div class="logo">
-            <h1>Riabooks</h1>
-        </div>
+  
 
         <nav id="princ">
             <ul>
