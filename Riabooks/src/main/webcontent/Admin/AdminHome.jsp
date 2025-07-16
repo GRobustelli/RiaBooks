@@ -81,7 +81,7 @@
                %>
                    <div>
                    <br>
-                       <div class="book-item">
+                       <div class="book-item" id = "it_<%=bean.getId() %>" >
            <img alt="Libro" src="Immretrievecont?id=<%=bean.getId()%>" onerror = "/images/default_libro.png">
            <div class="book-details">
                <div class="text-overlay">
@@ -91,7 +91,7 @@
                <div><%=bean.getPrezzo() %></div>
                <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">
                Aggiungi al carrello</button>
-               <button class="remove-to-catalogue">Rimuovi dal catalogo</button>
+               <button class="remove-to-catalogue" onclick="rimuovidalCatalogo('<%= bean.getId() %>')">Rimuovi dal catalogo</button>
                
                
            </div>
@@ -103,7 +103,7 @@
 
                <% } }%>
            </div>
-
+			<script type="text/javascript" src="scripts/funzioniadminhome.js" defer></script>
            <script type="text/javascript" src="scripts/funzioni.js" defer></script>
            <%@include file="/footer.jsp" %> 
 

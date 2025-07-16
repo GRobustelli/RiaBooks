@@ -78,7 +78,7 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
-		
+				bean.setMostra(rs.getBoolean("mostra"));
 			}
 				
 			System.out.println("dopo il doretrieveNyKey: " + bean.getId());
@@ -154,8 +154,11 @@ public class LibroDaoDriverMan implements ILibroDAO{
 				bean.setPrezzo(rs.getFloat("prezzo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setCategoria(rs.getString("categoria"));
+				bean.setMostra(rs.getBoolean("mostra"));
 				
-				libri.add(bean);
+				if (bean.isMostra()) {
+				libri.add(bean);}
+				
 			}
 
 		} finally {
@@ -228,6 +231,37 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	}
 		return (result != 0);
 		
+	}
+
+
+	@Override
+	public boolean doUpdatemostra(String codice, boolean update) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+			
+		int result = 0;
+		
+		String selectSQL = "UPDATE Libro SET mostra = ? WHERE id = ?";
+			
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setBoolean(1, update);
+			preparedStatement.setString(2, codice);
+			
+			result = preparedStatement.executeUpdate();
+			
+		} finally {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} 
+		finally {
+			dmcp.releaseConnection(connection);
+		}
+		
+	}
+		return (result != 0);
 	}
 	}
 

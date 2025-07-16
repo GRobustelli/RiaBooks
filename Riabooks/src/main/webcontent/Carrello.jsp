@@ -14,6 +14,13 @@
 
 <%
     Cart cart = (Cart) request.getSession().getAttribute("cart");
+	Iterator<LibroBean> iteratore = cart.getLibri().iterator();
+	while(iteratore.hasNext()){
+		LibroBean doDelete = iteratore.next();
+		if (!doDelete.isMostra()){
+			cart.deleteLibro(doDelete);
+		}
+	}
 	
     if (cart == null || cart.getLibri() == null || cart.isEmpty()) {
 %>

@@ -141,6 +141,34 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 		}
 	}return (result != 0);
 	}
+
+	@Override
+	public synchronized boolean doDeleteAllD(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+			
+		int result = 0;
+		
+		String selectSQL = "DELETE FROM " + ContieneDaoDriverMan.TABLE_NAME + " WHERE libro_id = ?";
+			
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, id);
+			
+			result = preparedStatement.executeUpdate();
+			
+		} 
+		finally {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} finally {
+			dmcp.releaseConnection(connection);
+		}
+	}return (result != 0);
+	}
 	
 
 

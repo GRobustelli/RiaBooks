@@ -61,6 +61,8 @@ public class CartControl extends HttpServlet {
 				if (action.equals("svuota")){
 					carrello.deleteAll();
 					if (utente != null) {
+						
+						System.out.println("Dopo la delete all \n\n");
 						cont.doDeleteAll(utente.getEmail());
 						
 					}
