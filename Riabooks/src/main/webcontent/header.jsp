@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header>RiaBooks</header>
+<!-- <header>RiaBooks</header> -->
 </body>
 </html>
