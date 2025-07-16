@@ -174,18 +174,19 @@ public class LibroDaoDriverMan implements ILibroDAO{
 
 
 	@Override
-	public synchronized boolean doUpdate(String codice, double prezzo) throws SQLException {
+	public synchronized boolean doUpdate(String codice, float prezzo) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 			
 		int result = 0;
 		
-		String selectSQL = "UPDATE Libro SET prezzo = "+ prezzo + "FROM " + LibroDaoDriverMan.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "UPDATE Libro SET prezzo = ? WHERE id = ?";
 			
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, codice);
+			preparedStatement.setFloat(1, prezzo);
+			preparedStatement.setString(2, codice);
 			
 			result = preparedStatement.executeUpdate();
 			
@@ -210,12 +211,13 @@ public class LibroDaoDriverMan implements ILibroDAO{
 			
 		int result = 0;
 		
-		String selectSQL = "UPDATE Libro SET " + modifica + "= "+ update + " FROM " + LibroDaoDriverMan.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "UPDATE Libro SET " + modifica + "= ? WHERE id = ?";
 			
 		try {
 			connection = dmcp.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, codice);
+			preparedStatement.setString(1, update);
+			preparedStatement.setString(2, codice);
 			
 			result = preparedStatement.executeUpdate();
 			
