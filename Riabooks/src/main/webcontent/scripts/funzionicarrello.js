@@ -97,6 +97,7 @@ function rimuoviElemento(id) {
 			const risposta = ajaxvar.responseText;
 				
 			if (risposta.trim() === "true"){
+				console.log("Io qui ci arrivo");
 				document.getElementById("totale-container").style.display = "none";
 				document.getElementById("carrello_svuotato").hidden = false;
 			}

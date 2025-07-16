@@ -55,6 +55,7 @@ public class ImmUpdateCont extends HttpServlet {
 		
 		
 		String libro_id = request.getParameter("id");
+		
 		for (Part part : request.getParts()) {
 		
 			String fileName = part.getSubmittedFileName();

@@ -41,8 +41,8 @@
 </head>
 <body>
 
-  
-
+        
+        
         <nav id="princ">
             <ul>
                
@@ -64,8 +64,7 @@
                        <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
                    </ul>
                </nav>
-           </header>
-
+ 
 
 
            <div>
@@ -87,8 +86,8 @@
                <div><%=bean.getAutore() %></div>
                <div><%=bean.getDescrizione() %></div>
                <div><%=bean.getPrezzo() %></div>
-               <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">
-               Aggiungi al carrello</button>
+               <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">Aggiungi al carrello</button>
+               <a href="modificalibro.jsp?libro_id=<%=bean.getId()%>"><button>Modifica prodotto</button></a>
                <button class="remove-to-catalogue" onclick="rimuovidalCatalogo('<%= bean.getId() %>')">Rimuovi dal catalogo</button>
                
                

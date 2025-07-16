@@ -48,7 +48,6 @@ public class CartControl extends HttpServlet {
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		IContieneDAO cont = new ContieneDaoDriverMan(dm);
 		ILibroDAO libro = new LibroDaoDriverMan(dm);
-		
 		UserBean utente = (UserBean) request.getSession().getAttribute("user");
 
 		String action = request.getParameter("action");
@@ -100,10 +99,11 @@ public class CartControl extends HttpServlet {
 					
 					if (utente != null) {
 						
-						cont.doDeleteOne(libro_id, utente.getEmail());
+						cont.doDeleteOne(libro_id, utente.getEmail()); 
 						
 					}
 					if (carrello.isEmpty()) {
+						System.out.println("Qui funziona");
 						response.setContentType("text/plain");
 						response.getWriter().write("true");
 						return;

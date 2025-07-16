@@ -14,10 +14,11 @@
 </head>
 <body>
 
-    <a href="home.jsp" class="back-button">Torna alla home</a>
+    <a href="AdminHome.jsp" class="back-button">Torna alla home</a>
+    
     <h2>Inserisci Libro</h2>
     <main class="form-inserimento"> <!-- Nota: uso form-wrapper -->
-    	<form action="../LibriControl" method="post">
+    	<form enctype="multipart/form-data" action="../LibriControl" method="post">
           <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 
@@ -37,15 +38,16 @@
     <input type="text" id="categoria" name="categoria" required>
 
     <label for="immagine">Immagine:</label>
-    <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255">
+    <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255" required>
 		
 		<input type = "hidden" name = "action" value = "do_upload">
         
         <input type="submit" value="Inserisci Libro">
     </form>
+    
     </main>
    
-</form>
+
 
 <%  
     List<String> errors = (List<String>) request.getAttribute("errors");
