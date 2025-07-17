@@ -42,6 +42,7 @@
                 <span class="user-name"><%= user.getNome() + " " + user.getCognome() %></span> 
                 </div>
                 
+                
               <form action="OrdiniControl">
                   <input type="hidden" name="action" value="ordini">
               <input type="submit" value = "Riepilogo Ordini"> </form>
@@ -54,7 +55,7 @@
                
             </ul>
         </nav>
-    </header>
+    
 
     
     <div>
