@@ -94,6 +94,31 @@ input.quantita {
     display: inline-block;
 }
 
+.rimuoviElemento{
+        font-family: Consolas, sans-serif;
+            background-color: #dc3545;
+            color: white;
+            padding: 6px 12px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+.rimuoviElemento:hover {
+            background-color: #a71d2a;
+            transform: scale(1.03);
+        }
+
+.rimuoviElemento:active {
+            background-color: #dc3545;
+            transform: scale(0.98);
+        }
+        
+
+
+
 .svuota-button:hover {
     background-color: #0056b3;
 }

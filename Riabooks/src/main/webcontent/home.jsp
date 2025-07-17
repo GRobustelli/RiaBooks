@@ -48,7 +48,7 @@
                   <input type="hidden" name="action" value="ordini">
               <input type="submit" value = "Riepilogo Ordini"> </form>
               
-                 <li><a href="LogoutServlet"><button type="button">Logout</button></a></li>
+                 <li><a href="LogoutServlet"><button type="button" class="logout">Logout</button></a></li>
                 <%} %>
                 
                <li><a href="CartControl?action=prezzi"><button type="button">Carrello</button></a></li>

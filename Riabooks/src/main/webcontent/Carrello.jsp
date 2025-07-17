@@ -50,7 +50,7 @@
                
                 <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
-                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"> Rimuovi</button>
+                <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"class="rimuoviElemento"> Rimuovi</button>
             </div>
         </div>
 
