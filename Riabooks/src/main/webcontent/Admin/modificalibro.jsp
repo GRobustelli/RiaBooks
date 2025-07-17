@@ -24,16 +24,13 @@
 <body>
 		
 		 <div>
-		 	<!-- Su questa ci sto ancora pensando
-		 	<form action="${pageContext.request.contextPath}/ImmUpdateCont" method = "post" enctype = "multipart/form-data">
+		 	<form action="${pageContext.request.contextPath}/modificalibro" method = "post" enctype = "multipart/form-data"> 
+		 		
+		    <input type= "hidden" name = libro_id value = <%=libro.getId() %>>
+		 	<input type= "hidden" name = "modaction" value = "do_mod">
 		 	
-		 	<img alt="Libro" src="Immretrievecont?id=<//%//=libro.getId()%>" onerror = "/images/default_libro.png">
-		 	
-		 	 <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255" required>
-		 	<input type = "submit" value ="cambia immagine">
-		 	</form>
-		 	 -->
-		 	<form action="${pageContext.request.contextPath}/modificalibro" method="get"> 
+		 	<img alt="Libro" src="Immretrievecont?id=<%=libro.getId()%>" onerror = "/images/default_libro.png">
+		 	<input type="file" accept="image/*" name = "talkImage" value="" maxlength="255">
 		 	
 		 	<div>Vecchio titolo: <%=libro.getTitolo() %></div> 
 		 	<div><label for="titolo">Nuovo titolo: </label> <input type="text" id="titolo" name="titolo"></div>
@@ -51,8 +48,7 @@
 		 	<div>Vecchio prezzo: <%=libro.getPrezzo() %> </div>
 		 	<div><label for="prezzo">Nuovo prezzo:</label> <input type="number" id="prezzo" name="prezzo" step="0.01"></div>
 		 	
-		 	<input type= "hidden" name = libro_id value = <%=libro.getId() %>>
-		 	<input type= "hidden" name = action value = "do_mod">
+		 
 			
 			<input type = "submit" value = "Conferma modifiche">
 			</form>			 		

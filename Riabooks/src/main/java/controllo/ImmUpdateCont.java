@@ -52,6 +52,31 @@ public class ImmUpdateCont extends HttpServlet {
 		
 		IImmagineDAO dao = new ImmagineDaoDriverMan(dm);
 		
+		String modaction = request.getParameter("modaction");
+		
+		if (modaction != null) {
+			
+			if (modaction.equals("do_mod")) {
+				String libro_id = request.getParameter("libro_id");
+				
+				for (Part part : request.getParts()) {
+				
+					String fileName = part.getSubmittedFileName();
+					if (fileName != null && !fileName.equals("")) {
+						try {
+						
+							dao.updateImm(libro_id, part.getInputStream());
+							
+						}catch (SQLException sqlException) {
+							System.out.println(sqlException);
+							}
+						}
+
+					}	
+				response.sendRedirect(request.getContextPath() + "/Admin/AdminHome.jsp");
+				return;
+			}			
+		}
 		
 		
 		String libro_id = request.getParameter("id");

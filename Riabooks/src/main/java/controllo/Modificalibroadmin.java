@@ -2,6 +2,7 @@ package controllo;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +20,9 @@ import java.sql.SQLException;
  * Servlet implementation class modificalibro
  */
 @WebServlet("/modificalibro")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class Modificalibroadmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,17 +38,25 @@ public class Modificalibroadmin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		System.out.println("\n\nSto nella servlet modificalibro");
 		
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		ILibroDAO libro = new LibroDaoDriverMan(dm);
+		
 		System.out.println("\n\nCi arrivo almeno?");
+		
 		String action = request.getParameter("action");
+		String modaction = request.getParameter("modaction");
 		UserBean  user = (UserBean)request.getSession().getAttribute("user");
 	
 		if (user != null) {
 			if (user.isAdmin()) {
+				
+					System.out.println("\n Sto prima degli equals di action in modificalibro" + modaction);
 				if (action != null) {
+				
+					
 				if (action.equals("invio")) {
 					
 					String id = request.getParameter("libro_id");
@@ -67,7 +79,12 @@ public class Modificalibroadmin extends HttpServlet {
 					
 					
 				}
-				if (action.equals("do_mod")) {
+			
+				
+			}
+				
+				if (modaction != null) {
+					if (modaction.equals("do_mod")) {
 					
 					String titolo = request.getParameter("titolo");
 					String autore = request.getParameter("autore");
@@ -90,18 +107,19 @@ public class Modificalibroadmin extends HttpServlet {
 					
 					if (prezzo >0 ) {libro.doUpdate(libro_id, prezzo);}
 					
+					getServletContext().getRequestDispatcher("/ImmUpdateCont").forward(request, response);
+					
 					} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					
-					response.sendRedirect(request.getContextPath() + "/Admin/AdminHome.jsp");
+			
 					
 				}
-				
+		}
+		}
 			}
-		}
-		}
 		
 		
 	}

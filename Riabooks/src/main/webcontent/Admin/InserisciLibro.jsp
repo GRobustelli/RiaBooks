@@ -17,7 +17,7 @@
     <a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Torna alla home</a>
 	<h2>Inserisci Libro</h2>
     <main class="form-inserimento"> 
-    <form enctype="multipart/form-data" action="../LibriControl" method="post">
+    <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/LibriControl" method="post">
     <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 
@@ -37,7 +37,7 @@
     <input type="text" id="categoria" name="categoria" required>
 
     <label for="immagine">Immagine:</label>
-    <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255" required>
+    <input type="file" accept="image/*" name = "talkImage" value="" maxlength="255">
 		
 		<input type = "hidden" name = "action" value = "do_upload">
         
