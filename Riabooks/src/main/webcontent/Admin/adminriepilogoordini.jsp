@@ -29,12 +29,20 @@ if (bean == null || !bean.isAdmin()){
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Riepilogo ordini</title>
+
+<link rel="stylesheet" type="text/css" href="stili/footer.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/RiepilogoOrdini.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/header.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/adminriepilogoordini.css" /> 
 </head>
 <body>
-	<div>
+	
+	<div>	
 		   <nav id="princ">
            <ul>   
+           
            		<li>Data inizio: <input type = "date" id = "start" onchange="controlloDate()"> </li>
            		<li>Data fine: <input type = "date" id = "end" onchange="controlloDate()"> </li>
            		<li>Utente:  <input type = text id = "utente"></li>
@@ -53,11 +61,12 @@ if (bean == null || !bean.isAdmin()){
 			OrdineBean ord = ordit.next();
 			
 			%>
-		
-			<div class= "box" id = <%=ord.getId() %>>
+		<div class="book-details">
+    	<div class="text-overlay">
+			
 			<div><strong>Id Ordine:</strong> <%= ord.getId() %> email: <span class = "email" id = e_<%=ord.getId() %>><%=ord.getEmail() %></span></div>
-			
-			
+			</div>
+			</div>
 			<% 
 			
 			while (ord.getId() == rif.getOrdine_id() && !controllo){
@@ -66,10 +75,16 @@ if (bean == null || !bean.isAdmin()){
 						
 						%>
 							
+   <div class="book-details">
+    	<div class="text-overlay">
+    			
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=rif.getQuantita() %></span> <br>
 							<span>Prezzo: <%=rif.getPrezzo() %></span> <br>
 							<span>**********************************************</span> <br>
+						
+						</div>
+			</div>
 						
 						<% 
 						break;}
@@ -84,12 +99,19 @@ if (bean == null || !bean.isAdmin()){
 				
 			}
 			%> 
+			
+    				
+    				<div class="book-details">
+    	<div class="text-overlay">
 			<span> Data: <span class = data id =p_<%=ord.getId() %>><%= ord.getData() %></span></span>
 			<span> Importo totale: <%=ord.getImporto()%> </span>
-		</div>
+			</div>
+			</div>
+				
 	<%  }}} %>	
 
 	<script type="text/javascript" src="scripts/funzioniadordini.js" defer></script>
+	<%@ include file="/footer.jsp" %>
 </body>
 
 </html>

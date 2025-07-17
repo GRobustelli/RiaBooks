@@ -1,0 +1,215 @@
+body {
+    font-family: Consolas, sans-serif;
+    background: url("../images/sfondo.jpg") repeat;
+    background-size: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+input[type="submit"] {
+	font-family: Consolas, sans-serif;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#princ {
+    background-color: rgba(51, 51, 51, 0.8);
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#princ ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* aumenta il gap tra gli elementi */
+    align-items: center;
+}
+
+#princ li {
+    display: flex;
+    align-items: center;
+}
+
+/* Area utente */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-right: 15px;
+    position: allign;
+    }
+
+.user-name {
+    font-weight: bold;
+    color: #007bff;
+    
+}
+
+.user-area form {
+    margin: 0;
+}
+
+/* Bottoni */
+#princ a button,
+.user-area button,
+.user-area input[type="submit"] {
+	font-family: Consolas, sans-serif;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    margin: 0; /* elimina margini inutili sui bottoni */
+}
+
+#princ a button:hover,
+.user-area button:hover,
+.user-area input[type="submit"]:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+.user-area {
+	font-family: Consolas, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.user-area form {
+    margin: 0;
+}
+
+#filtro ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(51, 51, 51, 0.4);
+    display: flex;
+    gap: 10px;
+}
+
+#filtro li {
+    padding: 10px 20px;
+    background-color: #999;
+    color: white;
+    border-radius: 5px;
+}
+
+#filtro li:hover {
+    background-color: #666;
+}
+
+.add-to-cart {
+	font-family: Consolas, sans-serif;
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;      
+    font-size: 14px;       
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+.add-to-cart {
+    align-self: flex-start;
+}
+
+.add-to-cart:active {
+    background-color: #007bff;
+    transform: scale(0.98);
+}
+
+.book-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px;
+  gap: 20px;
+}
+
+.book-item img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.book-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.book-details .text-overlay {
+  background-color: rgba(255, 255, 255, 0.8); /* box bianco semi‑trasparente */
+  
+  border-radius: 5px;
+}
+
+.book-details .text-overlay div {
+  margin-bottom: 5px;
+  
+  color: #222;
+}
+
+
+
+div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #73AD21;
+}

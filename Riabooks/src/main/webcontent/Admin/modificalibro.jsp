@@ -18,6 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <%@include file="../header.jsp" %>
     <title>Modifica libro</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/InserisciLibro.css"> 
