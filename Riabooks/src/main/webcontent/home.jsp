@@ -39,7 +39,8 @@
                 <% } else {%>
                 
                 <li> <div class="user-area">
-                <span class="user-name"><%= user.getNome() + " " + user.getCognome() %></span> 
+                <span class="user-name">Utente:
+                <%= user.getNome() + " " + user.getCognome() %></span> 
                 </div>
                 
                 

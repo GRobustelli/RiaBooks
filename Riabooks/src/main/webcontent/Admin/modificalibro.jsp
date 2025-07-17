@@ -18,12 +18,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Modifica libro</title>
+<%@include file="../header.jsp" %>
+    <title>Modifica libro</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/InserisciLibro.css"> 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/Register.css">
+
 </head>
 
 <body>
-		
-		 <div>
+			<a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Torna alla home</a>
+			<h2>Modifica Libro</h2>
+    		<main class="form-inserimento"> 
+			<div>
 		 	<form action="${pageContext.request.contextPath}/modificalibro" method = "post" enctype = "multipart/form-data"> 
 		 		
 		    <input type= "hidden" name = libro_id value = <%=libro.getId() %>>
@@ -53,6 +61,7 @@
 			<input type = "submit" value = "Conferma modifiche">
 			</form>			 		
 		 </div>
+		</main>
 		
 	
 <%} %>
