@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <a href="AdminHome.jsp" class="back-button">Torna alla home</a>
+    <a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Torna alla home</a>
 	<h2>Inserisci Libro</h2>
     <main class="form-inserimento"> 
     <form enctype="multipart/form-data" action="../LibriControl" method="post">

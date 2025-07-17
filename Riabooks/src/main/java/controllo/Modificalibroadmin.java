@@ -95,6 +95,8 @@ public class Modificalibroadmin extends HttpServlet {
 							e.printStackTrace();
 						}
 					
+					response.sendRedirect(request.getContextPath() + "/Admin/AdminHome.jsp");
+					
 				}
 				
 			}
