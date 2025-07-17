@@ -33,7 +33,7 @@
  List<String> errors = (List<String>) request.getAttribute("errors");
 if (errors != null){
 	for (String error: errors){ %>
-		<%=error %> <br>		
+	<span class="error"> <%=error %> </span>	<br>
 	<%
 	}
 }

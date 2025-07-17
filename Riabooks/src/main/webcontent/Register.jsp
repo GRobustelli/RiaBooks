@@ -14,7 +14,7 @@
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>
     <h2>Registrazione</h2>
-    <main class="form-wrapper"> <!-- Nota: uso form-wrapper -->
+    <main class="form-wrapper"> 
     	<form action="RegisterServlet" method="post">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required><br><br>
@@ -41,7 +41,7 @@
  List<String> errors = (List<String>) request.getAttribute("errors");
 if (errors != null){
 	for (String error: errors){ %>
-		<%=error %> <br>		
+		<span class="error"> <%=error %> </span> <br>		
 	<%
 	}
 }

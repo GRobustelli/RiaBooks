@@ -9,6 +9,8 @@
     <title>Pagamento</title>
     <%@ page import="java.util.*, unisa.LibroBean, unisa.Cart" %>
     <link rel="stylesheet" href="stili/Pagamento.css">
+    <link rel="stylesheet" href="stili/Register.css">
+    <link rel="stylesheet" href="stili/header.css">
     
     <link rel="stylesheet" href="stili/footer.css" />
     <% 
@@ -24,8 +26,10 @@
 </head>
 <body>
 	<a href="home.jsp" class="back-button">Torna alla home</a>
-    <form action="OrdiniControl" method="post" class="form-pagamento">
-        <h2>Dati di pagamento</h2>
+	<h2>Dati di pagamento</h2>
+	<main class="form-wrapper">
+    <form action="OrdiniControl" method="post"> 
+        
 
         <label for="intestatario">Nome e Cognome Intestatario</label>
         <input type="text" id="intestatario" name="intestatario" required 
@@ -50,6 +54,8 @@
         <input type="submit" value="Effettua pagamento">
         <input type = "text" name ="impTot" style= "display:none;" value = <%=request.getParameter("impTot")%>>
         
+        
+        
         <%	
         	Cart cart  = (Cart) request.getSession().getAttribute("cart");
         		
@@ -71,6 +77,7 @@
         	<input type = "hidden" name = "action" value = "insert">
     	
     </form>
+</main>
 
     <jsp:include page="footer.jsp" />
 

@@ -7,7 +7,9 @@ body {
     min-height: 100vh;
 }
 
-
+span.error {
+   text-align: center;
+}
 
 .back-button {
     position: fixed;
