@@ -32,6 +32,21 @@ if (bean == null || !bean.isAdmin()){
 <title>Riepilogo ordini</title>
 </head>
 <body>
+	<div>
+		   <nav id="princ">
+           <ul>   
+           		<li>Data inizio: <input type = "date" id = "start" onchange="controlloDate()"> </li>
+           		<li>Data fine: <input type = "date" id = "end" onchange="controlloDate()"> </li>
+           		<li>Utente:  <input type = text id = "utente"></li>
+           		<li><button onclick = "doFilter()">Filtra</button></li>
+           		<li><input type = "reset" value  = "Azzera" onclick = "Azzera()"></li>
+           </ul>
+        </nav>
+			
+		
+	</div>
+	
+
 	<% 
 		while (ordit.hasNext()){
 		
@@ -39,8 +54,8 @@ if (bean == null || !bean.isAdmin()){
 			
 			%>
 		
-		
-			<div><strong>Id Ordine:</strong> <%= ord.getId() %> <span>email: </span><%=ord.getEmail() %></div>
+			<div class= "box" id = <%=ord.getId() %>>
+			<div><strong>Id Ordine:</strong> <%= ord.getId() %> email: <span class = "email" id = e_<%=ord.getId() %>><%=ord.getEmail() %></span></div>
 			
 			
 			<% 
@@ -48,6 +63,7 @@ if (bean == null || !bean.isAdmin()){
 			while (ord.getId() == rif.getOrdine_id() && !controllo){
 				for (LibroBean libro : libcoll){
 					if (libro.getId().equals(rif.getLibro_id())){
+						
 						%>
 							
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
@@ -68,12 +84,12 @@ if (bean == null || !bean.isAdmin()){
 				
 			}
 			%> 
-			<span> Data: <%= ord.getData() %></span>
+			<span> Data: <span class = data id =p_<%=ord.getId() %>><%= ord.getData() %></span></span>
 			<span> Importo totale: <%=ord.getImporto()%> </span>
-		
+		</div>
 	<%  }}} %>	
 
-	
+	<script type="text/javascript" src="scripts/funzioniadordini.js" defer></script>
 </body>
 
 </html>
