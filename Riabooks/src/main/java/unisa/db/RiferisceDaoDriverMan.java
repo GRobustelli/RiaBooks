@@ -92,4 +92,41 @@ public class RiferisceDaoDriverMan implements IRiferisceDAO{
 		return rif;
 	}
 
+
+	@Override
+	public synchronized Collection<RiferisceBean> doRetrieveAll() throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Collection<RiferisceBean> rif = new  LinkedList<RiferisceBean>();
+		
+		String selectSQL = "SELECT * FROM " + RiferisceDaoDriverMan.TABLE_NAME + " ORDER BY ordine_id";
+		
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RiferisceBean bean = new RiferisceBean();
+				bean.setOrdine_id(rs.getInt("ordine_id"));
+				bean.setLibro_id(rs.getString("libro_id"));
+				bean.setQuantita(rs.getInt("quantita"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				rif.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				dmcp.releaseConnection(connection);
+			}
+		}
+		return rif;
+	}
+
 }

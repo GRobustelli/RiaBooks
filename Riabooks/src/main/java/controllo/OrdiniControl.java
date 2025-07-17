@@ -89,7 +89,13 @@ public class OrdiniControl extends HttpServlet {
 				if (action.equals("ordini")) {
 					
 					if (user != null && user.isAdmin()) {
-						//fai qualcosa di bello
+						System.out.println("Stiamo in doretrieve all di ordini control per admin");
+						
+						Collection<OrdineBean> adcollord = ord.doRetrieveAll("id");
+						
+						request.setAttribute("adcollord", adcollord);
+						getServletContext().getRequestDispatcher("/RiferisceControl").forward(request, response);
+						
 					}
 					else if (user != null) {
 						System.out.println("stiamo prima di doRetrieveall in ordinecontrol");

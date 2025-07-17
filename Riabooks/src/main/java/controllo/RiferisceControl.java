@@ -85,7 +85,14 @@ public class RiferisceControl extends HttpServlet {
 			
 					UserBean user = (UserBean) request.getSession().getAttribute("user");
 					if (user != null && user.isAdmin()) {
-						//fai qualcosa di bello
+						
+						System.out.println("Mi trovo in ordini riferiscecontrol sezione admin");
+						
+						Collection<RiferisceBean> rifadmin = (Collection<RiferisceBean>) rif.doRetrieveAll();
+						
+						request.setAttribute("rifadmin", rifadmin);
+						getServletContext().getRequestDispatcher("/LibriControl").forward(request, response);
+						
 					}
 					else if (user != null) {
 						Collection<OrdineBean> ordColl = (Collection<OrdineBean>)request.getAttribute("collOrd");

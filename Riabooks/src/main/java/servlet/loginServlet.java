@@ -52,7 +52,7 @@ public class loginServlet extends HttpServlet {
 		List<String> errors = new ArrayList<>();
     	RequestDispatcher dispatcherToLoginPage = request.getRequestDispatcher("Login.jsp");
     	if(email == null || email.trim().isEmpty()) {
-			errors.add("Il campo username non può essere vuoto!");
+			errors.add("Il campo email non può essere vuoto!");
 
 		}
         if(password == null || password.trim().isEmpty()) {
@@ -82,7 +82,7 @@ public class loginServlet extends HttpServlet {
 			{
 				
 				System.out.println("\n\npassword sbagliata");
-				errors.add("Username o password non corretti");
+				errors.add("Email o password non corretti");
 				request.setAttribute("errors", errors);
 				dispatcherToLoginPage.forward(request, response);
 				

@@ -265,6 +265,50 @@ public class LibroDaoDriverMan implements ILibroDAO{
 	}
 		return (result != 0);
 	}
+	
+	public synchronized Collection<LibroBean> doRetrieveAllAdmin() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<LibroBean> libri = new LinkedList<LibroBean>();
+
+		String selectSQL = "SELECT * FROM " + LibroDaoDriverMan.TABLE_NAME;
+
+		try {
+			connection = dmcp.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				LibroBean bean = new LibroBean();
+				
+				bean.setId(rs.getString("id"));
+				bean.setTitolo(rs.getString("titolo"));
+				bean.setAutore(rs.getString("autore"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setCategoria(rs.getString("categoria"));
+				bean.setMostra(rs.getBoolean("mostra"));
+				
+				libri.add(bean);
+				
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				dmcp.releaseConnection(connection);
+			}
+		}
+		return libri;
+	}
+	
+	
+	
+	
 	}
 
 

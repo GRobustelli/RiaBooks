@@ -14,7 +14,7 @@
 <%@ page import="java.util.*, unisa.LibroBean, unisa.RiferisceBean,unisa.UserBean,unisa.OrdineBean" %>
 </head>
 <body>
-	<a href="home.jsp" class="back-button">Non ci sono ordini, torna alla home</a>
+	<a href="home.jsp" class="back-button">Torna alla home</a>
 		<br>
 		<br>
 		<br>
@@ -58,6 +58,7 @@
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=riferimento.getQuantita() %></span> <br>
 							<span>Prezzo: <%=riferimento.getPrezzo() %></span> <br>
+							<span>**********************************************</span> <br>
 						<%
 						break;
 						}

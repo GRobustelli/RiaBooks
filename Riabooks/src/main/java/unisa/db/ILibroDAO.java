@@ -19,6 +19,6 @@ public interface ILibroDAO {
 	public boolean doUpdatemostra(String codice, boolean update) throws SQLException;
 	public Collection<LibroBean> doRetrieveAll(String order) throws SQLException;
 
-
+	public Collection<LibroBean> doRetrieveAllAdmin() throws SQLException;
 
 }

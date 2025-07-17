@@ -179,7 +179,7 @@ public class LibriControl extends HttpServlet {
 				 
 				}
 				
-			if (action.equals("ordini")) {
+			if (action.equals("ordini") && !user.isAdmin()) {
 				ArrayList<Collection<RiferisceBean>> bigList = (ArrayList<Collection<RiferisceBean>>) request.getAttribute("bigList");
 				Iterator<Collection<RiferisceBean>> it = bigList.iterator();
 				while (it.hasNext()) {
@@ -202,6 +202,19 @@ public class LibriControl extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/RiepilogoOrdini.jsp");
 				dispatcher.forward(request, response);
 				
+			}else if (action.equals("ordini") && user.isAdmin()) {
+				
+				System.out.println("Sono in libri control ordini admin");
+				
+				try {
+					Collection<LibroBean> libriad = (Collection<LibroBean>) libro.doRetrieveAllAdmin();
+					request.setAttribute("libriad", libriad);
+				
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				getServletContext().getRequestDispatcher("/Admin/adminriepilogoordini.jsp").forward(request, response);
 			}
 			
 		}
