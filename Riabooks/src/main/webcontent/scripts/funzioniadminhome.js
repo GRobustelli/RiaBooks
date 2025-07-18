@@ -25,10 +25,47 @@ function createXMLHttpRequest() {
 
 function rimuovidalCatalogo (id){
 	
-	const it = "it_" + id;
-	document.getElementById(it).style.display = 'none';
+	const actual = "rim_" + id;
+	const nuovo = "add_" + id;
+	console.log(actual + " " + nuovo)
+	document.getElementById(actual).hidden = true;
+	document.getElementById(nuovo).hidden= false;
+	
 	var ajaxvar = createXMLHttpRequest();
-	const url = "LibriControl?action=delCatalogo&libro_id=" + id;
+	const url = "LibriControl?valore=false&action=modCatalogo&libro_id=" + id;
+	ajaxvar.open("GET", url, true)
+			console.log("ho aperto la connessione ");
+
+			console.log("Sto inviando la request")	
+			ajaxvar.send();
+			
+			ajaxvar.onreadystatechange = function () {
+				  if (ajaxvar.readyState === 4 && ajaxvar.status === 200) {
+				    console.log("Risposta: ce l'abbiamo fatta?");
+					const risposta = ajaxvar.responseText;
+					if (risposta.trim() === "true"){
+						console.log("non pianger");}
+					else{
+						console.log("pianger");
+					}	
+	
+				}
+			}
+}
+
+
+function aggiungialCatalogo (id){
+	
+	const actual = "add_" + id;
+	const nuovo = "rim_" + id;
+		
+	console.log(actual + " " + nuovo)
+	document.getElementById(actual).hidden = true;
+	document.getElementById(nuovo).hidden= false;
+	
+	var ajaxvar = createXMLHttpRequest();
+	
+	const url = "LibriControl?valore=true&action=modCatalogo&libro_id=" + id;
 	ajaxvar.open("GET", url, true)
 			console.log("ho aperto la connessione");
 

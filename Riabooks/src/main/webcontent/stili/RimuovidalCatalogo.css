@@ -26,6 +26,30 @@ body {
             transform: scale(0.98);
         }
         
+		.add-to-catalogue {
+        font-family: Consolas, sans-serif;
+            background-color: #2ECC40;
+            color: white;
+            padding: 6px 12px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .add-to-catalogue:hover {
+            background-color: #008000;
+            transform: scale(1.03);
+        }
+
+        .add-to-catalogue:active {
+            background-color: #2ECC40;
+            transform: scale(0.98);
+        }
+        
+        
+        
         .modify-item {
         font-family: Consolas, sans-serif;
             background-color: #2ECC40;

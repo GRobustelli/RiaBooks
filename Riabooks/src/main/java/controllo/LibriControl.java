@@ -55,8 +55,17 @@ public class LibriControl extends HttpServlet {
 		UserBean user = (UserBean) request.getSession().getAttribute("user");
 		
 		try {
+			if (user!= null)
+			{
+				if (user.isAdmin()) {
+					request.setAttribute("libri", libro.doRetrieveAllAdmin());
+				}
+				else {
+					request.setAttribute("libri", libro.doRetrieveAll(null));
+				}
+			}else {
 			request.setAttribute("libri", libro.doRetrieveAll(null));
-	
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,26 +78,37 @@ public class LibriControl extends HttpServlet {
 		System.out.println("Siamo dopo aver preso action che ha valore: " + action);
 		
 		ArrayList<LibroBean> libriord = new ArrayList<>();
-		System.out.println("\n\nSto nella servlet LibriControl prima degli if");
+		System.out.println("\n\nSto nella servlet LibriControl prima degli if" + action);
 		
 		
 		if(action != null)
 		{
 			
-			System.out.println("\n\n All'interno di action = delcatalogo\n\n");
-			if(action.equals("delCatalogo") && user.isAdmin()) {
-				
-				
+			
+			if(action.equals("modCatalogo") && user.isAdmin()) {
 				
 				String libro_id = request.getParameter("libro_id");
+				String valore = request.getParameter("valore");
 				
 				try {
-					if (libro_id != null) {
-					if (libro.doUpdatemostra(libro_id,false)) {
-						cont.doDeleteAllD(libro_id);
+					if (libro_id != null && valore != null) {
 					
 						
-					}}else {
+					if (valore.equals("false")) {
+						
+						if (libro.doUpdatemostra(libro_id,false)) {
+							cont.doDeleteAllD(libro_id);} 							
+					}
+					else {
+						if (libro.doUpdatemostra(libro_id,true)) {
+							System.out.println("daglie roma daglie yahahahahooo");
+						}
+					}
+						
+					
+					
+					
+					}else {
 						System.out.println("Piangi e disperati");
 					}
 					

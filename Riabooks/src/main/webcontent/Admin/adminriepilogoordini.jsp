@@ -61,6 +61,7 @@ if (bean == null || !bean.isAdmin()){
 			OrdineBean ord = ordit.next();
 			
 			%>
+		<div class= "box" id = <%=ord.getId() %>>
 		<div class="book-details">
     	<div class="text-overlay">
 			
@@ -101,13 +102,13 @@ if (bean == null || !bean.isAdmin()){
 			%> 
 			
     				
-    				<div class="book-details">
+    	<div class="book-details">
     	<div class="text-overlay">
 			<span> Data: <span class = data id =p_<%=ord.getId() %>><%= ord.getData() %></span></span>
 			<span> Importo totale: <%=ord.getImporto()%> </span>
 			</div>
 			</div>
-				
+			</div>	
 	<%  }}} %>	
 
 	<script type="text/javascript" src="scripts/funzioniadordini.js" defer></script>

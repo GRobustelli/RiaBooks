@@ -90,9 +90,14 @@
                <div><%=bean.getPrezzo() %></div>
                <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">Aggiungi al carrello</button>
                <a href="modificalibro?action=invio&libro_id=<%=bean.getId()%>"> <button class="modify-item" >Modifica prodotto</button></a>
-               <button class="remove-to-catalogue" onclick="rimuovidalCatalogo('<%= bean.getId() %>')">Rimuovi dal catalogo</button>
                
-               
+               <% if (bean.isMostra()){ %>
+               <button class="remove-to-catalogue" id = "rim_<%=bean.getId() %>" onclick="rimuovidalCatalogo('<%= bean.getId() %>')">Rimuovi dal catalogo</button>
+               <button hidden = "hidden" class="add-to-catalogue" id = "add_<%=bean.getId() %>" onclick="aggiungialCatalogo('<%= bean.getId() %>')">Aggiungi al catalogo</button>
+               <%} else{ %>
+               <button hidden="hidden" class="remove-to-catalogue" id = "rim_<%=bean.getId() %>" onclick="rimuovidalCatalogo('<%= bean.getId() %>')">Rimuovi dal catalogo</button>
+                <button class="add-to-catalogue" id = "add_<%=bean.getId() %>" onclick="aggiungialCatalogo('<%= bean.getId() %>')">Aggiungi al catalogo</button>
+               <%} %>
            </div>
        </div>
        </div>
