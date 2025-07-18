@@ -66,7 +66,7 @@ function checkcognome() {
 
 function checkemail(){
 	
-	const emailcheck = /^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+	const emailcheck = /^(?=.{1,320}$)[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
 	
 	const email = document.getElementById("email").value
 	
