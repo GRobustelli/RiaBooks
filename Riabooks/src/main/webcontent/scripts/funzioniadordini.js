@@ -26,7 +26,11 @@ function doFilter(){
 	
 	console.log(utente + " " + email[0].textContent);
 	
-	if (utente.trim() != "" && start != "" && end != ""){
+	if(utente.trim() == "" && start == "" && end == ""){
+		return
+	}
+	
+	else if (utente.trim() != "" && start != "" && end != ""){
 		
 		
 		for (var i = 0; i< email.length; i++){

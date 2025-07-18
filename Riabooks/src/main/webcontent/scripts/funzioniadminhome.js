@@ -27,9 +27,11 @@ function rimuovidalCatalogo (id){
 	
 	const actual = "rim_" + id;
 	const nuovo = "add_" + id;
+	const carr = "c_" + id;
 	console.log(actual + " " + nuovo)
 	document.getElementById(actual).hidden = true;
 	document.getElementById(nuovo).hidden= false;
+	document.getElementById(carr).hidden = true;
 	
 	var ajaxvar = createXMLHttpRequest();
 	const url = "LibriControl?valore=false&action=modCatalogo&libro_id=" + id;
@@ -58,11 +60,11 @@ function aggiungialCatalogo (id){
 	
 	const actual = "add_" + id;
 	const nuovo = "rim_" + id;
-		
+	const carr = "c_" + id;	
 	console.log(actual + " " + nuovo)
 	document.getElementById(actual).hidden = true;
 	document.getElementById(nuovo).hidden= false;
-	
+	document.getElementById(carr).hidden = false;
 	var ajaxvar = createXMLHttpRequest();
 	
 	const url = "LibriControl?valore=true&action=modCatalogo&libro_id=" + id;

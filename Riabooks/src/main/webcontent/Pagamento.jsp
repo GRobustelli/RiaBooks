@@ -28,30 +28,32 @@
 	<a href="home.jsp" class="back-button">Torna alla home</a>
 	<h2>Dati di pagamento</h2>
 	<main class="form-wrapper">
-    <form action="OrdiniControl" method="post"> 
+    <form action="OrdiniControl" method="post" id = "pagamentoform"> 
         
 
         <label for="intestatario">Nome e Cognome Intestatario</label>
-        <input type="text" id="intestatario" name="intestatario" required 
-        	   oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s']/g, '')" />
+        <input type="text" id="intestatario" name="intestatario" required oninput="replaceint(this)" onchange=" return checkintestatario()"/>
+        <span id = "interr"></span>
 
         <label for="indirizzo">Indirizzo di Spedizione</label>
-        <input type="text" id="indirizzo" name="indirizzo" required />
-
+        <input type="text" id="indirizzo" name="indirizzo" required onchange = "return checkindirizzo(this)" />
+		<span id = "inderr"></span>
+        
         <label for="numeroCarta">Numero Carta</label>
         <input type="text" id="numeroCarta" name="numeroCarta"
                maxlength="16" inputmode="numeric" pattern="\d{16}"
-               required oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+               required oninput="replacenumcarta(this)" />
 
         <label for="codiceSegreto">Codice Segreto (CVV)</label> <br>
         <input type="password" id="codiceSegreto" name="codiceSegreto"
                maxlength="3" inputmode="numeric" pattern="\d{3}"
-               required oninput="this.value = this.value.replace(/[^0-9]/g, '')" /> <br>
+               required oninput="replaceccv(this)" /> <br>
 
         <label for="dataScadenza">Data di Scadenza</label>
-        <input type="month" id="dataScadenza" name="dataScadenza" required />
+        <input type="month" id="dataScadenza" name="dataScadenza" required min="2025-01" max = "9999-12"/>
 
         <input type="submit" value="Effettua pagamento">
+        <span id = "errsub"></span>
         <input type = "text" name ="impTot" style= "display:none;" value = <%=request.getParameter("impTot")%>>
         
         
@@ -79,6 +81,7 @@
     </form>
 </main>
 
+	<script type="text/javascript" src="scripts/regexpagamento.js" defer></script>
     <jsp:include page="footer.jsp" />
 
 </body>

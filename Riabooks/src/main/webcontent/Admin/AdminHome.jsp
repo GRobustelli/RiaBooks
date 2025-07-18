@@ -88,7 +88,7 @@
                <div><%=bean.getAutore() %></div>
                <div><%=bean.getDescrizione() %></div>
                <div><%=bean.getPrezzo() %></div>
-               <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">Aggiungi al carrello</button>
+               <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)" id = c_<%=bean.getId() %>>Aggiungi al carrello</button>
                <a href="modificalibro?action=invio&libro_id=<%=bean.getId()%>"> <button class="modify-item" >Modifica prodotto</button></a>
                
                <% if (bean.isMostra()){ %>
