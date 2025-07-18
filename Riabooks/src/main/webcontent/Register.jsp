@@ -17,19 +17,25 @@
     <main class="form-wrapper"> 
     	<form action="RegisterServlet" method="post">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
+        <input type="text" id="nome" name="nome" required onchange = "return checknome()"><br>
+        <span id = "errnome"></span><br>
 
         <label for="cognome">Cognome:</label>
-        <input type="text" id="cognome" name="cognome" required><br><br>
+        <input type="text" id="cognome" name="cognome" required onchange = "return checkcognome()"><br>
+		<span id = "errcognome"></span><br>
+        
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <label for="email" >Email:</label>
+        <input type="email" id="email" name="email" required onchange = "return checkemail()"><br>
+        <span id = "erremail"></span><br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
+        <input type="password" id="password" name="password" required onchange = "return checkconferma()"><br>
+		
+        
         <label for="conferma_password">Conferma Password:</label>
-        <input type="password" id="conferma_password" name="conferma_password" required><br><br>
+        <input type="password" id="conferma_password" name="conferma_password" required onchange = "return checkconferma()"><br>
+        <span id = "errconfpass"></span><br>
 		
 		<input type = "hidden" name = "action" value = "do_save">
         
@@ -49,6 +55,7 @@ if (errors != null){
     
 
     <jsp:include page="footer.jsp" />
-
+    
+	<script type="text/javascript" src = "scripts/regexregister.js" defer ></script>
 </body>
 </html>
