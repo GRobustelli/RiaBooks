@@ -92,7 +92,7 @@ if (rifit.hasNext()){
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=rif.getQuantita() %></span> <br>
 							<span>Prezzo: <%=rif.getPrezzo() %></span> <br>
-							<span>**********************************************</span> <br>
+							<span>****************</span> <br>
 						
 			
 						
