@@ -77,7 +77,7 @@ function checkemail(){
 		return true;
 	}
 	else{
-		document.getElementById("erremail").innerText = "formato email non corretto (ex. example@mail.it)"
+		document.getElementById("erremail").innerText = "formato email non corretto ( almeno 3 caratteri per i primi due campi ex. example@mail.it)"
 		return false;
 	}
 	
@@ -104,5 +104,31 @@ function checkconferma(){
 		return false;
 	}
 }	
-}			
+}		
 
+/*
+function checksubmit(){
+	
+	const controllo = checknome() && checkcognome() && checkemail() && checkconferma();
+	
+	if (controllo == false || controllo == null){
+		
+		document.getElementById("errsub").innerText = "Controlla che tutti i campi siano corretti";
+		return false;
+	}else{
+		return true;
+	}
+}	
+*/
+
+
+document.getElementById("regform").addEventListener( 'submit', function(e){
+	
+	const controllo = checknome() && checkcognome() && checkemail() && checkconferma();
+	
+	console.log(controllo);
+	if (controllo == false || controllo == null){
+		document.getElementById("errsub").innerText = "Controlla che tutti i campi siano corretti";
+		e.preventDefault();
+	}
+});

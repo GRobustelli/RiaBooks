@@ -15,7 +15,8 @@
 	<a href="home.jsp" class="back-button">Torna alla home</a>
     <h2>Registrazione</h2>
     <main class="form-wrapper"> 
-    	<form action="RegisterServlet" method="post">
+    
+    	<form action="RegisterServlet" method="post" id = "regform">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required onchange = "return checknome()"><br>
         <span id = "errnome"></span><br>
@@ -39,7 +40,9 @@
 		
 		<input type = "hidden" name = "action" value = "do_save">
         
-        <input type="submit" value = "Registrati">
+    
+        <input type="submit" value = "Registrati">   <br> 
+        <span id = "errsub"></span> <br>
     </form>
     </main>
         
