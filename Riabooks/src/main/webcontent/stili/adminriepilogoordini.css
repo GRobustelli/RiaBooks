@@ -78,9 +78,32 @@ input[type="submit"]:hover {
     
 }
 
-.user-area form {
-    margin: 0;
+.timing{
+	display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-right: 15px;
+   
 }
+
+.filtro{
+	font-family: Consolas, sans-serif;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    margin: 0; 
+}
+
+
 
 /* Bottoni */
 #princ a button,
@@ -204,7 +227,18 @@ input[type="submit"]:hover {
   color: #222;
 }
 
-
+.azzera{
+	font-family: Consolas, sans-serif;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    margin: 0; 
+}
 
 div.fixed {
     position: fixed;

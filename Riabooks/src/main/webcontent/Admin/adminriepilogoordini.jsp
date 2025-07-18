@@ -35,7 +35,7 @@ else{
 <html>
 <head>
 <meta charset="UTF-8">
-
+<%@include file="../header.jsp" %>
 <title>Riepilogo ordini</title>
 
 <link rel="stylesheet" type="text/css" href="stili/footer.css" /> 
@@ -44,16 +44,16 @@ else{
 <link rel="stylesheet" type="text/css" href="stili/adminriepilogoordini.css" /> 
 </head>
 <body>
-	
+	<a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Torna alla home</a>
 	<div>	
 		   <nav id="princ">
            <ul>   
            
-           		<li>Data inizio: <input type = "date" id = "start" onchange="controlloDate()"> </li>
-           		<li>Data fine: <input type = "date" id = "end" onchange="controlloDate()"> </li>
-           		<li>Utente:  <input type = text id = "utente"></li>
-           		<li><button onclick = "doFilter()">Filtra</button></li>
-           		<li><input type = "reset" value  = "Azzera" onclick = "Azzera()"></li>
+           		<li class="timing">Data inizio: <input type = "date" id = "start" onchange="controlloDate()"> </li>
+           		<li class="timing">Data fine: <input type = "date" id = "end" onchange="controlloDate()"> </li>
+           		<li class="timing">Utente:  <input type = text id = "utente"></li>
+           		<li><button onclick = "doFilter()"class= "filtro">Filtra </button></li>
+           		<li><input type = "reset" value  = "Azzera" onclick = "Azzera()" class="azzera"></li>
            </ul>
         </nav>
 			
