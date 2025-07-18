@@ -113,7 +113,7 @@ else{
 			<br>	
 	<%  }}else{ %>
 			
-			<h1>Non ci sono ordini</h1>
+			<a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Non ci sono ordini, torna alla home</a>
 		
 	<% }}} %>	
 
