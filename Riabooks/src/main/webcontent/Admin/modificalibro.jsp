@@ -1,9 +1,21 @@
-<%@page import="unisa.LibroBean"%>
+<%@page import="unisa.LibroBean,unisa.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-	<%
+	<%	UserBean bean = (UserBean) request.getSession().getAttribute("user");
+
+	if (bean == null)
+	{
+		response.sendRedirect("../home.jsp");
+	} 
+	
+	else if (!bean.isAdmin())
+	{
+		response.sendRedirect("../home.jsp");
+	}
+		
+		
 		LibroBean libro = (LibroBean) request.getAttribute("modlib");
 		if (libro == null){
 			String id = request.getParameter("libro_id");	

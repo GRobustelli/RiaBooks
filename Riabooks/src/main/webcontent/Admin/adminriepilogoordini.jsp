@@ -5,16 +5,21 @@
 <% 
 	UserBean bean = (UserBean) request.getSession().getAttribute("user");
 
-if (bean == null || !bean.isAdmin()){
+if (bean == null){
 	response.sendRedirect("../home.jsp");
-}else{
+	} else if (!bean.isAdmin()){
+	response.sendRedirect("../home.jsp");
+	
+}
+else{
 	
 	Collection<OrdineBean> ordcoll = (Collection<OrdineBean>) request.getAttribute("adcollord");
 	Collection<RiferisceBean> rifcoll = (Collection<RiferisceBean>) request.getAttribute("rifadmin");
 	Collection<LibroBean> libcoll = (Collection<LibroBean>) request.getAttribute("libriad");
 	boolean controllo = false;
 	if (ordcoll == null || rifcoll == null || libcoll == null){
-		//fai qualcosa
+		
+		response.sendRedirect("../home.jsp");
 	}
 	else{
 		Iterator<OrdineBean> ordit = ordcoll.iterator();

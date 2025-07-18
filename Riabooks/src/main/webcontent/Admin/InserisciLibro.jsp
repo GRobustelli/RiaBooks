@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*,unisa.UserBean" %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -10,7 +10,20 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/stili/Register.css">
-    
+	<% 
+	UserBean bean = (UserBean) request.getSession().getAttribute("user");
+
+	if (bean == null){
+		response.sendRedirect("../home.jsp");}
+
+	if (!bean.isAdmin()){
+		response.sendRedirect("../home.jsp");
+	}
+	
+	
+	%>
+
+
 </head>
 <body>
 
