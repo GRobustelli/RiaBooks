@@ -61,7 +61,7 @@ input.quantita {
 }
 
 .back-button {
-	position: sticky;
+	position: fixed;
     top: 20px;
     padding: 10px 20px;
     background-color: #007bff;

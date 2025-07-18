@@ -24,8 +24,7 @@ else{
 		Iterator<OrdineBean> ordit = ordcoll.iterator();
 		Iterator<RiferisceBean> rifit = rifcoll.iterator();
 		
-		if (rifit.hasNext()){
-		RiferisceBean rif = rifit.next();
+	
 		
 %>
 
@@ -42,7 +41,14 @@ else{
 <link rel="stylesheet" type="text/css" href="stili/RiepilogoOrdini.css" /> 
 <link rel="stylesheet" type="text/css" href="stili/header.css" /> 
 <link rel="stylesheet" type="text/css" href="stili/adminriepilogoordini.css" /> 
+<link rel="stylesheet" type="text/css" href="stili/Carrello.css" />
 </head>
+<% 
+if (rifit.hasNext()){
+	RiferisceBean rif = rifit.next();
+
+%>
+
 <body>
 	<a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Torna alla home</a>
 	<div>	
@@ -62,6 +68,7 @@ else{
 	
 
 	<% 
+	
 		while (ordit.hasNext()){
 		
 			OrdineBean ord = ordit.next();
@@ -85,7 +92,7 @@ else{
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=rif.getQuantita() %></span> <br>
 							<span>Prezzo: <%=rif.getPrezzo() %></span> <br>
-							<span>**********************************************</span> <br>
+							<span>****************</span> <br>
 						
 			
 						
