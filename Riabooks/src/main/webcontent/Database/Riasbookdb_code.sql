@@ -29,7 +29,6 @@ create table Carrello (
 create table Contiene (
 	email varchar(320) not null,
     libro_id varchar(13) not null,
-    prezzo decimal(10,2) not null,
     foreign key (email) references Utente(email) on delete cascade on update cascade,
 	foreign key (libro_id) references Libro(id) on update cascade on delete cascade 
     );
