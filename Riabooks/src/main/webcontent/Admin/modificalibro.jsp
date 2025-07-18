@@ -45,7 +45,7 @@
 			<h2>Modifica Libro</h2>
     		<main class="form-inserimento"> 
 			<div>
-		 	<form action="${pageContext.request.contextPath}/modificalibro" method = "post" enctype = "multipart/form-data"> 
+		 	<form action="${pageContext.request.contextPath}/modificalibro" method = "post" enctype = "multipart/form-data" id = "modform"> 
 		 		
 		    <input type= "hidden" name = libro_id value = <%=libro.getId() %>>
 		 	<input type= "hidden" name = "modaction" value = "do_mod">
@@ -71,13 +71,13 @@
 		 	
 		 
 			
-			<input type = "submit" value = "Conferma modifiche">
+			<input type = "submit" value = "Conferma modifiche" onclick= "sanitizeForm(modform)">
 			</form>			 		
 		 </div>
 		</main>
 		
 	
 <%} %>
-	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/modificalibro.js" defer></script>
 </body>
 </html>

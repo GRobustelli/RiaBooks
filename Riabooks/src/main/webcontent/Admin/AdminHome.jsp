@@ -81,7 +81,7 @@
                    <div>
                    <br>
                        <div class="book-item" id = "it_<%=bean.getId() %>" >
-           <img alt="Libro" src="Immretrievecont?id=<%=bean.getId()%>" onerror = "/images/default_libro.png">
+           <img alt="Libro" src="Immretrievecont?id=<%=bean.getId()%>" onerror = "this.onerror=null; this.src= /images/default_libro.png">
            <div class="book-details">
                <div class="text-overlay">
                <div><%=bean.getTitolo() %></div>

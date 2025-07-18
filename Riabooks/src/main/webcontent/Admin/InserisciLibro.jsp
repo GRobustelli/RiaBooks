@@ -30,7 +30,7 @@
     <a href="${pageContext.request.contextPath}/Admin/AdminHome.jsp" class="back-button">Torna alla home</a>
 	<h2>Inserisci Libro</h2>
     <main class="form-inserimento"> 
-    <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/LibriControl" method="post">
+    <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/LibriControl" method="post" id = "modform">
     <label for="id">ID:</label>
     <input type="text" id="id" name="id" required>
 
@@ -74,6 +74,6 @@
 %>
 
 <%@ include file="/footer.jsp" %>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/modificalibro.js" defer></script>
 </body>
 </html>
