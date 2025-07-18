@@ -64,7 +64,7 @@ public class loginServlet extends HttpServlet {
         	return; 
         }
         
-        email = email.trim();
+        email = email.trim().toLowerCase();
         password = hashfunc.hashfunction(password);
         
         DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");

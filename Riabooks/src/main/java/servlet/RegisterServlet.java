@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserBean user = new UserBean();
-		user.setEmail(request.getParameter("email").trim());
+		user.setEmail(request.getParameter("email").trim().toLowerCase());
 		user.setNome(request.getParameter("nome").trim());
 		user.setCognome(request.getParameter("cognome").trim());
 		user.setPass(hashfunc.hashfunction(request.getParameter("password")));
