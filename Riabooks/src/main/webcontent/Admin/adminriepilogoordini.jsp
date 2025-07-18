@@ -18,12 +18,13 @@ else{
 	Collection<LibroBean> libcoll = (Collection<LibroBean>) request.getAttribute("libriad");
 	boolean controllo = false;
 	if (ordcoll == null || rifcoll == null || libcoll == null){
-		
 		response.sendRedirect("../home.jsp");
 	}
 	else{
 		Iterator<OrdineBean> ordit = ordcoll.iterator();
 		Iterator<RiferisceBean> rifit = rifcoll.iterator();
+		
+		if (rifit.hasNext()){
 		RiferisceBean rif = rifit.next();
 		
 %>
@@ -71,8 +72,7 @@ else{
     	<div class="text-overlay">
 			
 			<div><strong>Id Ordine:</strong> <%= ord.getId() %> email: <span class = "email" id = e_<%=ord.getId() %>><%=ord.getEmail() %></span></div>
-			</div>
-			</div>
+		
 			<% 
 			
 			while (ord.getId() == rif.getOrdine_id() && !controllo){
@@ -81,16 +81,13 @@ else{
 						
 						%>
 							
-   <div class="book-details">
-    	<div class="text-overlay">
     			
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=rif.getQuantita() %></span> <br>
 							<span>Prezzo: <%=rif.getPrezzo() %></span> <br>
 							<span>**********************************************</span> <br>
 						
-						</div>
-			</div>
+			
 						
 						<% 
 						break;}
@@ -107,14 +104,18 @@ else{
 			%> 
 			
     				
-    	<div class="book-details">
-    	<div class="text-overlay">
+    
 			<span> Data: <span class = data id =p_<%=ord.getId() %>><%= ord.getData() %></span></span>
 			<span> Importo totale: <%=ord.getImporto()%> </span>
 			</div>
 			</div>
-			</div>	
-	<%  }}} %>	
+			</div>
+			<br>	
+	<%  }}else{ %>
+			
+			<h1>Non ci sono ordini</h1>
+		
+	<% }}} %>	
 
 	<script type="text/javascript" src="scripts/funzioniadordini.js" defer></script>
 	<%@ include file="/footer.jsp" %>
