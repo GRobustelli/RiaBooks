@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 import unisa.OrdineBean;
-import unisa.RecensioneBean;
 
 public interface IOrdineDAO {
 	

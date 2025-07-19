@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 
 <%
+
 	Collection<?> setLibri = (Collection<?>) request.getAttribute("libri");
 	if(setLibri == null) {
 		response.sendRedirect("LibriControl");	

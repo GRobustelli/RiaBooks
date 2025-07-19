@@ -9,5 +9,22 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>home.jsp</welcome-file>
-  </welcome-file-list>
+  </welcome-file-list>  
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/Errorpage.jsp</location>
+  </error-page>
+
+<!-- Per codice HTTP 404 (Not Found) -->
+	<error-page>
+		<error-code>404</error-code>
+    	<location>/Errorpage.jsp</location>
+	</error-page>
+
+<!-- Per codice HTTP 500 (Internal Server Error) -->
+<error-page>
+    <error-code>500</error-code>
+    <location>/Errorpage.jsp</location>
+</error-page>
+
 </web-app>
