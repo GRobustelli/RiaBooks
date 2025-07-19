@@ -48,7 +48,7 @@ public class ImmUpdateCont extends HttpServlet {
 		// TODO Auto-generated method stub
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		
-		System.out.println("\n\nStiamo nella post di immupdatecont\n\n");
+		System.out.println("\n\nPost di immupdatecont\n\n");
 		
 		IImmagineDAO dao = new ImmagineDaoDriverMan(dm);
 		

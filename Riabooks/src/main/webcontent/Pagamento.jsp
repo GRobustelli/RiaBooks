@@ -33,11 +33,11 @@
 
         <label for="intestatario">Nome e Cognome Intestatario</label>
         <input type="text" id="intestatario" name="intestatario" required oninput="replaceint(this)" onchange=" return checkintestatario()"/>
-        <span id = "interr"></span>
+        <span class = "pagerr" id = "interr"></span>
 
         <label for="indirizzo">Indirizzo di Spedizione</label>
         <input type="text" id="indirizzo" name="indirizzo" required onchange = "return checkindirizzo(this)" />
-		<span id = "inderr"></span>
+		<span class = "pagerr" id = "inderr"></span>
         
         <label for="numeroCarta">Numero Carta</label>
         <input type="text" id="numeroCarta" name="numeroCarta"

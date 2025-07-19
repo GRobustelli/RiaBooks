@@ -106,7 +106,7 @@ public class RiferisceControl extends HttpServlet {
 							
 							Collection<RiferisceBean> riferimenti = rif.doRetrieveByKey(ord.getId());
 							
-							System.out.println("\n\nSto in riferisce dopo di do retrievebykey");
+						
 							bigList.add(riferimenti);
 							
 						}

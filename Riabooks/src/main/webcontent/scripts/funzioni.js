@@ -26,6 +26,7 @@ function addCartAjax(valore){
 	console.log(valore);
 	const url = "CartControl?libro_id=" + valore + "&action=insert";
 	ajaxvar.open("GET", url, true)
+	
 	console.log("ho aperto la connessione");
 
 	console.log("Sto inviando la request")	

@@ -57,7 +57,7 @@
 						
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=riferimento.getQuantita() %></span> <br>
-							<span>Prezzo: <%=riferimento.getPrezzo() %></span> <br>
+							<span>Prezzo: <%=riferimento.getPrezzo() %> €</span> <br>
 							<span>**********************************************</span> <br>
 						<%
 						break;
@@ -70,7 +70,7 @@
 	%>
 	
 		<span> Data: <%= ord.getData() %></span>
-		<span> Importo totale: <%=ord.getImporto() %> </span>
+		<span> Importo totale: <%=ord.getImporto() %> €</span>
 	  </div>
 	  </div> 
 	  <br>

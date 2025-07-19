@@ -44,7 +44,7 @@ public class Modificalibroadmin extends HttpServlet {
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		ILibroDAO libro = new LibroDaoDriverMan(dm);
 		
-		System.out.println("\n\nCi arrivo almeno?");
+		System.out.println("\n\nGet di modificalibro");
 		
 		String action = request.getParameter("action");
 		String modaction = request.getParameter("modaction");
@@ -53,7 +53,7 @@ public class Modificalibroadmin extends HttpServlet {
 		if (user != null) {
 			if (user.isAdmin()) {
 				
-					System.out.println("\n Sto prima degli equals di action in modificalibro" + modaction);
+			
 				if (action != null) {
 				
 					

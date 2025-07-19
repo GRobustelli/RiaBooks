@@ -78,7 +78,7 @@
         <div><%=bean.getTitolo() %></div>
         <div><%=bean.getAutore() %></div>
         <div><%=bean.getDescrizione() %></div>
-        <div><%=bean.getPrezzo() %></div>
+        <div><%=bean.getPrezzo() %> €</div>
         <button class="add-to-cart" value="<%=bean.getId() %>" onclick="addCartAjax(this.value)">
     	Aggiungi al carrello</button>
     </div>

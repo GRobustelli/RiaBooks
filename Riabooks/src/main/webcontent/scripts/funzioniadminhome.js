@@ -46,9 +46,9 @@ function rimuovidalCatalogo (id){
 				    console.log("Risposta: ce l'abbiamo fatta?");
 					const risposta = ajaxvar.responseText;
 					if (risposta.trim() === "true"){
-						console.log("non pianger");}
+						console.log("non piangere");}
 					else{
-						console.log("pianger");
+						console.log("piangere");
 					}	
 	
 				}

@@ -78,9 +78,9 @@ public class LibriControl extends HttpServlet {
 		System.out.println("Siamo dopo aver preso action che ha valore: " + action);
 		
 		ArrayList<LibroBean> libriord = new ArrayList<>();
-		System.out.println("\n\nSto nella servlet LibriControl prima degli if" + action);
 		
 		
+
 		if(action != null)
 		{
 			
@@ -101,7 +101,7 @@ public class LibriControl extends HttpServlet {
 					}
 					else {
 						if (libro.doUpdatemostra(libro_id,true)) {
-							System.out.println("daglie roma daglie yahahahahooo");
+							System.out.println("Libro riesumato");
 						}
 					}
 						
@@ -109,7 +109,7 @@ public class LibriControl extends HttpServlet {
 					
 					
 					}else {
-						System.out.println("Piangi e disperati");
+						System.out.println("Non funziona");
 					}
 					
 					
@@ -165,7 +165,8 @@ public class LibriControl extends HttpServlet {
 					LibroBean duplicate = (LibroBean) libro.doRetrieveByKey(bean.getId());
 					if (duplicate != null) {
 						
-						System.out.println("Vediamo se è veramente non nullo: " + duplicate);
+						
+						
 						if(duplicate.getId().equals(bean.getId())) {
 						
 						

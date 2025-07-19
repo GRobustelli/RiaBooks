@@ -91,7 +91,7 @@ public class loginServlet extends HttpServlet {
 			else {
 				
 				request.getSession().setAttribute("user", bean);
-				System.out.println("Problemi in paradiso");
+				
 				
 				if (bean.isAdmin()) {
 					System.out.println("Sei nella zona giusta");					

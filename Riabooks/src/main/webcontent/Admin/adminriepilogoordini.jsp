@@ -91,7 +91,7 @@ if (rifit.hasNext()){
     			
 							<span> Titolo:  <%=libro.getTitolo() %></span> <br>
 							<span> Quantità: <%=rif.getQuantita() %></span> <br>
-							<span>Prezzo: <%=rif.getPrezzo() %></span> <br>
+							<span>Prezzo: <%=rif.getPrezzo() %> €</span> <br>
 							<span>****************</span> <br>
 						
 			
@@ -113,7 +113,7 @@ if (rifit.hasNext()){
     				
     
 			<span> Data: <span class = data id =p_<%=ord.getId() %>><%= ord.getData() %></span></span>
-			<span> Importo totale: <%=ord.getImporto()%> </span>
+			<span> Importo totale: <%=ord.getImporto()%> €</span>
 			</div>
 			</div>
 			</div>

@@ -69,7 +69,7 @@ public class OrdiniControl extends HttpServlet {
 						bean.setEmail(user.getEmail());
 						bean.setData(dataSQL);
 						
-						System.out.println("PRima di inserimento ordine");
+						System.out.println("Prima di inserimento ordine");
 						
 						ord.doSave(bean);
 						

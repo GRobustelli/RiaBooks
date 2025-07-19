@@ -89,7 +89,7 @@ function rimuoviElemento(id) {
 	const url = "CartControl?libro_id=" + id + "&action=elimina";
 	ajaxvar.open("GET", url, true)
 	console.log("ho aperto la connessione");
-	console.log("Prima del check sulla risposta")
+	
 	console.log("Sto inviando la request")	
 	ajaxvar.send();
 	

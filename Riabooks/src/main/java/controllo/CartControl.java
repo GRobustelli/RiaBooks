@@ -43,7 +43,7 @@ public class CartControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("\n\nSto nella servlet CartControl");
+		System.out.println("\n\nServlet CartControl");
 		
 		DriverManagerConnectionPool dm = (DriverManagerConnectionPool) getServletContext().getAttribute("DriverManager");
 		IContieneDAO cont = new ContieneDaoDriverMan(dm);
@@ -61,7 +61,7 @@ public class CartControl extends HttpServlet {
 					carrello.deleteAll();
 					if (utente != null) {
 						
-						System.out.println("Dopo la delete all \n\n");
+						System.out.println("Carrello svuotato\n\n");
 						cont.doDeleteAll(utente.getEmail());
 						
 					}
@@ -79,7 +79,7 @@ public class CartControl extends HttpServlet {
 					System.out.println("Prima del dispatcher");
 					
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Carrello.jsp");
-					System.out.println("dopo il dispatcher");
+					
 					dispatcher.forward(request, response);					
 				}
 				
@@ -108,11 +108,11 @@ public class CartControl extends HttpServlet {
 						
 					}
 					
-					System.out.println("Prime del controllo per vedere se è vuoto: " + carrello.isEmpty());
+					
 					
 					
 					if (carrello.isEmpty()) {
-						System.out.println("Qui funziona");
+						
 						response.setContentType("text/plain");
 						response.getWriter().write("true");
 						return;
@@ -148,7 +148,7 @@ public class CartControl extends HttpServlet {
 					carrello.addLibro(nuovo);
 					
 					
-					System.out.println("Sono dopo l'inserimento");
+					System.out.println("Dopo l'inserimento");
 					
 					
 					if (utente != null) {
@@ -167,7 +167,7 @@ public class CartControl extends HttpServlet {
 					
 				}
 			}else if (utente == null) {
-				System.out.println("\n\n\nHELLO\n\n\n");
+				
 				
 				response.sendRedirect("Carrello.jsp");
 			}

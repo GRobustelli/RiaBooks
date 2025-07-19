@@ -4,6 +4,11 @@ body {
     padding: 30px;
 }
 
+.pagerr{
+	font-size: 70%;
+	color: red;
+}
+
 
 .form-wrapper {
     display: flex;
