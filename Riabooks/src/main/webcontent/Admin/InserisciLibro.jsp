@@ -54,24 +54,28 @@
 		
 		<input type = "hidden" name = "action" value = "do_upload">
         
-        <input type="submit" value="Inserisci Libro">
+        <input type="submit" value="Inserisci Libro" onclick= "sanitizeForm('modform')">
     </form>
+    
+    <%  
+    List<String> errors = (List<String>) request.getAttribute("errors");
+    if (errors != null) {
+	%>
+	    <div class="error-message">
+	        <% for (String error : errors) { %>
+	          <span><%= error %> </span><br>
+	        <% } %>
+	    </div>
+	<% 
+    	}
+	%>
+    
+    
     
     </main>
 
 
-<%  
-    List<String> errors = (List<String>) request.getAttribute("errors");
-    if (errors != null) {
-%>
-    <div class="error-message">
-        <% for (String error : errors) { %>
-          <span><%= error %> </span><br>
-        <% } %>
-    </div>
-<% 
-    }
-%>
+
 
 <%@ include file="/footer.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/modificalibro.js" defer></script>

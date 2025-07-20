@@ -126,6 +126,7 @@ public class CartControl extends HttpServlet {
 				
 				if (action.equals("insert") && azione == null) {
 					
+					System.out.println("Dentro la chiamata per aggiungere elementi al carrello");
 					
 					String libro_id = request.getParameter("libro_id");
 					LibroBean nuovo = (LibroBean) libro.doRetrieveByKey(libro_id);
@@ -152,7 +153,7 @@ public class CartControl extends HttpServlet {
 					
 					
 					if (utente != null) {
-						
+						System.out.println("\n\npersistenza\n\n");
 						ContieneBean persistenza = new ContieneBean(utente.getEmail(),libro_id);
 						cont.doSave(persistenza);
 					}

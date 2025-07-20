@@ -71,7 +71,7 @@
 		 	
 		 
 			
-			<input type = "submit" value = "Conferma modifiche" onclick= "sanitizeForm(modform)">
+			<input type = "submit" value = "Conferma modifiche" onclick= "sanitizeForm('modform')">
 			</form>			 		
 		 </div>
 		</main>

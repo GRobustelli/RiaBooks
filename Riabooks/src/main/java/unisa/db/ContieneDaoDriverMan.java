@@ -28,7 +28,7 @@ public class ContieneDaoDriverMan implements IContieneDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ContieneDaoDriverMan.TABLE_NAME
-				+ " (email,libro_id, prezzo) VALUES (?, ?)";
+				+ " (email,libro_id) VALUES (?, ?)";
 	
 		try {
 			connection = dmcp.getConnection();
