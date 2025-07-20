@@ -48,7 +48,7 @@
                 <p><%= libro.getDescrizione() %></p>
                 <p class="prezzo" id = "p_<%= libro.getId()%>"><%= libro.getPrezzo() %> €</p>
                
-                <input type="number" name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
+                <input type="number"  name="quantita_<%= libro.getId() %>" class="quantita" min="1" max="99" value="1" />
                 
                 <button type="button" onclick="rimuoviElemento('<%= libro.getId() %>')"class="rimuoviElemento"> Rimuovi</button>
             </div>

@@ -115,3 +115,19 @@ function rimuoviElemento(id) {
 		
 		setTimeout(function () { if (ajaxvar.readyState < 4) { ajaxvar.abort(); } }, 15000);};
 	}
+	
+	
+	
+	const numerici = document.querySelectorAll("input[type='number']");
+	numerici.forEach(input => {
+	  input.addEventListener("input", function() {
+				
+		const number = input.valueAsNumber;
+		
+		console.log("checknumber" + number);
+		if (isNaN(number))
+			{
+				input.valueAsNumber = 1;
+			}
+	});});
+	
