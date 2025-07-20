@@ -93,11 +93,16 @@ public class LibriControl extends HttpServlet {
 				try {
 					if (libro_id != null && valore != null) {
 					
+						LibroBean vecchio = libro.doRetrieveByKey(libro_id);
 						
-					if (valore.equals("false")) {
+						if (valore.equals("false")) {
 						
 						if (libro.doUpdatemostra(libro_id,false)) {
-							cont.doDeleteAllD(libro_id);} 							
+							
+							cont.doDeleteAllD(libro_id);
+							cart.deleteLibro(vecchio);
+					
+						} 							
 					}
 					else {
 						if (libro.doUpdatemostra(libro_id,true)) {
