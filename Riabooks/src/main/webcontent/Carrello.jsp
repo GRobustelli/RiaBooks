@@ -54,9 +54,9 @@
             </div>
         </div>
 
-    </div>
+    
  <%} %>
-   
+   </div>
     <div id="totale-container">
         <div class="riga-bottoni">
             <div class="gruppo-sx">
